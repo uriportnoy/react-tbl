@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { getColumnsData } from './components/fakeData/getColumns';
 import { getData } from './components/fakeData/getData';
-import ReactTBL from './components/ReactTBL';
+import ReactTBL from './components/tableMaker/ReactTBL';
 import './App.css';
 
 const App = () => {
@@ -16,20 +16,24 @@ const App = () => {
         setCurrentInput = {setCurrentInput}
         data = {currentData}
         columns = {columns || []}
-        defaultPageSize = {4}
+        defaultPageSize = {6}
         style = {{
           maxWidth: '450px',
+          maxHeight: '120px',
+          fixedHeight: '200px',
+          rowColor: '#000',
+          textColor: '#000',
           pagination: {
             visible: true,
             backgroundColor: '#333',
             btnColor: '#000'
           },
           header: {
-            headerColor: '#333',
+            headerColor: '#fff',
+            headerBGColor: '#333',
             fontSize: '11pt'
           }
         }}
-        useSearchBox = {false}
       />
     </div>
   );

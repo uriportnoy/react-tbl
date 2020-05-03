@@ -3,7 +3,7 @@ import TableHead from './tableHead';
 import TableBody from './tableBody';
 import styled from 'styled-components';
 import _ from 'lodash';
-import ReactTblContext from '../ReactTblContext';
+import ReactTblContext from './ReactTblContext';
 import { Pagination } from './pagination';
 
 const TableMaker = ({
@@ -18,7 +18,7 @@ const TableMaker = ({
     const [totalPages, setTotalPages] = useState(0);
     const [nextDisabled, setNextDisabled] = useState(false);
     const [prevDisabled, setPrevDisabled] = useState(true);
-    const {pagination:{isVisible}} = useContext(ReactTblContext);
+    const {pagination:{isVisible},tableHeader:{backgroundColor},table} = useContext(ReactTblContext);
 
     useEffect(() => {
         if (page === 0) {
@@ -47,7 +47,11 @@ const TableMaker = ({
 
     return <>
         {
-        _.isEmpty(currentDataPage) ? <EmptyData /> : <TblWrapper>
+        _.isEmpty(currentDataPage) ? <EmptyData /> : <TblWrapper
+            maxHeight = {table?.maxHeight}
+            fixedHeight = {table?.fixedHeight}
+            backgroundColor = {backgroundColor}
+        >
             <table>
                 <TableHead columns={columns} />
                 <TableBody data={currentDataPage} columns={columns} />
@@ -65,7 +69,6 @@ const TableMaker = ({
 
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
-    
     table{
         font-family: monospace; 
         background-color: transparent;
@@ -81,15 +84,16 @@ export const TblWrapper = styled.div`
         }
         tbody {
             display:block;
-            height: auto;
-            /* max-height: 70vh; */
             overflow: overlay;
             overflow-x: hidden;
+            max-height: ${props => props.maxHeight || 'auto'}; 
+            height: ${props => props.fixedHeight || 'auto'}; 
+            
             &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
             {
                 width: 10px;
-                background-color: #173c5a;
+                background-color: ${props => props ?.backgroundColor || '#173c5a'};
             }
             &::-webkit-scrollbar-thumb
             {
@@ -97,9 +101,9 @@ export const TblWrapper = styled.div`
             }
         }
         thead{
-            display:table;
-            width:100%;
-            table-layout:fixed; 
+            display: table;
+            width: 100%;
+            table-layout: fixed; 
         }
         th{
             padding: 0.3em;

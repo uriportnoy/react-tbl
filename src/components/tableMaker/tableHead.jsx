@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import styled from 'styled-components';
-import ReactTblContext from '../ReactTblContext';
+import ReactTblContext from './ReactTblContext';
 
 const TableHead = ({columns}) => {
 const {tableHeader} = useContext(ReactTblContext);
@@ -8,6 +8,7 @@ const {tableHeader} = useContext(ReactTblContext);
   return (
     <Thead
         backgroundColor = {tableHeader?.backgroundColor}
+        color = {tableHeader?.color}
     >
         {
             <tr>{
@@ -31,7 +32,7 @@ const Thead = styled.thead`
     table-layout: fixed; 
     background: ${props => props.backgroundColor || 'rgba(255,255,255,0.2)'};
     tr{
-        color: #fff;
+        color: ${props => props.color || '#fff'};
         width: 100%;
         display: flex; 
     }

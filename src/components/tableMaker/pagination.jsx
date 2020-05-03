@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import styled from 'styled-components';
-import ReactTblContext from '../ReactTblContext';
+import ReactTblContext from './ReactTblContext';
 
 export const Pagination = ({page,setPage,totalPages,nextDisabled,prevDisabled}) => {
 const {pagination} = useContext(ReactTblContext);
