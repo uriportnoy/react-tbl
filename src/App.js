@@ -11,13 +11,13 @@ const App = () => {
   return (
     <div className="App">
       <ReactTBL
-        //data = {currentData}
+        data = {currentData}
         columns = {columns || []}
         defaultPageSize = {6}
         style = {{
           maxWidth: '450px',
           maxHeight: '120px',
-          minHeight: '120px',
+          minHeight: '40pt',
           fixedHeight: '200px',
           rowColor: '#000',
           textColor: '#000',

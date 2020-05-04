@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
+import _ from 'lodash';
 
 const TableHead = ({columns}) => {
 const {tableHeader} = useContext(ReactTblContext);
@@ -11,7 +12,7 @@ const {tableHeader} = useContext(ReactTblContext);
         color = {tableHeader?.color}
     >
         {
-            <tr>{
+            _.isEmpty(columns) ? <EmptyColumnsTR>Cannot Read Columns</EmptyColumnsTR> : <tr>{
                 columns.map((key, index) => (
                     <TH
                         key = {index}
@@ -47,5 +48,15 @@ const TH = styled.th`
     font-size: ${props => props.fontSize || '12pt'};
     flex: ${props => props.size} 0 100px; 
     box-sizing: border-box;
+    
 `;
+
+const EmptyColumnsTR = styled.tr`
+    display:grid;
+    justify-content: center;
+    align-items:center;
+    min-height: 25pt;
+`;
+
+
 export default TableHead;

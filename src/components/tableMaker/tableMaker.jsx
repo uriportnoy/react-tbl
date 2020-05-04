@@ -53,7 +53,10 @@ const TableMaker = ({
         >
         <table>
             <TableHead columns={columns} />
-            {_.isEmpty(currentDataPage) ? <EmptyData /> : <TableBody data={currentDataPage} columns={columns} />}
+            {
+                (_.isEmpty(currentDataPage) || _.isEmpty(columns)) ? <EmptyData /> :
+                <TableBody data={currentDataPage} columns={columns} />
+            }
         </table></TblWrapper>
         {isVisible && <Pagination
             setPage={setPage}
@@ -81,7 +84,7 @@ export const TblWrapper = styled.div`
             padding-left: 2%;
         }
         tbody {
-            display:block;
+            display: block;
             overflow: overlay;
             overflow-x: hidden;
             max-height: ${props => props.maxHeight || 'auto'}; 
