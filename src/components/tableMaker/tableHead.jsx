@@ -30,7 +30,7 @@ const Thead = styled.thead`
     display: table;
     width: 100%;
     table-layout: fixed; 
-    background: ${props => props.backgroundColor || 'rgba(255,255,255,0.2)'};
+    background: ${props => props.backgroundColor || '#333'};
     tr{
         color: ${props => props.color || '#fff'};
         width: 100%;

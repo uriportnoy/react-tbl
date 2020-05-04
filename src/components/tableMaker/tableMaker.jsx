@@ -43,20 +43,18 @@ const TableMaker = ({
         setPage(0);
     }, [type, debounceInput]);
 
-    const EmptyData = () => <EmptyTable><span>No Data Rows...</span></EmptyTable>;
+    const EmptyData = () => <EmptyTable><tr><td>No Data Rows...</td></tr></EmptyTable>;
 
     return <>
-        {
-        _.isEmpty(currentDataPage) ? <EmptyData /> : <TblWrapper
+        <TblWrapper
             maxHeight = {table?.maxHeight}
             fixedHeight = {table?.fixedHeight}
             backgroundColor = {backgroundColor}
         >
-            <table>
-                <TableHead columns={columns} />
-                <TableBody data={currentDataPage} columns={columns} />
-            </table></TblWrapper>
-        }
+        <table>
+            <TableHead columns={columns} />
+            {_.isEmpty(currentDataPage) ? <EmptyData /> : <TableBody data={currentDataPage} columns={columns} />}
+        </table></TblWrapper>
         {isVisible && <Pagination
             setPage={setPage}
             page={page}
@@ -88,6 +86,7 @@ export const TblWrapper = styled.div`
             overflow-x: hidden;
             max-height: ${props => props.maxHeight || 'auto'}; 
             height: ${props => props.fixedHeight || 'auto'}; 
+            min-height: ${props => props.minHeight || '80pt'};
             
             &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
@@ -111,20 +110,15 @@ export const TblWrapper = styled.div`
     }
 `;
 
-const EmptyTable = styled.div`
-    width: 100%;
-    height: 45px;
+const EmptyTable = styled.tbody`
     background-color: rgba(111,111,111,0.5);
-    font-weight: bold;
-    display: grid;
-    user-select:none;
-    border: 12pt #fff;
-    flex: 1 1 auto;
-    align-items: center;
     color:#fff;
-    display:flex;
-    justify-content:center;
-    
+    font-weight: bold;
+    tr{
+        display: grid;
+        align-items: center;
+        height: 100%;
+    }
     svg{
         cursor:pointer;
     }

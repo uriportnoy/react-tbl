@@ -19,7 +19,7 @@ return <PaginationStyle
 }
 
 const PaginationStyle = styled.div`
-    background: ${props => props.backgroundColor || '#3c464e'};
+    background: ${props => props.backgroundColor || '#333'};
     display: flex;
     justify-content: center;
     align-items:center;
@@ -45,7 +45,7 @@ const PaginationStyle = styled.div`
         color: #fff;  
         align-items: center;
         justify-content: center;
-        padding: 1%;
+        padding: 3pt;
         font-weight: bold;
         cursor: pointer;
         border-radius: 3pt;

@@ -63,6 +63,7 @@ const App = () => {
         className = "custom_class_name"
         defaultPageSize = {10}
         style = {{
+            minHeight: '120px',
             maxWidth: '450px',
             maxHeight: '120px',
             fixedHeight: '200px',
@@ -71,7 +72,8 @@ const App = () => {
             pagination: {
                 visible: true,
                 backgroundColor: '#333',
-                btnColor: '#000'
+                btnColor: '#000',
+                nextButtonText: 'Next >'
             },
             header: {
                     headerColor: '#fff',
@@ -103,17 +105,18 @@ const App = () => {
 },{
     id:2,
     name: 'hoyas',
-    state: true
+    state: false
 }]
 ```
-## User table custom style
+## User table custom style [optional]
 ```js
 {
+    minHeight: '120px',          //(String) 
     maxWidth: '450px',           //(String) 
     maxHeight: '120px',          //(String) 
     fixedHeight: '200px',        //(String) 
     rowColor: '#000',            //(String) 
-    textColor: '#000',            //(String) 
+    textColor: '#000',           //(String) 
     pagination: {
         visible: true,              //(Boolean) 
         backgroundColor: '#333',    //(String) 

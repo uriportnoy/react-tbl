@@ -7,16 +7,18 @@ import styled from 'styled-components';
 
 const ReactTBL = props => {
   //const debounceInput = useDebounce(props?.currentInput,500);
-  const headerStyle = props?.style?.header;
-  const paginationStyle = props?.style?.pagination;
+  const styleProp = props?.style;
+  const headerStyle = styleProp?.header;
+  const paginationStyle = styleProp?.pagination;
 
   return <ReactTblContextProvider value = {{
     table:{
-        maxWidth: props?.style?.maxWidth,
-        maxHeight: props.style?.maxHeight,
-        fixedHeight: props.style?.fixedHeight,
-        rowColor:  props.style?.rowColor,
-        textColor: props.style?.textColor
+        maxWidth: styleProp?.maxWidth,
+        maxHeight: styleProp?.maxHeight,
+        minHeight: styleProp?.minHeight,
+        fixedHeight: styleProp?.fixedHeight,
+        rowColor:  styleProp?.rowColor,
+        textColor: styleProp?.textColor
     },
     tableHeader:{
         backgroundColor: headerStyle?.headerBGColor,
@@ -27,13 +29,13 @@ const ReactTBL = props => {
         isVisible: paginationStyle?.visible || true,
         backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor,
         btnColor: paginationStyle?.btnColor,
-        nextButtonText: paginationStyle.nextButtonText,
-        prevButtonText: paginationStyle.prevButtonText
+        nextButtonText: paginationStyle?.nextButtonText,
+        prevButtonText: paginationStyle?.prevButtonText
     }
   }}>
       <ReactTblStyled
         className = {props?.className || 'react_tbl_wrapper'}
-        maxWidth = {props?.style?.maxWidth}
+        maxWidth = {styleProp?.maxWidth}
       >
         {/* {props.useSearchBox && <SearchBox
             currentInput = {props?.currentInput}
