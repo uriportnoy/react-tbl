@@ -12,9 +12,9 @@ return <PaginationStyle
         btnColor = {pagination?.btnColor || '#333'}
         backgroundColor = {pagination?.backgroundColor}
     >
-        <span className='btn prev' onClick = {() => prevDisabled ? null : setPage(page - 1)}>{'<'}</span>
+        <span className='btn prev' onClick = {() => prevDisabled ? null : setPage(page - 1)}>{pagination?.prevButtonText || 'Previous'}</span>
         <span className='label'>{`${page + 1}/${totalPages}`}</span>
-        <span className='btn next' onClick = {() => nextDisabled ? null : setPage(page + 1)}>{'>'}</span>
+        <span className='btn next' onClick = {() => nextDisabled ? null : setPage(page + 1)}>{pagination?.nextButtonText || 'Next'}</span>
 </PaginationStyle>
 }
 
@@ -45,11 +45,10 @@ const PaginationStyle = styled.div`
         color: #fff;  
         align-items: center;
         justify-content: center;
-        font-size: 18pt;
-        padding: 0;
+        padding: 1%;
         font-weight: bold;
         cursor: pointer;
-        border-radius: 0;
+        border-radius: 3pt;
         flex-grow: 1;
         &.next{
             background: ${props => props.nextDisabled ? '#ccc' : props.btnColor};

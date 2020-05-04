@@ -1,13 +1,14 @@
 import React from 'react';
 import TableMaker from './tableMaker';
-import SearchBox from '../searchBox/searchBox';
-import useDebounce from '../common/useDebounce';
+//import SearchBox from '../searchBox/searchBox';
+//import useDebounce from '../common/useDebounce';
 import { ReactTblContextProvider } from './ReactTblContext';
 import styled from 'styled-components';
 
 const ReactTBL = props => {
-  const debounceInput = useDebounce(props?.currentInput,500);
-  const {style:{header,pagination}} = props;
+  //const debounceInput = useDebounce(props?.currentInput,500);
+  const headerStyle = props?.style?.header;
+  const paginationStyle = props?.style?.pagination;
 
   return <ReactTblContextProvider value = {{
     table:{
@@ -18,17 +19,22 @@ const ReactTBL = props => {
         textColor: props.style?.textColor
     },
     tableHeader:{
-        backgroundColor: header?.headerBGColor,
-        color: header?.headerColor,
-        fontSize: header?.fontSize
+        backgroundColor: headerStyle?.headerBGColor,
+        color: headerStyle?.headerColor,
+        fontSize: headerStyle?.fontSize
     },
     pagination:{
-        isVisible: pagination?.visible || true,
-        backgroundColor: pagination?.backgroundColor || header?.headerColor,
-        btnColor: pagination?.btnColor 
+        isVisible: paginationStyle?.visible || true,
+        backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor,
+        btnColor: paginationStyle?.btnColor,
+        nextButtonText: paginationStyle.nextButtonText,
+        prevButtonText: paginationStyle.prevButtonText
     }
   }}>
-      <ReactTblStyled maxWidth = {props?.style?.maxWidth}>
+      <ReactTblStyled
+        className = {props?.className || 'react_tbl_wrapper'}
+        maxWidth = {props?.style?.maxWidth}
+      >
         {/* {props.useSearchBox && <SearchBox
             currentInput = {props?.currentInput}
             setCurrentInput = {props?.setCurrentInput}
@@ -37,8 +43,8 @@ const ReactTBL = props => {
             data = {props?.data}
             columns = {props?.columns || []}
             defaultPageSize = {props?.defaultPageSize || 12}
-            debounceInput = {debounceInput}
-            pagination = {props?.pagination?.isVisible}
+            //debounceInput = {debounceInput}
+            pagination = {paginationStyle?.isVisible}
         />
   </ReactTblStyled>
   </ReactTblContextProvider>

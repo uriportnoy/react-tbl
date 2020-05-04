@@ -1,19 +1,16 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { getColumnsData } from './components/fakeData/getColumns';
 import { getData } from './components/fakeData/getData';
-import ReactTBL from './components/tableMaker/ReactTBL';
+import ReactTBL from './components/tableMaker/index';
 import './App.css';
 
 const App = () => {
-  const [currentData,setCurrentData] = useState(getData() || []);          // current data based currentShow string
+  const currentData = getData();         // current data based currentShow string
   const columns = getColumnsData();
-  const [currentInput,setCurrentInput] = useState('');
 
   return (
     <div className="App">
       <ReactTBL
-        currentInput = {currentInput}
-        setCurrentInput = {setCurrentInput}
         data = {currentData}
         columns = {columns || []}
         defaultPageSize = {6}
@@ -26,7 +23,9 @@ const App = () => {
           pagination: {
             visible: true,
             backgroundColor: '#333',
-            btnColor: '#000'
+            btnColor: '#000',
+            prevButtonText: null,
+            nextButtonText: 'Next >'
           },
           header: {
             headerColor: '#fff',

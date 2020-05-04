@@ -51,13 +51,6 @@ const TD = styled.td`
     overflow: hidden;
     padding: 2pt;
     text-overflow: ellipsis;
-    .defaultCell{
-      color: ${props => props?.textColor || '#fff'};
-
-    }
-    &.merchantName,&.featureFlagName,&.name{
-        text-align: left;
-    }
 
 `;
 

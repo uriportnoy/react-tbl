@@ -1,15 +1,24 @@
 {
   "name": "react-tbl",
-  "version": "0.1.0",
+  "version": "0.1.7",
   "private": false,
+  
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": ["dist", "README.md"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uriportnoy/react-tbl/"
+  },
+  "keywords": [
+    "react-tbl",
+    "react-table",
+    "table",
+    "tbl"
+  ],
+
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
     "lodash": "^4.17.15",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
     "styled-components": "^5.1.0"
   },
   "scripts": {
@@ -17,8 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "npm_publish": "copyfiles -E ./src/components/tableMaker/* ./dist",
-    "publish:npm": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+    "npm_publish": "del -f dist && mkdir dist && SET NODE_ENV=production&& babel ./src/components/tableMaker/* -d dist --copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -37,6 +45,13 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/preset-react": "^7.9.4"
+    "@babel/preset-react": "^7.9.4",
+
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1"
   }
 }
