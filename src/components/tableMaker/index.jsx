@@ -26,7 +26,7 @@ const ReactTBL = props => {
         fontSize: headerStyle?.fontSize
     },
     pagination:{
-        isVisible: paginationStyle?.visible || true,
+        isVisible: paginationStyle?.isVisible ?? true,
         backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor,
         btnColor: paginationStyle?.btnColor,
         nextButtonText: paginationStyle?.nextButtonText,

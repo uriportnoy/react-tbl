@@ -22,7 +22,7 @@ const App = () => {
           rowColor: '#000',
           textColor: '#000',
           pagination: {
-            visible: true,
+            isVisible: true,
             backgroundColor: '#333',
             btnColor: '#000',
             prevButtonText: null,
