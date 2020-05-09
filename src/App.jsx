@@ -13,7 +13,7 @@ const App = () => {
       <ReactTBL
         data = {currentData}
         columns = {columns || []}
-        defaultPageSize = {6}
+        defaultPageSize = {3}
         style = {{
           maxWidth: '450px',
           maxHeight: '120px',

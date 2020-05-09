@@ -10,7 +10,6 @@ const TableMaker = ({
     columns,
     data,
     defaultPageSize,
-    type,
     debounceInput = null
 }) => {
     const [currentDataPage, setCurrentDataPage] = useState([]);
@@ -20,7 +19,10 @@ const TableMaker = ({
     const [prevDisabled, setPrevDisabled] = useState(true);
     const {pagination:{isVisible},tableHeader:{backgroundColor},table} = useContext(ReactTblContext);
 
-    useEffect(() => {
+    useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
+    //useEffect(() => {setPage(0);}, [debounceInput]);
+
+    const handlePages = () => {
         if (page === 0) {
             const pageData = _.slice(data, [0], [defaultPageSize]);
             setCurrentDataPage(pageData);
@@ -37,14 +39,8 @@ const TableMaker = ({
             setNextDisabled(page + 1 >= maxPage);
             setPrevDisabled(page === 0);
         }
-    }, [page, data, defaultPageSize]);
-
-    useEffect(() => {
-        setPage(0);
-    }, [type, debounceInput]);
-
+    }
     const EmptyData = () => <EmptyTable><tr><td>No Data Rows...</td></tr></EmptyTable>;
-
     return <>
         <TblWrapper
             maxHeight = {table?.maxHeight}
