@@ -1,4 +1,5 @@
 import React, { useEffect, useState,useContext } from 'react';
+import PropTypes from 'prop-types';
 import TableHead from './tableHead';
 import TableBody from './tableBody';
 import styled from 'styled-components';
@@ -10,7 +11,7 @@ const TableMaker = ({
     columns,
     data,
     defaultPageSize,
-    debounceInput = null
+    //debounceInput = null
 }) => {
     const [currentDataPage, setCurrentDataPage] = useState([]);
     const [page, setPage] = useState(0);
@@ -63,7 +64,9 @@ const TableMaker = ({
         />}
     </>
 }
-
+TableMaker.propTypes = {
+    defaultPageSize: PropTypes.number.isRequired
+}
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
     table{

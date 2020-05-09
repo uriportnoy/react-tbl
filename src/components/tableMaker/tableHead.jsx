@@ -1,4 +1,5 @@
 import React,{useContext} from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
 import _ from 'lodash';
@@ -38,7 +39,10 @@ const Thead = styled.thead`
         display: flex; 
     }
 `;
-
+Thead.propTypes = {
+    backgroundColor: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired
+}
 const TH = styled.th`
     border: 1pt #000 solid;
     font-family: monospace;
@@ -48,9 +52,11 @@ const TH = styled.th`
     font-size: ${props => props.fontSize || '12pt'};
     flex: ${props => props.size} 0 100px; 
     box-sizing: border-box;
-    
 `;
-
+TH.propTypes = {
+    size: PropTypes.number.isRequired,
+    fontSize: PropTypes.string.isRequired
+}
 const EmptyColumnsTR = styled.tr`
     display:grid;
     justify-content: center;

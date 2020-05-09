@@ -1,4 +1,5 @@
 import React,{useContext} from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
 
@@ -65,3 +66,10 @@ const PaginationStyle = styled.div`
         }
     }
 `;
+Pagination.propTypes = {
+    page: PropTypes.number.isRequired,
+    setPage: PropTypes.func.isRequired,
+    totalPages: PropTypes.number.isRequired,
+    nextDisabled: PropTypes.bool.isRequired,
+    prevDisabled: PropTypes.bool.isRequired
+}

@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
+import PropTypes from 'prop-types';
 
 const TableBody = ({
   data,
@@ -23,7 +24,7 @@ const TableBody = ({
             const CustomCell = col.CustomCell || null;
             return <TD
               key = {`td_${key}_${idx}`}
-              data-tip = {currentValue || ''}
+              dataTip = {currentValue?.toString()}
               size = {col.size || 1}
               className = {key}
               width = {col.width || 100}
@@ -51,9 +52,13 @@ const TD = styled.td`
     overflow: hidden;
     padding: 2pt;
     text-overflow: ellipsis;
-
 `;
-
+TD.propTypes = {
+  width: PropTypes.number.isRequired,
+  className: PropTypes.string,
+  textColor: PropTypes.string,
+  dataTip: PropTypes.string,
+}
 export const TR = styled.tr`
     animation: fadeIn ${props => (props.idx < 10) ? ('0.' + props.idx) : '1'}s;
     background-color: ${props => props?.rowColor || props.idx % 2 === 0 ? '#ccc' : '#eee'};
@@ -65,5 +70,8 @@ export const TR = styled.tr`
       to {opacity: 1;
     }
 `;
+TR.propTypes = {
+  rowColor: PropTypes.string.isRequired
+}
 
 export default TableBody;
