@@ -40,8 +40,8 @@ const Thead = styled.thead`
     }
 `;
 Thead.propTypes = {
-    backgroundColor: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired
+    backgroundColor: PropTypes.string,
+    color: PropTypes.string
 }
 const TH = styled.th`
     border: 1pt #000 solid;
@@ -55,7 +55,7 @@ const TH = styled.th`
 `;
 TH.propTypes = {
     size: PropTypes.number.isRequired,
-    fontSize: PropTypes.string.isRequired
+    fontSize: PropTypes.string
 }
 const EmptyColumnsTR = styled.tr`
     display:grid;

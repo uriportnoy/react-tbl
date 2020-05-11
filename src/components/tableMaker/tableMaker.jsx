@@ -65,6 +65,8 @@ const TableMaker = ({
     </>
 }
 TableMaker.propTypes = {
+    columns: PropTypes.array.isRequired,
+    data: PropTypes.array.isRequired,
     defaultPageSize: PropTypes.number.isRequired
 }
 export const TblWrapper = styled.div`

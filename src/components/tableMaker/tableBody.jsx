@@ -71,7 +71,7 @@ export const TR = styled.tr`
     }
 `;
 TR.propTypes = {
-  rowColor: PropTypes.string.isRequired
+  rowColor: PropTypes.string
 }
 
 export default TableBody;
