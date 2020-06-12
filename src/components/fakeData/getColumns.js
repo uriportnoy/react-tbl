@@ -9,7 +9,8 @@ export const getColumnsData = () => ([
     },{
         header: 'User Name',
         colKey: 'name',
-        size: 4
+        size: 4,
+        showToolTip: true
     },{
         header: 'User State',
         colKey: 'state',

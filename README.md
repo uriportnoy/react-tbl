@@ -38,7 +38,8 @@ const App = () => {
     },{
         header: 'User Name',
         colKey: 'name',
-        size: 4
+        size: 4,
+        showToolTip: true
     },{
         header: 'User State',
         colKey: 'state',
@@ -49,7 +50,7 @@ const App = () => {
             readOnly
         />
   }];
-  return <ReactTBL data = {tblData} columns = {tblColumns} />
+  return <ReactTBL data = {tblData} columns = {tblColumns}/>
 }
 ```
 ## With Props Example
@@ -60,7 +61,8 @@ const App = () => {
         className = "custom_class_name"              // [optional]
         defaultPageSize = {10}                       // [optional] - default = 12
         copyCellDataOnClick = {true}                 // [optional] 
-        showPagination = {true}
+        showPagination = {true}                      // default = true
+        showToolTip = {true}                         // default = true
         style = {{                                   // [optional] 
             minHeight: '120px',
             maxHeight: '120px',
@@ -79,7 +81,11 @@ const App = () => {
                     headerColor: '#fff',
                     headerBGColor: '#333',
                     fontSize: '11pt'
-                }
+            },
+            body:{
+                maxHeight: '100px',
+                overflowX: 'scroll'
+            }
         }}
     />
 }
@@ -92,6 +98,7 @@ const App = () => {
         header: 'User Id',      // header label [String]
         colKey: 'id',           // key accessor [String]
         size: 1,                // column width [Number]
+        showToolTip: true       // show tool tip for specific cell
         CustomCell: function({ dataRow, currentKey,currentValue })
     }
 ]
@@ -111,32 +118,33 @@ const App = () => {
 
 ## Table props
 
-|        General          |       
-| :-------------------:   |   
-|    data                 |   
-|    columns              |   
-|    className            |   
-|    defaultPageSize      |   
-|    copyCellDataOnClick  |   
-|    style                |   
-|    showPagination       |   
+|        General          |    Default     |
+| :-------------------:   | :------------: |
+|    data                 |                |
+|    columns              |                |
+|    className            |                |
+|    defaultPageSize      |       12       |
+|    showPagination       |      true      |
+|    showToolTip          |      false     |   show tool tip for each cell
+|    style                |        🠋      |
+
 
 
 ## Table style
 
-|      General      |    Pagination     |     Header       |
-| :---------------: | :--------------:  |  :-----------:   | 
-|     minHeight     |                   |   headerColor    |
-|     maxWidth      |  backgroundColor  |   headerBGColor  |
-|     maxHeight     |  btnColor         |   fontSize       |
-|     minWidth      |  prevButtonText   |                  |
-|    fixedHeight    |  nextButtonText   |                  |
-|     rowColor      |                   |                  |
-|    textColor      |                   |                  |
-|  cloumnMinWidth   |                   |                  | 
+|      General      |    Default    |    Pagination     |   Default     |     Header       |    Default    |    Body    |  Default  |
+| :---------------: |:-------------:| :--------------:  | :-----------: |  :-----------:   | :-----------: | :--------: | :-------: |
+|     minHeight     |     80pt      |                   |               |   headerColor    |      #fff     |  maxHeight |  650px    |
+|     maxWidth      |     80vw      |  backgroundColor  |    #333       |   headerBGColor  |      #333     |  overflowY |  scroll   |
+|     maxHeight     |     auto      |  btnColor         |    #000       |   fontSize       |      12pt     |            |           | 
+|     minWidth      |     auto      |  prevButtonText   |   Previous    |                  |               |            |           | 
+|    fixedHeight    |     auto      |  nextButtonText   |    Next       |                  |               |            |           | 
+|     rowColor      |   #ccc/#eee   |                   |               |                  |               |            |           | 
+|    textColor      |     #000      |                   |               |                  |               |            |           | 
+|  cloumnMinWidth   |     100px     |                   |               |                  |               |            |           |  
+|     overflowX     |     auto      |
 
-
-## User table custom style 
+## User table custom STYLE 
 ```js
 {
     minHeight:      '120px',           // (String) 
@@ -148,6 +156,7 @@ const App = () => {
     textColor:      '#000' ,           // (String) 
     cloumnMinWidth: '100px',           // (string)
     showPagination:  true              // (Boolean)
+    overflowX: 'auto'
     pagination: {
         backgroundColor: '#333',       // (String) 
         btnColor: '#000',              // (String) 
@@ -159,5 +168,10 @@ const App = () => {
             headerBGColor: '#333',     // (String) 
             fontSize: '11pt'           // (String) 
         }
+    
+    body:{
+            maxHeight: '250px',
+            overflowY: 'scroll'
+    }
 }
 ```

@@ -10,6 +10,7 @@ const ReactTBL = props => {
   const styleProp = props?.style;
   const headerStyle = styleProp?.header;
   const paginationStyle = styleProp?.pagination;
+  const bodyStyle = styleProp?.bodyStyle;
 
   return <ReactTblContextProvider value = {{
     copyCellDataOnClick: props.copyCellDataOnClick || false,
@@ -20,12 +21,18 @@ const ReactTBL = props => {
         fixedHeight: styleProp?.fixedHeight,
         rowColor:  styleProp?.rowColor,
         textColor: styleProp?.textColor,
-        cloumnMinWidth: styleProp?.cloumnMinWidth
+        cloumnMinWidth: styleProp?.cloumnMinWidth,
+        overflowX: styleProp?.overflowX,
+        showToolTip: props.showToolTip
     },
     tableHeader:{
         backgroundColor: headerStyle?.headerBGColor,
         color: headerStyle?.headerColor,
         fontSize: headerStyle?.fontSize
+    },
+    body:{
+      maxHeight: bodyStyle?.maxHeight,
+      overflowY: bodyStyle?.overflowY
     },
     pagination:{
         isVisible: props?.showPagination ?? true,
@@ -61,7 +68,6 @@ const ReactTblStyled = styled.div`
     min-width: ${props => props.minWidth || 'auto'};
     max-width: ${props => props.maxWidth || '80vw'};
     min-height: ${props => props.minHeight};
-
     display: flex;
     flex-direction: column;
     border: 1pt solid;

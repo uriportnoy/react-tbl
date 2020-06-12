@@ -16,12 +16,13 @@ const App = () => {
         defaultPageSize = {3}
         copyCellDataOnClick = {true}
         showPagination = {true}
+        showToolTip = {false}
         style = {{
           maxWidth: '450px',
           maxHeight: '120px',
           minHeight: '40pt',
           minWidth: 'auto',
-          fixedHeight: '200px',
+          fixedHeight: '130px',
           rowColor: '#000',
           textColor: '#000',
           cloumnMinWidth: '100px',
@@ -35,6 +36,10 @@ const App = () => {
             headerColor: '#fff',
             headerBGColor: '#333',
             fontSize: '11pt'
+          },
+          body:{
+            maxHeight: '100px',
+            overflowY: 'scroll'
           }
         }}
       />

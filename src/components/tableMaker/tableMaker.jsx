@@ -17,7 +17,7 @@ const TableMaker = ({
     const [totalPages, setTotalPages] = useState(0);
     const [nextDisabled, setNextDisabled] = useState(false);
     const [prevDisabled, setPrevDisabled] = useState(true);
-    const {pagination:{isVisible},tableHeader:{backgroundColor},table} = useContext(ReactTblContext);
+    const {pagination:{isVisible},tableHeader:{backgroundColor},table,body:{maxHeight,overflowY}} = useContext(ReactTblContext);
 
     useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
     //useEffect(() => {setPage(0);}, [debounceInput]);
@@ -47,6 +47,8 @@ const TableMaker = ({
             fixedHeight = {table?.fixedHeight}
             backgroundColor = {backgroundColor}
             minHeight = {table?.minHeight}
+            bodyMaxHeight = {maxHeight}
+            overflowY = {overflowY}
         >
         <table>
             <TableHead columns={columns} />
@@ -72,6 +74,17 @@ TableMaker.propTypes = {
 }
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
+    overflow-x: ${props => props.overflowX || 'auto'};
+    &::-webkit-scrollbar-track{}
+            &::-webkit-scrollbar
+            {
+                width: 10px;
+                background-color: ${props => props ?.backgroundColor || '#173c5a'};
+            }
+            &::-webkit-scrollbar-thumb
+            {
+                background-color: #000;
+            }
     table{
         font-family: monospace; 
         background-color: transparent;
@@ -88,12 +101,10 @@ export const TblWrapper = styled.div`
         }
         tbody {
             display: block;
-            overflow: overlay;
-            overflow-x: hidden;
-            max-height: ${props => props.maxHeight || 'auto'}; 
+            max-height: ${props => props.bodyMaxHeight || 'auto'}; 
             height: ${props => props.fixedHeight || 'auto'}; 
             min-height: ${props => props.minHeight || '80pt'};
-
+            overflow-y: ${props => props.overflowY || 'auto'};
             &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
             {

@@ -7,16 +7,20 @@ const TableBody = ({
   data,
   columns
 }) => {
-  const {table:{rowColor,textColor,cloumnMinWidth},copyCellDataOnClick} = useContext(ReactTblContext);
+  const {
+    table:{rowColor,textColor,cloumnMinWidth,showToolTip,overflowX},
+    body: {maxHeight,overflowY},
+    copyCellDataOnClick
+  } = useContext(ReactTblContext);
 
 
-  const copyToClipboard = (info) =>{
-    var copyText = document.getElementById("defaultCell");
-    copyText.select();
-    copyText.setSelectionRange(0, 99999)
-    document.execCommand("copy");
-    alert("Text copied to clipboard");
-  }
+  // const copyToClipboard = (info) =>{
+  //   var copyText = document.getElementById("defaultCell");
+  //   copyText.select();
+  //   copyText.setSelectionRange(0, 99999)
+  //   document.execCommand("copy");
+  //   alert("Text copied to clipboard");
+  // }
   return <tbody>
     {
       data.map(
@@ -39,10 +43,13 @@ const TableBody = ({
               textColor = {textColor}
               cloumnMinWidth = {cloumnMinWidth}
             >
-              {CustomCell ?
-                <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
-                <span className='defaultCell' id="defaultCell" onClick={copyCellDataOnClick ? copyToClipboard : null}>{currentValue}</span>
-              }
+              
+                <>{CustomCell ?  <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
+                <div className='defaultCell' id="defaultCell">
+                  {currentValue}
+                </div>}
+                {(showToolTip || col.showToolTip) && <span className="tooltiptext"> {currentValue}</span>}              
+                </>
             </TD>
           })
         }
@@ -61,10 +68,44 @@ const TD = styled.td`
     box-sizing: border-box;
     transition: .7s all;
     text-align: center;
-    overflow: hidden;
     padding: 2pt;
-    text-overflow: ellipsis;
     min-width: ${props => props.cloumnMinWidth || '120px'};
+
+    .defaultCell{
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+      .tooltiptext {
+        visibility: hidden;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        top: -110%;
+        opacity: 0;
+        transition: opacity 0.3s;
+        transform: translateX(-50%);
+        &:after{
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #555 transparent transparent transparent;
+        } 
+    }
+    &:hover{
+        .tooltiptext {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    
 `;
 TD.propTypes = {
   width: PropTypes.number.isRequired,
