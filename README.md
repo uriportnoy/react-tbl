@@ -9,6 +9,9 @@ To install react-tbl use the following command
 ```
 npm i react-tbl
 ```
+## Package Demo 
+
+[![Sample project for using the package](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/react-tbl-586yc)
 
 ## Usage
 
@@ -56,15 +59,18 @@ const App = () => {
         columns = {columnsData}
         className = "custom_class_name"              // [optional]
         defaultPageSize = {10}                       // [optional] - default = 12
-            style = {{                               // [optional] 
+        copyCellDataOnClick = {true}                 // [optional] 
+        showPagination = {true}
+        style = {{                                   // [optional] 
             minHeight: '120px',
-            maxWidth: '450px',
             maxHeight: '120px',
+            maxWidth: '450px',
+            minWidth: 'auto',
             fixedHeight: '200px',
             rowColor: '#000',
             textColor: '#000',
+            cloumnMinWidth: '100px',
             pagination: {
-                isVisible: true,
                 backgroundColor: '#333',
                 btnColor: '#000',
                 nextButtonText: 'Next >'
@@ -92,7 +98,6 @@ const App = () => {
 ```
 ## Data [Array of data]
 ```js
-
 [{
     id:1,
     name: 'moses',
@@ -103,26 +108,56 @@ const App = () => {
     state: false
 }]
 ```
+
+## Table props
+
+|        General          |       
+| :-------------------:   |   
+|    data                 |   
+|    columns              |   
+|    className            |   
+|    defaultPageSize      |   
+|    copyCellDataOnClick  |   
+|    style                |   
+|    showPagination       |   
+
+
+## Table style
+
+|      General      |    Pagination     |     Header       |
+| :---------------: | :--------------:  |  :-----------:   | 
+|     minHeight     |                   |   headerColor    |
+|     maxWidth      |  backgroundColor  |   headerBGColor  |
+|     maxHeight     |  btnColor         |   fontSize       |
+|     minWidth      |  prevButtonText   |                  |
+|    fixedHeight    |  nextButtonText   |                  |
+|     rowColor      |                   |                  |
+|    textColor      |                   |                  |
+|  cloumnMinWidth   |                   |                  | 
+
+
 ## User table custom style 
 ```js
 {
-    minHeight: '120px',          // (String) 
-    maxWidth: '450px',           // (String) 
-    maxHeight: '120px',          // (String) 
-    fixedHeight: '200px',        // (String) 
-    rowColor: '#000',            // (String) 
-    textColor: '#000',           // (String) 
+    minHeight:      '120px',           // (String) 
+    maxWidth:       '450px',           // (String) 
+    maxHeight:      '120px',           // (String) 
+    minWidth:       '800px',           // (String)
+    fixedHeight:    '200px',           // (String) 
+    rowColor:       '#000' ,           // (String) 
+    textColor:      '#000' ,           // (String) 
+    cloumnMinWidth: '100px',           // (string)
+    showPagination:  true              // (Boolean)
     pagination: {
-        isVisible: true,            // (Boolean) 
-        backgroundColor: '#333',    // (String) 
-        btnColor: '#000',           // (String) 
-        prevButtonText: null,       // (String) 
-        nextButtonText: 'Next >'    // (String) 
+        backgroundColor: '#333',       // (String) 
+        btnColor: '#000',              // (String) 
+        prevButtonText: null,          // (String) 
+        nextButtonText: 'Next >'       // (String) 
     },
     header: {
-            headerColor: '#fff',    // (String) 
-            headerBGColor: '#333',  // (String) 
-            fontSize: '11pt'        // (String) 
+            headerColor: '#fff',       // (String) 
+            headerBGColor: '#333',     // (String) 
+            fontSize: '11pt'           // (String) 
         }
 }
 ```

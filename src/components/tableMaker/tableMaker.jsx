@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import TableHead from './tableHead';
 import TableBody from './tableBody';
 import styled from 'styled-components';
-import _ from 'lodash';
 import ReactTblContext from './ReactTblContext';
 import { Pagination } from './pagination';
 
@@ -25,12 +24,12 @@ const TableMaker = ({
 
     const handlePages = () => {
         if (page === 0) {
-            const pageData = _.slice(data, [0], [defaultPageSize]);
+            const pageData = data.slice(0, defaultPageSize);  //_.slice(data, [0], [defaultPageSize]);
             setCurrentDataPage(pageData);
         } else {
             const startChunk = page * defaultPageSize ;
             const endChunk = startChunk + defaultPageSize;
-            const pageData = _.slice(data, [startChunk], [endChunk]);
+            const pageData = data.slice(startChunk,endChunk);  //_.slice(data, [startChunk], [endChunk]);
             setCurrentDataPage(pageData);
         }
         // handle pages 
@@ -47,12 +46,14 @@ const TableMaker = ({
             maxHeight = {table?.maxHeight}
             fixedHeight = {table?.fixedHeight}
             backgroundColor = {backgroundColor}
+            minHeight = {table?.minHeight}
         >
         <table>
             <TableHead columns={columns} />
             {
-                (_.isEmpty(currentDataPage) || _.isEmpty(columns)) ? <EmptyData /> :
-                <TableBody data={currentDataPage} columns={columns} />
+                (currentDataPage?.length !== 0 && columns?.length !== 0) ? 
+                <TableBody data={currentDataPage} columns={columns} />:
+                <EmptyData /> 
             }
         </table></TblWrapper>
         {isVisible && <Pagination
@@ -78,6 +79,7 @@ export const TblWrapper = styled.div`
         border-collapse: collapse;
         width: 100%;
         grid-area: table;
+
         input{
             border: 0;
             background: transparent;
@@ -91,7 +93,7 @@ export const TblWrapper = styled.div`
             max-height: ${props => props.maxHeight || 'auto'}; 
             height: ${props => props.fixedHeight || 'auto'}; 
             min-height: ${props => props.minHeight || '80pt'};
-            
+
             &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
             {

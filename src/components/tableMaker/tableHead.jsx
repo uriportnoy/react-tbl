@@ -2,23 +2,22 @@ import React,{useContext} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
-import _ from 'lodash';
 
 const TableHead = ({columns}) => {
-const {tableHeader} = useContext(ReactTblContext);
-
+const {tableHeader,table} = useContext(ReactTblContext);
   return (
     <Thead
         backgroundColor = {tableHeader?.backgroundColor}
         color = {tableHeader?.color}
     >
         {
-            _.isEmpty(columns) ? <EmptyColumnsTR>Cannot Read Columns</EmptyColumnsTR> : <tr>{
+            columns?.length <= 0 ? <EmptyColumnsTR>Cannot Read Columns</EmptyColumnsTR> : <tr>{
                 columns.map((key, index) => (
                     <TH
                         key = {index}
                         size = {key.size || 1}
                         fontSize = {tableHeader?.fontSize}
+                        cloumnMinWidth = {table?.cloumnMinWidth}
                     >
                         {key.header || key.colKey}
                     </TH>
@@ -52,6 +51,7 @@ const TH = styled.th`
     font-size: ${props => props.fontSize || '12pt'};
     flex: ${props => props.size} 0 100px; 
     box-sizing: border-box;
+    min-width: ${props => props.cloumnMinWidth || '120px'};
 `;
 TH.propTypes = {
     size: PropTypes.number.isRequired,

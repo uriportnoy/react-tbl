@@ -7,8 +7,16 @@ const TableBody = ({
   data,
   columns
 }) => {
-  const {table:{rowColor,textColor}} = useContext(ReactTblContext);
-  
+  const {table:{rowColor,textColor,cloumnMinWidth},copyCellDataOnClick} = useContext(ReactTblContext);
+
+
+  const copyToClipboard = (info) =>{
+    var copyText = document.getElementById("defaultCell");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Text copied to clipboard");
+  }
   return <tbody>
     {
       data.map(
@@ -29,8 +37,12 @@ const TableBody = ({
               className = {key}
               width = {col.width || 100}
               textColor = {textColor}
+              cloumnMinWidth = {cloumnMinWidth}
             >
-              {CustomCell ? <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> : <span className='defaultCell'>{currentValue}</span>}
+              {CustomCell ?
+                <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
+                <span className='defaultCell' id="defaultCell" onClick={copyCellDataOnClick ? copyToClipboard : null}>{currentValue}</span>
+              }
             </TD>
           })
         }
@@ -52,6 +64,7 @@ const TD = styled.td`
     overflow: hidden;
     padding: 2pt;
     text-overflow: ellipsis;
+    min-width: ${props => props.cloumnMinWidth || '120px'};
 `;
 TD.propTypes = {
   width: PropTypes.number.isRequired,

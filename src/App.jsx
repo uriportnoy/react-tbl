@@ -14,15 +14,18 @@ const App = () => {
         data = {currentData}
         columns = {columns || []}
         defaultPageSize = {3}
+        copyCellDataOnClick = {true}
+        showPagination = {true}
         style = {{
           maxWidth: '450px',
           maxHeight: '120px',
           minHeight: '40pt',
+          minWidth: 'auto',
           fixedHeight: '200px',
           rowColor: '#000',
           textColor: '#000',
+          cloumnMinWidth: '100px',
           pagination: {
-            isVisible: true,
             backgroundColor: '#333',
             btnColor: '#000',
             prevButtonText: null,

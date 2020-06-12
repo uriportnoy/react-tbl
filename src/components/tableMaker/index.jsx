@@ -12,13 +12,15 @@ const ReactTBL = props => {
   const paginationStyle = styleProp?.pagination;
 
   return <ReactTblContextProvider value = {{
+    copyCellDataOnClick: props.copyCellDataOnClick || false,
     table:{
         maxWidth: styleProp?.maxWidth,
         maxHeight: styleProp?.maxHeight,
         minHeight: styleProp?.minHeight,
         fixedHeight: styleProp?.fixedHeight,
         rowColor:  styleProp?.rowColor,
-        textColor: styleProp?.textColor
+        textColor: styleProp?.textColor,
+        cloumnMinWidth: styleProp?.cloumnMinWidth
     },
     tableHeader:{
         backgroundColor: headerStyle?.headerBGColor,
@@ -26,7 +28,7 @@ const ReactTBL = props => {
         fontSize: headerStyle?.fontSize
     },
     pagination:{
-        isVisible: paginationStyle?.isVisible ?? true,
+        isVisible: props?.showPagination ?? true,
         backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor,
         btnColor: paginationStyle?.btnColor,
         nextButtonText: paginationStyle?.nextButtonText,
@@ -37,6 +39,7 @@ const ReactTBL = props => {
         className = {props?.className || 'react_tbl_wrapper'}
         maxWidth = {styleProp?.maxWidth}
         minHeight = {styleProp?.minHeight}
+        minWidth = {styleProp?.minWidth}
       >
         {/* {props.useSearchBox && <SearchBox
             currentInput = {props?.currentInput}
@@ -55,8 +58,10 @@ const ReactTBL = props => {
 
 const ReactTblStyled = styled.div`
     margin: 0 auto;
+    min-width: ${props => props.minWidth || 'auto'};
     max-width: ${props => props.maxWidth || '80vw'};
     min-height: ${props => props.minHeight};
+
     display: flex;
     flex-direction: column;
     border: 1pt solid;
