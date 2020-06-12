@@ -104,7 +104,7 @@ export const TblWrapper = styled.div`
             max-height: ${props => props.bodyMaxHeight || 'auto'}; 
             height: ${props => props.fixedHeight || 'auto'}; 
             min-height: ${props => props.minHeight || '80pt'};
-            overflow-y: ${props => props.overflowY || 'auto'};
+            overflow-y: ${props => props.overflowY || 'visible'};
             &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
             {
