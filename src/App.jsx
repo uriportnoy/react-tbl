@@ -9,14 +9,10 @@ const App = () => {
   const columns = getColumnsData();
 
   return (
-    <div className="App">
       <ReactTBL
         data = {currentData}
         columns = {columns || []}
         defaultPageSize = {3}
-        copyCellDataOnClick = {true}
-        showPagination = {true}
-        showToolTip = {false}
         style = {{
           maxWidth: '450px',
           maxHeight: '120px',
@@ -26,12 +22,6 @@ const App = () => {
           rowColor: '#000',
           textColor: '#000',
           cloumnMinWidth: '100px',
-          pagination: {
-            backgroundColor: '#333',
-            btnColor: '#000',
-            prevButtonText: null,
-            nextButtonText: 'Next >'
-          },
           header: {
             headerColor: '#fff',
             headerBGColor: '#333',
@@ -40,10 +30,15 @@ const App = () => {
           body:{
             maxHeight: '100px',
             overflowY: 'scroll'
-          }
+          },
+          pagination: {
+            backgroundColor: '#333',
+            btnColor: '#000',
+            prevButtonText: null,
+            nextButtonText: 'Next >'
+          },
         }}
       />
-    </div>
   );
 }
 

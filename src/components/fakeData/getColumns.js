@@ -5,7 +5,9 @@ export const getColumnsData = () => ([
     {
         header: 'User Id',
         colKey: 'id',
-        size: 1
+        size: 1,
+                showToolTip: true
+
     },{
         header: 'User Name',
         colKey: 'name',

@@ -34,7 +34,7 @@ const App = () => {
     {
         header: 'User Id',
         colKey: 'id',
-        size: 1
+        size: 1,
     },{
         header: 'User Name',
         colKey: 'name',
@@ -62,7 +62,7 @@ const App = () => {
         defaultPageSize = {10}                       // [optional] - default = 12
         copyCellDataOnClick = {true}                 // [optional] 
         showPagination = {true}                      // default = true
-        showToolTip = {true}                         // default = true
+        showToolTip = {true}                         // default = false
         style = {{                                   // [optional] 
             minHeight: '120px',
             maxHeight: '120px',
@@ -72,11 +72,6 @@ const App = () => {
             rowColor: '#000',
             textColor: '#000',
             cloumnMinWidth: '100px',
-            pagination: {
-                backgroundColor: '#333',
-                btnColor: '#000',
-                nextButtonText: 'Next >'
-            },
             header: {
                     headerColor: '#fff',
                     headerBGColor: '#333',
@@ -85,7 +80,12 @@ const App = () => {
             body:{
                 maxHeight: '100px',
                 overflowX: 'scroll'
-            }
+            },
+            pagination: {
+                backgroundColor: '#333',
+                btnColor: '#000',
+                nextButtonText: 'Next >'
+            },
         }}
     />
 }
@@ -129,21 +129,53 @@ const App = () => {
 |    style                |        🠋      |
 
 
-
 ## Table style
 
-|      General      |    Default    |    Pagination     |   Default     |     Header       |    Default    |    Body    |  Default  |
-| :---------------: |:-------------:| :--------------:  | :-----------: |  :-----------:   | :-----------: | :--------: | :-------: |
-|     minHeight     |     80pt      |                   |               |   headerColor    |      #fff     |  maxHeight |  650px    |
-|     maxWidth      |     80vw      |  backgroundColor  |    #333       |   headerBGColor  |      #333     |  overflowY |  scroll   |
-|     maxHeight     |     auto      |  btnColor         |    #000       |   fontSize       |      12pt     |            |           | 
-|     minWidth      |     auto      |  prevButtonText   |   Previous    |                  |               |            |           | 
-|    fixedHeight    |     auto      |  nextButtonText   |    Next       |                  |               |            |           | 
-|     rowColor      |   #ccc/#eee   |                   |               |                  |               |            |           | 
-|    textColor      |     #000      |                   |               |                  |               |            |           | 
-|  cloumnMinWidth   |     100px     |                   |               |                  |               |            |           |  
+|      General      |    Default    | 
+| :---------------: |:-------------:| 
+|     minHeight     |     80pt      | 
+|     maxWidth      |     80vw      | 
+|     maxHeight     |     auto      |  
+|     minWidth      |     auto      |  
+|    fixedHeight    |     auto      |  
+|     rowColor      |   #ccc/#eee   |  
+|    textColor      |     #000      |  
+|  cloumnMinWidth   |     100px     |   
 |     overflowX     |     auto      |
 
+|     Header       |    Default    |
+|  :-----------:   | :-----------: |
+|   headerColor    |      #fff     |
+|   headerBGColor  |      #333     |
+|   fontSize       |      12pt     | 
+|                  |               | 
+|                  |               | 
+|                  |               | 
+|                  |               | 
+|                  |               |  
+
+|    Body    |  Default  |
+| :--------: | :-------: |
+|  maxHeight |  650px    |
+|  overflowY |  scroll   |
+|            |           | 
+|            |           | 
+|            |           | 
+|            |           | 
+|            |           | 
+|            |           |  
+
+|    Pagination     |   Default     |  
+| :--------------:  | :-----------: | 
+|                   |               | 
+|  backgroundColor  |    #333       |   
+|  btnColor         |    #000       |  
+|  prevButtonText   |   Previous    | 
+|  nextButtonText   |    Next       | 
+|                   |               | 
+|                   |               | 
+|                   |               | 
+ 
 ## User table custom STYLE 
 ```js
 {
