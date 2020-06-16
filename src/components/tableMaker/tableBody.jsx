@@ -77,7 +77,8 @@ const TD = styled.td`
     }
       .tooltiptext {
         visibility: hidden;
-        background-color: #555;
+        background-color: #000;
+        border: 1px solid #fff;
         color: #fff;
         text-align: center;
         border-radius: 6px;

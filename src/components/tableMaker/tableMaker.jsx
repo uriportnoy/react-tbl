@@ -79,7 +79,7 @@ export const TblWrapper = styled.div`
             &::-webkit-scrollbar
             {
                 width: 10px;
-                background-color: ${props => props ?.backgroundColor || '#173c5a'};
+                background-color: ${props => props ?.backgroundColor || '#333'};
             }
             &::-webkit-scrollbar-thumb
             {
