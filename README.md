@@ -129,7 +129,6 @@ const App = () => {
 |    showToolTip          |      false     |   show tool tip for each cell
 |    style                |        🠋      |
 
-
 ## Table style
 
 |      General      |    Default    | 
@@ -143,18 +142,17 @@ const App = () => {
 |    textColor      |     #000      |  
 |  cloumnMinWidth   |     100px     |   
 |     overflowX     |     auto      |
-|     fontFamily    |   monospace   |
-     
+|    fontFamily     |   monospace   |
+
+## Header, Body, Pagination
+
 |    Header      |    Default    |         Body         |  Default  |    Pagination     |   Default     |
 | :-----------:  | :-----------: |  :----------------:  | :-------: | :--------------:  | :-----------: |
-|  headerColor   |      #fff     |       maxHeight      |  650px    |                   |               | 
+|  headerColor   |      #fff     |       maxHeight      |   650px   |                   |               | 
 |  headerBGColor |      #333     |       overflowY      |  scroll   |  backgroundColor  |    #333       |
-|  fontSize      |      12pt     |   tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
+|    fontSize    |      12pt     |   tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
 |                |               |   tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  
-|                |               |    tooltipBgColor    |   #000    |  nextButtonText   |    Next       |  
-|                |               |                      |           |                   |               |   
-|                |               |                      |           |                   |               |   
-|                |               |                      |           |                   |               |     
+|                |               |    tooltipBgColor    |   #000    |  nextButtonText   |    Next       |             
  
 
 ## User table custom STYLE 
