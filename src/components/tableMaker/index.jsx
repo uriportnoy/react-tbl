@@ -10,7 +10,7 @@ const ReactTBL = props => {
   const styleProp = props?.style;
   const headerStyle = styleProp?.header;
   const paginationStyle = styleProp?.pagination;
-  const bodyStyle = styleProp?.bodyStyle;
+  const bodyStyle = styleProp?.body;
 
   return <ReactTblContextProvider value = {{
     copyCellDataOnClick: props.copyCellDataOnClick || false,
@@ -32,7 +32,10 @@ const ReactTBL = props => {
     },
     body:{
       maxHeight: bodyStyle?.maxHeight,
-      overflowY: bodyStyle?.overflowY
+      overflowY: bodyStyle?.overflowY,
+      tooltipTextColor: bodyStyle?.tooltipTextColor,
+      tooltipBgColor: bodyStyle?.tooltipBgColor,
+      tooltipBorderColor: bodyStyle?.tooltipBorderColor
     },
     pagination:{
         isVisible: props?.showPagination ?? true,

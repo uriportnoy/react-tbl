@@ -73,9 +73,9 @@ const App = () => {
             textColor: '#000',
             cloumnMinWidth: '100px',
             header: {
-                    headerColor: '#fff',
-                    headerBGColor: '#333',
-                    fontSize: '11pt'
+                headerColor: '#fff',
+                headerBGColor: '#333',
+                fontSize: '11pt'
             },
             body:{
                 maxHeight: '100px',
@@ -143,39 +143,19 @@ const App = () => {
 |  cloumnMinWidth   |     100px     |   
 |     overflowX     |     auto      |
 
-|     Header       |    Default    |
-|  :-----------:   | :-----------: |
-|   headerColor    |      #fff     |
-|   headerBGColor  |      #333     |
-|   fontSize       |      12pt     | 
-|                  |               | 
-|                  |               | 
-|                  |               | 
-|                  |               | 
-|                  |               |  
-
-|    Body    |  Default  |
-| :--------: | :-------: |
-|  maxHeight |  650px    |
-|  overflowY |  scroll   |
-|            |           | 
-|            |           | 
-|            |           | 
-|            |           | 
-|            |           | 
-|            |           |  
-
-|    Pagination     |   Default     |  
-| :--------------:  | :-----------: | 
-|                   |               | 
-|  backgroundColor  |    #333       |   
-|  btnColor         |    #000       |  
-|  prevButtonText   |   Previous    | 
-|  nextButtonText   |    Next       | 
-|                   |               | 
-|                   |               | 
-|                   |               | 
+     
+|    Header      |    Default    ||         Body         |  Default  ||    Pagination     |   Default     |
+| :-----------:  | :-----------: ||      :--------:      | :-------: || :--------------:  | :-----------: |
+|  headerColor   |      #fff     ||       maxHeight      |  650px    ||                   |               | 
+|  headerBGColor |      #333     ||       overflowY      |  scroll   ||  backgroundColor  |    #333       |
+|  fontSize      |      12pt     ||   tooltipTextColor   |   #fff    ||  btnColor         |    #000       |  
+|                |               ||   tooltipBorderColor |   #000    ||  prevButtonText   |   Previous    |  
+|                |               ||    tooltipBgColor    |   #000    ||  nextButtonText   |    Next       |  
+|                |               ||                      |           ||                   |               |   
+|                |               ||                      |           ||                   |               |   
+|                |               ||                      |           ||                   |               |     
  
+
 ## User table custom STYLE 
 ```js
 {
@@ -187,23 +167,24 @@ const App = () => {
     rowColor:       '#000' ,           // (String) 
     textColor:      '#000' ,           // (String) 
     cloumnMinWidth: '100px',           // (string)
-    showPagination:  true              // (Boolean)
     overflowX: 'auto'
+    header: {
+            headerColor: '#fff',       // (String) 
+            headerBGColor: '#333',     // (String) 
+            fontSize: '11pt'           // (String) 
+    },
+    body:{
+        maxHeight: 'auto',
+        overflowY: 'scroll',
+        tooltipTextColor: '#555',
+        tooltipBorderColor: 'yellow',
+        tooltipBgColor: 'green'
+    },
     pagination: {
         backgroundColor: '#333',       // (String) 
         btnColor: '#000',              // (String) 
         prevButtonText: null,          // (String) 
         nextButtonText: 'Next >'       // (String) 
     },
-    header: {
-            headerColor: '#fff',       // (String) 
-            headerBGColor: '#333',     // (String) 
-            fontSize: '11pt'           // (String) 
-        }
-    
-    body:{
-            maxHeight: '250px',
-            overflowY: 'scroll'
-    }
 }
 ```

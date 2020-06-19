@@ -8,12 +8,10 @@ const TableBody = ({
   columns
 }) => {
   const {
-    table:{rowColor,textColor,cloumnMinWidth,showToolTip,overflowX},
-    body: {maxHeight,overflowY},
+    table:{rowColor,textColor,cloumnMinWidth,showToolTip},
+    body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor},
     copyCellDataOnClick
   } = useContext(ReactTblContext);
-
-
   // const copyToClipboard = (info) =>{
   //   var copyText = document.getElementById("defaultCell");
   //   copyText.select();
@@ -48,7 +46,11 @@ const TableBody = ({
                 <div className='defaultCell' id="defaultCell">
                   {currentValue}
                 </div>}
-                {(showToolTip || col.showToolTip) && <span className="tooltiptext"> {currentValue}</span>}              
+                {(showToolTip || col.showToolTip) && <ToolTip
+                  bgColor = {tooltipBgColor || '#000'}
+                  textColor = {tooltipTextColor || '#fff'}
+                  borderColor = {tooltipBorderColor || tooltipBgColor || '#000'}
+                  className="tooltiptext"> {currentValue}</ToolTip>}              
                 </>
             </TD>
           })
@@ -59,6 +61,33 @@ const TableBody = ({
   </tbody>
 }
 
+const ToolTip = styled.span`
+    visibility: visible;
+    opacity: 1;
+
+    background: ${props => props.bgColor};
+    border: 1px solid ${props => props.borderColor};
+    color: ${props => props.textColor};
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: -110%;
+    transition: opacity 0.3s;
+    transform: translateX(-50%);
+
+    &:after{
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: ${props => props.borderColor} transparent transparent transparent;
+    }
+`;
 const TD = styled.td`
     flex: ${props => props.size} 1 ${props => props.width}px; 
     border: 1pt solid;
@@ -75,38 +104,12 @@ const TD = styled.td`
       text-overflow: ellipsis;
       overflow: hidden;
     }
-      .tooltiptext {
-        visibility: hidden;
-        background-color: #000;
-        border: 1px solid #fff;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        top: -110%;
-        opacity: 0;
-        transition: opacity 0.3s;
-        transform: translateX(-50%);
-        &:after{
-          content: "";
-          position: absolute;
-          top: 100%;
-          left: 50%;
-          margin-left: -5px;
-          border-width: 5px;
-          border-style: solid;
-          border-color: #555 transparent transparent transparent;
-        } 
-    }
     &:hover{
         .tooltiptext {
           visibility: visible;
           opacity: 1;
         }
       }
-    
 `;
 TD.propTypes = {
   width: PropTypes.number.isRequired,

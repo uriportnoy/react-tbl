@@ -22,14 +22,18 @@ const App = () => {
           rowColor: '#000',
           textColor: '#000',
           cloumnMinWidth: '100px',
+          
           header: {
             headerColor: '#fff',
             headerBGColor: '#333',
             fontSize: '11pt'
           },
           body:{
-            maxHeight: '100px',
-            overflowY: 'scroll'
+            maxHeight: 'auto',
+            overflowY: 'scroll',
+            // tooltipTextColor: '#555',
+            // tooltipBorderColor: 'yellow',
+            // tooltipBgColor: 'green'
           },
           pagination: {
             backgroundColor: '#333',
