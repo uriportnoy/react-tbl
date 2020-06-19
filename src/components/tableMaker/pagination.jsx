@@ -5,6 +5,7 @@ import ReactTblContext from './ReactTblContext';
 
 export const Pagination = ({page,setPage,totalPages,nextDisabled,prevDisabled}) => {
 const {pagination} = useContext(ReactTblContext);
+
 return <PaginationStyle
         page = {page}
         totalPages = {totalPages}

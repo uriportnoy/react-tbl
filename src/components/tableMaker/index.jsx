@@ -23,7 +23,8 @@ const ReactTBL = props => {
         textColor: styleProp?.textColor,
         cloumnMinWidth: styleProp?.cloumnMinWidth,
         overflowX: styleProp?.overflowX,
-        showToolTip: props.showToolTip
+        showToolTip: props.showToolTip,
+        fontFamily: styleProp?.fontFamily
     },
     tableHeader:{
         backgroundColor: headerStyle?.headerBGColor,

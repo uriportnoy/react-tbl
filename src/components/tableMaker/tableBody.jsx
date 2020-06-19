@@ -8,7 +8,7 @@ const TableBody = ({
   columns
 }) => {
   const {
-    table:{rowColor,textColor,cloumnMinWidth,showToolTip},
+    table:{rowColor,textColor,cloumnMinWidth,showToolTip,fontFamily},
     body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor},
     copyCellDataOnClick
   } = useContext(ReactTblContext);

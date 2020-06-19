@@ -22,7 +22,7 @@ const App = () => {
           rowColor: '#000',
           textColor: '#000',
           cloumnMinWidth: '100px',
-          
+          //fontFamily: 'arial',
           header: {
             headerColor: '#fff',
             headerBGColor: '#333',

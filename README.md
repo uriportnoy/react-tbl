@@ -72,6 +72,7 @@ const App = () => {
             rowColor: '#000',
             textColor: '#000',
             cloumnMinWidth: '100px',
+            fontFamily: 'monospace',
             header: {
                 headerColor: '#fff',
                 headerBGColor: '#333',
@@ -142,18 +143,18 @@ const App = () => {
 |    textColor      |     #000      |  
 |  cloumnMinWidth   |     100px     |   
 |     overflowX     |     auto      |
-
+|     fontFamily    |   monospace   |
      
-|    Header      |    Default    ||         Body         |  Default  ||    Pagination     |   Default     |
-| :-----------:  | :-----------: ||      :--------:      | :-------: || :--------------:  | :-----------: |
-|  headerColor   |      #fff     ||       maxHeight      |  650px    ||                   |               | 
-|  headerBGColor |      #333     ||       overflowY      |  scroll   ||  backgroundColor  |    #333       |
-|  fontSize      |      12pt     ||   tooltipTextColor   |   #fff    ||  btnColor         |    #000       |  
-|                |               ||   tooltipBorderColor |   #000    ||  prevButtonText   |   Previous    |  
-|                |               ||    tooltipBgColor    |   #000    ||  nextButtonText   |    Next       |  
-|                |               ||                      |           ||                   |               |   
-|                |               ||                      |           ||                   |               |   
-|                |               ||                      |           ||                   |               |     
+|    Header      |    Default    |         Body         |  Default  |    Pagination     |   Default     |
+| :-----------:  | :-----------: |  :----------------:  | :-------: | :--------------:  | :-----------: |
+|  headerColor   |      #fff     |       maxHeight      |  650px    |                   |               | 
+|  headerBGColor |      #333     |       overflowY      |  scroll   |  backgroundColor  |    #333       |
+|  fontSize      |      12pt     |   tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
+|                |               |   tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  
+|                |               |    tooltipBgColor    |   #000    |  nextButtonText   |    Next       |  
+|                |               |                      |           |                   |               |   
+|                |               |                      |           |                   |               |   
+|                |               |                      |           |                   |               |     
  
 
 ## User table custom STYLE 
@@ -167,11 +168,12 @@ const App = () => {
     rowColor:       '#000' ,           // (String) 
     textColor:      '#000' ,           // (String) 
     cloumnMinWidth: '100px',           // (string)
-    overflowX: 'auto'
+    overflowX: 'auto',
+    fontFamily: 'monospace',
     header: {
-            headerColor: '#fff',       // (String) 
-            headerBGColor: '#333',     // (String) 
-            fontSize: '11pt'           // (String) 
+        headerColor: '#fff',       // (String) 
+        headerBGColor: '#333',     // (String) 
+        fontSize: '11pt'           // (String) 
     },
     body:{
         maxHeight: 'auto',

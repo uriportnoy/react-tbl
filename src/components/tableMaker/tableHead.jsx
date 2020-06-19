@@ -11,7 +11,7 @@ const {tableHeader,table} = useContext(ReactTblContext);
         color = {tableHeader?.color}
     >
         {
-            columns?.length <= 0 ? <EmptyColumnsTR>Cannot Read Columns</EmptyColumnsTR> : <tr>{
+            columns?.length <= 0 ? <EmptyColumnsTR> Cannot Read Columns </EmptyColumnsTR> : <tr>{
                 columns.map((key, index) => (
                     <TH
                         key = {index}
@@ -44,7 +44,6 @@ Thead.propTypes = {
 }
 const TH = styled.th`
     border: 1pt #000 solid;
-    font-family: monospace;
     text-shadow: 0px 2px 0px #000000;
     user-select: none;
     text-align: center;

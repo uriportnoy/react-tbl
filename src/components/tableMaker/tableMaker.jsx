@@ -54,6 +54,7 @@ const TableMaker = ({
             minHeight = {table?.minHeight}
             bodyMaxHeight = {maxHeight}
             overflowY = {overflowY}
+            fontFamily = {table?.fontFamily}
         >
         <table>
             <TableHead columns={columns} />
@@ -80,6 +81,9 @@ TableMaker.propTypes = {
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
     overflow-x: ${props => props.overflowX || 'auto'};
+    *{
+        font-family: ${props => props.fontFamily || 'monospace'}; 
+    }
     &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
             {
@@ -91,7 +95,6 @@ export const TblWrapper = styled.div`
                 background-color: #000;
             }
     table{
-        font-family: monospace; 
         background-color: transparent;
         border-radius: 4px;
         border-collapse: collapse;
