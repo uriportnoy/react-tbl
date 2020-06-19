@@ -62,8 +62,8 @@ const TableBody = ({
 }
 
 const ToolTip = styled.span`
-    visibility: visible;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
 
     background: ${props => props.bgColor};
     border: 1px solid ${props => props.borderColor};
@@ -72,7 +72,7 @@ const ToolTip = styled.span`
     border-radius: 6px;
     padding: 5px;
     position: absolute;
-    z-index: 1;
+    z-index: 999;
     top: -110%;
     transition: opacity 0.3s;
     transform: translateX(-50%);

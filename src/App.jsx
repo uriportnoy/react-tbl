@@ -29,8 +29,8 @@ const App = () => {
             fontSize: '11pt'
           },
           body:{
-            maxHeight: 'auto',
-            overflowY: 'scroll',
+            maxHeight: '150px',
+            //overflowY: 'scroll',
             // tooltipTextColor: '#555',
             // tooltipBorderColor: 'yellow',
             // tooltipBgColor: 'green'

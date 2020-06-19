@@ -17,7 +17,12 @@ const TableMaker = ({
     const [totalPages, setTotalPages] = useState(0);
     const [nextDisabled, setNextDisabled] = useState(false);
     const [prevDisabled, setPrevDisabled] = useState(true);
-    const {pagination:{isVisible},tableHeader:{backgroundColor},table,body:{maxHeight,overflowY}} = useContext(ReactTblContext);
+    const {
+        pagination:{isVisible},
+        tableHeader:{backgroundColor},
+        table,
+        body:{maxHeight,overflowY}
+    } = useContext(ReactTblContext);
 
     useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
     //useEffect(() => {setPage(0);}, [debounceInput]);
