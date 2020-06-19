@@ -80,9 +80,9 @@ TableMaker.propTypes = {
 }
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
-    overflow-x: ${props => props.overflowX || 'auto'};
+    overflow-x: ${props => props.overflowX};
     *{
-        font-family: ${props => props.fontFamily || 'monospace'}; 
+        font-family: ${props => props.fontFamily}; 
     }
     &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar

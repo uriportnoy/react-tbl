@@ -4,13 +4,14 @@ import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
 
 export const Pagination = ({page,setPage,totalPages,nextDisabled,prevDisabled}) => {
-const {pagination} = useContext(ReactTblContext);
+const {pagination,table:{fontFamily}} = useContext(ReactTblContext);
 
 return <PaginationStyle
         page = {page}
         totalPages = {totalPages}
         nextDisabled = {nextDisabled}
         prevDisabled = {prevDisabled}
+        fontFamily = {fontFamily}
         btnColor = {pagination?.btnColor || '#333'}
         backgroundColor = {pagination?.backgroundColor}
     >
@@ -32,6 +33,7 @@ const PaginationStyle = styled.div`
     box-sizing: border-box;
     *{
         user-select:none;
+        font-family: ${props => props.fontFamily};
     }
     .label{
         width: 30%;
@@ -50,6 +52,7 @@ const PaginationStyle = styled.div`
         padding: 3pt;
         font-weight: bold;
         cursor: pointer;
+        font-family: ${props => props.fontFamily};
         border-radius: 3pt;
         flex-grow: 1;
         &.next{

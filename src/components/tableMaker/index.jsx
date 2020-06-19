@@ -22,9 +22,9 @@ const ReactTBL = props => {
         rowColor:  styleProp?.rowColor,
         textColor: styleProp?.textColor,
         cloumnMinWidth: styleProp?.cloumnMinWidth,
-        overflowX: styleProp?.overflowX,
-        showToolTip: props.showToolTip,
-        fontFamily: styleProp?.fontFamily
+        overflowX: styleProp?.overflowX || 'auto',
+        showToolTip: props.showToolTip || false,
+        fontFamily: styleProp?.fontFamily || 'monospace'
     },
     tableHeader:{
         backgroundColor: headerStyle?.headerBGColor,

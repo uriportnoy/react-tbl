@@ -12,6 +12,7 @@ const TableBody = ({
     body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor},
     copyCellDataOnClick
   } = useContext(ReactTblContext);
+  console.log(fontFamily);
   // const copyToClipboard = (info) =>{
   //   var copyText = document.getElementById("defaultCell");
   //   copyText.select();
