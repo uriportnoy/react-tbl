@@ -63,6 +63,7 @@ const App = () => {
         copyCellDataOnClick = {true}                 // [optional] 
         showPagination = {true}                      // default = true
         showToolTip = {true}                         // default = false
+        sortable = {true}                            // default = true
         style = {{                                   // [optional] 
             minHeight: '120px',
             maxHeight: '120px',
@@ -125,9 +126,10 @@ const App = () => {
 |    columns              |                |
 |    className            |                |
 |    defaultPageSize      |       12       |
+|    sortable             |      true      |
 |    showPagination       |      true      |
 |    showToolTip          |      false     |   show tool tip for each cell
-|    style                |        🠋      |
+|    style                |        V       |
 
 ## Table style
 
@@ -149,7 +151,7 @@ const App = () => {
 |    Header      |    Default    |         Body         |  Default  |    Pagination     |   Default     |
 | :-----------:  | :-----------: |  :----------------:  | :-------: | :--------------:  | :-----------: |
 |  headerColor   |      #fff     |       maxHeight      |   650px   |                   |               | 
-|  headerBGColor |      #333     |       overflowY      |  scroll   |  backgroundColor  |    #333       |
+|  headerBGColor |      #333     |       overflowY      |   scroll  |  backgroundColor  |    #333       |
 |    fontSize    |      12pt     |   tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
 |                |               |   tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  
 |                |               |    tooltipBgColor    |   #000    |  nextButtonText   |    Next       |             

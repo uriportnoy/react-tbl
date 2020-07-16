@@ -13,6 +13,7 @@ const App = () => {
         data = {currentData}
         columns = {columns || []}
         defaultPageSize = {3}
+        sortable = {true}
         style = {{
           maxWidth: '450px',
           maxHeight: '120px',

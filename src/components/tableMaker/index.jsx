@@ -29,7 +29,8 @@ const ReactTBL = props => {
     tableHeader:{
         backgroundColor: headerStyle?.headerBGColor,
         color: headerStyle?.headerColor,
-        fontSize: headerStyle?.fontSize
+        fontSize: headerStyle?.fontSize,
+        sortable: props?.sortable || true
     },
     body:{
       maxHeight: bodyStyle?.maxHeight,

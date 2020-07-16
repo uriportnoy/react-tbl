@@ -5,7 +5,10 @@ export const getColumnsData = () => ([
     {
         header: 'User Id',
         colKey: 'id',
-        size: 1
+        size: 1,
+        // filterBy: (currentValue,nextValue) => {
+        //     return 
+        // }
     },{
         header: 'User Name',
         colKey: 'name',

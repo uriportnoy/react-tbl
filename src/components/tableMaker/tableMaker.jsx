@@ -45,6 +45,16 @@ const TableMaker = ({
             setPrevDisabled(page === 0);
         }
     }
+
+    const sortArray = (columnType,high = true) => {
+        const sortedData = [...currentDataPage].sort((a, b) => {
+         if(a[columnType] < b[columnType]) { return high ? -1 : 1; }
+            if(a[columnType] > b[columnType]) { return high ? 1 : -1; }
+            return 0;
+        });
+        setCurrentDataPage(sortedData);
+    }
+
     const EmptyData = () => <EmptyTable><tr><td>No Data Rows...</td></tr></EmptyTable>;
     return <>
         <TblWrapper
@@ -57,7 +67,7 @@ const TableMaker = ({
             fontFamily = {table?.fontFamily}
         >
         <table>
-            <TableHead columns={columns} />
+            <TableHead columns={columns} sortArray={sortArray}/>
             {
                 (currentDataPage?.length !== 0 && columns?.length !== 0) ? 
                 <TableBody data={currentDataPage} columns={columns} />:

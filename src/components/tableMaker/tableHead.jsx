@@ -1,10 +1,22 @@
-import React,{useContext} from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
 
-const TableHead = ({columns}) => {
+const TableHead = ({columns,sortArray}) => {
 const {tableHeader,table} = useContext(ReactTblContext);
+const [sortDirections,setSortDirections] = useState(null);
+
+useEffect(() => {
+    if(tableHeader.sortable){
+        const directions = {};
+        columns.forEach(element => {
+            directions[element.colKey] = true;
+        });
+        setSortDirections(directions);
+    }
+},[]);
+
   return (
     <Thead
         backgroundColor = {tableHeader?.backgroundColor}
@@ -18,6 +30,11 @@ const {tableHeader,table} = useContext(ReactTblContext);
                         size = {key.size || 1}
                         fontSize = {tableHeader?.fontSize}
                         cloumnMinWidth = {table?.cloumnMinWidth}
+                        sortDirection = {sortDirections?.[key.colKey]}
+                        onClick = {!tableHeader.sortable ? null : () => {  
+                            sortArray(key.colKey,!sortDirections[key.colKey]);
+                            setSortDirections({...sortDirections,[key.colKey]: !sortDirections[key.colKey]});
+                        }}
                     >
                         {key.header || key.colKey}
                     </TH>
@@ -40,6 +57,7 @@ const Thead = styled.thead`
 `;
 Thead.propTypes = {
     backgroundColor: PropTypes.string,
+    sortArray: PropTypes.func,
     color: PropTypes.string
 }
 const TH = styled.th`
@@ -51,6 +69,15 @@ const TH = styled.th`
     flex: ${props => props.size} 0 100px; 
     box-sizing: border-box;
     min-width: ${props => props.cloumnMinWidth || '120px'};
+    position: relative;
+    cursor: ${props => (props.sortDirection  === false) ||  (props.sortDirection) ? 'pointer' : 'auto'};
+
+    &::after{
+        content: '${props => props.sortDirection ? '⬆' : props.sortDirection  === false ? '⬇' : ''}';
+        position: absolute;
+        right: 4%;
+        color: #fff;
+    }
 `;
 TH.propTypes = {
     size: PropTypes.number.isRequired,
