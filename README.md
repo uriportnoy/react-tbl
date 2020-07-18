@@ -44,6 +44,7 @@ const App = () => {
         header: 'User State',
         colKey: 'state',
         size: 2,
+        sortable: false,
         CustomCell: ({ dataRow, currentKey,currentValue }) => <input
             className="customInputCell"
             value = {currentValue.toString()}
@@ -101,6 +102,7 @@ const App = () => {
         colKey: 'id',           // key accessor [String]
         size: 1,                // column width [Number]
         showToolTip: true       // show tool tip for specific cell
+        sortable: false,        // in order to cancel sort option for specific cell 
         CustomCell: function({ dataRow, currentKey,currentValue })
     }
 ]

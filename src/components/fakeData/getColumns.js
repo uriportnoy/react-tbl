@@ -18,6 +18,7 @@ export const getColumnsData = () => ([
         header: 'User State',
         colKey: 'state',
         size: 2,
+        sortable: false,
         CustomCell: ({ dataRow, currentKey,currentValue }) => <CustomCell value = {currentValue}>{currentValue.toString()}</CustomCell>
     }
 ]);

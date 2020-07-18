@@ -30,7 +30,7 @@ const ReactTBL = props => {
         backgroundColor: headerStyle?.headerBGColor,
         color: headerStyle?.headerColor,
         fontSize: headerStyle?.fontSize,
-        sortable: props?.sortable || true
+        sortable: props?.sortable ?? true
     },
     body:{
       maxHeight: bodyStyle?.maxHeight,

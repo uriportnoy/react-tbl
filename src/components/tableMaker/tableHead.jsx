@@ -11,13 +11,13 @@ useEffect(() => {
     if(tableHeader.sortable){
         const directions = {};
         columns.forEach(element => {
-            directions[element.colKey] = true;
+            if(element.sortable !== false) directions[element.colKey] = true;
         });
         setSortDirections(directions);
     }
 },[]);
 
-  return (
+return (
     <Thead
         backgroundColor = {tableHeader?.backgroundColor}
         color = {tableHeader?.color}
@@ -31,7 +31,7 @@ useEffect(() => {
                         fontSize = {tableHeader?.fontSize}
                         cloumnMinWidth = {table?.cloumnMinWidth}
                         sortDirection = {sortDirections?.[key.colKey]}
-                        onClick = {!tableHeader.sortable ? null : () => {  
+                        onClick = {(!tableHeader.sortable || key.sortable === false) ? null : () => {  
                             sortArray(key.colKey,!sortDirections[key.colKey]);
                             setSortDirections({...sortDirections,[key.colKey]: !sortDirections[key.colKey]});
                         }}

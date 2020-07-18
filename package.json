@@ -1,6 +1,6 @@
 {
   "name": "react-tbl",
-  "version": "0.4.2",
+  "version": "0.4.4",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -20,6 +20,7 @@
     "tbl"
   ],
   "dependencies": {
+    "@babel/runtime": "^7.10.5",
     "styled-components": "^5.1.0"
   },
   "scripts": {
