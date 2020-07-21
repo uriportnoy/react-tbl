@@ -112,7 +112,6 @@ export const TblWrapper = styled.div`
         border-radius: 4px;
         border-collapse: collapse;
         width: 100%;
-        grid-area: table;
 
         input{
             border: 0;

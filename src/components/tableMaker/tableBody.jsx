@@ -13,20 +13,30 @@ const TableBody = ({
     copyCellDataOnClick
   } = useContext(ReactTblContext);
 
-  // const copyToClipboard = (info) =>{
-  //   var copyText = document.getElementById("defaultCell");
-  //   copyText.select();
-  //   copyText.setSelectionRange(0, 99999)
-  //   document.execCommand("copy");
-  //   alert("Text copied to clipboard");
-  // }
+  const copyToClipboard = (info,tdId) =>{
+    document.getElementById(tdId).animate([
+      {background: 'unset'},
+      {background: '#659d6563'},
+      {background: 'unset'}
+    ], { 
+      duration: 1200,
+      iterations: 1
+    });
+
+    const el = document.createElement('textarea');
+    el.value = info;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
 
   return <tbody>
     {
       data.map(
-      (dataRow, idx) => <TR
-        key={`tr_${idx}`}
-        idx={idx}
+      (dataRow, rowIdx) => <TR
+        key={`tr_${rowIdx}`}
+        idx={rowIdx}
         rowColor = {rowColor}
       >
         {
@@ -35,13 +45,16 @@ const TableBody = ({
             const currentValue = dataRow[key];
             const CustomCell = col.CustomCell || null;
             return <TD
-              key = {`td_${key}_${idx}`}
+              key = {`td_${key}_${rowIdx}${idx}`}
+              id = {`td_${key}_${rowIdx}${idx}`}
               dataTip = {currentValue?.toString()}
               size = {col.size || 1}
               className = {key}
               width = {col.width || 100}
               textColor = {textColor}
               cloumnMinWidth = {cloumnMinWidth}
+              onClick={copyCellDataOnClick ? () => copyToClipboard(currentValue?.toString(),`td_${key}_${rowIdx}${idx}`) : null}
+              copyCellDataOnClick={copyCellDataOnClick}
             >
               
                 <>{CustomCell ?  <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
@@ -101,6 +114,7 @@ const TD = styled.td`
     text-align: center;
     padding: 2pt;
     min-width: ${props => props.cloumnMinWidth || '120px'};
+    cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'transparent'};
 
     .defaultCell{
       text-overflow: ellipsis;

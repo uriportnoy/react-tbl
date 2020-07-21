@@ -14,8 +14,9 @@ const App = () => {
         columns = {columns || []}
         defaultPageSize = {3}
         sortable = {true}
+        copyCellDataOnClick = {true}
         style = {{
-          maxWidth: '150px',
+          //maxWidth: '250px',
           maxHeight: '120px',
           minHeight: '40pt',
           minWidth: 'auto',

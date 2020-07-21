@@ -75,7 +75,8 @@ const ReactTblStyled = styled.div`
     min-height: ${props => props.minHeight};
     display: flex;
     flex-direction: column;
-    border: 1pt solid;
+    border: 2px solid;
+    box-sizing: border-box;
 
 `;
 export default ReactTBL;

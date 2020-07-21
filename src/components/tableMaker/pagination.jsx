@@ -27,7 +27,6 @@ const PaginationStyle = styled.div`
     justify-content: center;
     align-items:center;
     padding: 2pt;
-    grid-area: pagination;
     padding: 4pt;
     z-index: 10;
     box-sizing: border-box;
