@@ -65,6 +65,8 @@ const TableMaker = ({
             bodyMaxHeight = {maxHeight}
             overflowY = {overflowY}
             fontFamily = {table?.fontFamily}
+            maxWidth = {table?.maxWidth}
+            overflowX = {table?.overflowX}
         >
         <table>
             <TableHead columns={columns} sortArray={sortArray}/>
@@ -91,6 +93,7 @@ TableMaker.propTypes = {
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
     overflow-x: ${props => props.overflowX};
+    max-width: ${props => props.maxWidth};
     *{
         font-family: ${props => props.fontFamily}; 
     }

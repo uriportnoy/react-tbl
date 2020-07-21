@@ -16,8 +16,7 @@ useEffect(() => {
         setSortDirections(directions);
     }
 },[]);
-
-return (
+  return (
     <Thead
         backgroundColor = {tableHeader?.backgroundColor}
         color = {tableHeader?.color}
@@ -70,7 +69,7 @@ const TH = styled.th`
     box-sizing: border-box;
     min-width: ${props => props.cloumnMinWidth || '120px'};
     position: relative;
-    cursor: ${props => (props.sortDirection  === false) ||  (props.sortDirection) ? 'pointer' : 'auto'};
+    cursor: ${props => (props.sortDirection  === false) || (props.sortDirection) ? 'pointer' : 'auto'};
 
     &::after{
         content: '${props => props.sortDirection ? '⬆' : props.sortDirection  === false ? '⬇' : ''}';

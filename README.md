@@ -66,6 +66,7 @@ const App = () => {
         showToolTip = {true}                         // default = false
         sortable = {true}                            // default = true
         style = {{                                   // [optional] 
+            overflowX: 'auto',
             minHeight: '120px',
             maxHeight: '120px',
             maxWidth: '450px',
@@ -131,7 +132,8 @@ const App = () => {
 |    sortable             |      true      |
 |    showPagination       |      true      |
 |    showToolTip          |      false     |   show tool tip for each cell
-|    style                |        V       |
+|    style                |       V        |
+|    overflowX            |      auto      |
 
 ## Table style
 

@@ -15,7 +15,7 @@ const App = () => {
         defaultPageSize = {3}
         sortable = {true}
         style = {{
-          maxWidth: '450px',
+          maxWidth: '150px',
           maxHeight: '120px',
           minHeight: '40pt',
           minWidth: 'auto',

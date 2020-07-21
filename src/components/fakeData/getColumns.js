@@ -6,9 +6,6 @@ export const getColumnsData = () => ([
         header: 'User Id',
         colKey: 'id',
         size: 1,
-        // filterBy: (currentValue,nextValue) => {
-        //     return 
-        // }
     },{
         header: 'User Name',
         colKey: 'name',
@@ -24,5 +21,5 @@ export const getColumnsData = () => ([
 ]);
 
 const CustomCell = styled.span`
-    background: ${props => props.value ? 'green' : 'red'}
+    color: ${props => props.value ? 'green' : 'red'};
 `;
