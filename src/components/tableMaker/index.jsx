@@ -13,7 +13,7 @@ const ReactTBL = props => {
   const bodyStyle = styleProp?.body;
 
   return <ReactTblContextProvider value = {{
-    copyDataCellOnClick: props.copyDataCellOnClick || false,
+    copyCellDataOnClick: props.copyCellDataOnClick || false,
     table:{
         maxWidth: styleProp?.maxWidth,
         maxHeight: styleProp?.maxHeight,

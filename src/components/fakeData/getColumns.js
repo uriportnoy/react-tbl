@@ -10,6 +10,7 @@ export const getColumnsData = () => ([
         header: 'User Name',
         colKey: 'name',
         size: 4,
+        copyCellDataOnClick: true,
         showToolTip: true
     },{
         header: 'User State',

@@ -39,6 +39,7 @@ const App = () => {
         header: 'User Name',
         colKey: 'name',
         size: 4,
+        copyCellDataOnClick: true,
         showToolTip: true
     },{
         header: 'User State',
@@ -61,7 +62,7 @@ const App = () => {
         columns = {columnsData}
         className = "custom_class_name"              // [optional]
         defaultPageSize = {10}                       // [optional] - default = 12
-        copyDataCellOnClick = {true}                 // [optional] 
+        copyCellDataOnClick = {true}                 // [optional] 
         showPagination = {true}                      // default = true
         showToolTip = {true}                         // default = false
         sortable = {true}                            // default = true
@@ -99,11 +100,12 @@ const App = () => {
 ```js
 [
     {
-        header: 'User Id',      // header label [String]
-        colKey: 'id',           // key accessor [String]
-        size: 1,                // column width [Number]
-        showToolTip: true       // show tool tip for specific cell
-        sortable: false,        // in order to cancel sort option for specific cell 
+        header: 'User Id',        // header label [String]
+        colKey: 'id',             // key accessor [String]
+        size: 1,                  // column width [Number]
+        showToolTip: true         // show tool tip for specific cell
+        sortable: false,          // in order to cancel sort option for specific column  
+        copyCellDataOnClick: true // activate 'copy cell data' on specific column 
         CustomCell: function({ dataRow, currentKey,currentValue })
     }
 ]
@@ -130,7 +132,7 @@ const App = () => {
 |    className            |                |
 |    defaultPageSize      |       12       |
 |    sortable             |      true      |
-|    copyDataCellOnClick  |      false     |
+|    copyCellDataOnClick  |      false     |
 |    showPagination       |      true      |
 |    showToolTip          |      false     |   show tool tip for each cell
 |    style                |       V        |

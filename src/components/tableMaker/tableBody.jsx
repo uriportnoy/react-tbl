@@ -10,16 +10,16 @@ const TableBody = ({
   const {
     table:{rowColor,textColor,cloumnMinWidth,showToolTip,fontFamily},
     body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor},
-    copyDataCellOnClick
+    copyCellDataOnClick
   } = useContext(ReactTblContext);
 
   const copyToClipboard = (info,tdId) =>{
     document.getElementById(tdId).animate([
       {background: 'unset'},
-      {background: '#659d6563'},
+      {background: '#7ecc24a3'},
       {background: 'unset'}
     ], { 
-      duration: 1200,
+      duration: 400,
       iterations: 1
     });
 
@@ -44,6 +44,7 @@ const TableBody = ({
             const key = col.colKey;
             const currentValue = dataRow[key];
             const CustomCell = col.CustomCell || null;
+            const copyDataActive = col.copyCellDataOnClick || copyCellDataOnClick;
             return <TD
               key = {`td_${key}_${rowIdx}${idx}`}
               id = {`td_${key}_${rowIdx}${idx}`}
@@ -53,8 +54,8 @@ const TableBody = ({
               width = {col.width || 100}
               textColor = {textColor}
               cloumnMinWidth = {cloumnMinWidth}
-              onClick={copyDataCellOnClick ? () => copyToClipboard(currentValue?.toString(),`td_${key}_${rowIdx}${idx}`) : null}
-              copyDataCellOnClick={copyDataCellOnClick}
+              onClick={copyDataActive ? () => copyToClipboard(currentValue?.toString(),`td_${key}_${rowIdx}${idx}`) : null}
+              copyCellDataOnClick={copyDataActive}
             >
               
                 <>{CustomCell ?  <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
@@ -114,7 +115,7 @@ const TD = styled.td`
     text-align: center;
     padding: 2pt;
     min-width: ${props => props.cloumnMinWidth || '120px'};
-    cursor: ${props=> props.copyDataCellOnClick ? 'copy' : 'transparent'};
+    cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'transparent'};
 
     .defaultCell{
       text-overflow: ellipsis;
