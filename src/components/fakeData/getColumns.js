@@ -6,6 +6,7 @@ export const getColumnsData = () => ([
         header: 'User Id',
         colKey: 'id',
         size: 1,
+        copyCellDataOnClick: false,
     },{
         header: 'User Name',
         colKey: 'name',
@@ -17,6 +18,7 @@ export const getColumnsData = () => ([
         colKey: 'state',
         size: 2,
         sortable: false,
+        copyCellDataOnClick: false,
         CustomCell: ({ dataRow, currentKey,currentValue }) => <CustomCell value = {currentValue}>{currentValue.toString()}</CustomCell>
     }
 ]);

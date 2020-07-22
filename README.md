@@ -100,12 +100,12 @@ const App = () => {
 ```js
 [
     {
-        header: 'User Id',        // header label [String]
-        colKey: 'id',             // key accessor [String]
-        size: 1,                  // column width [Number]
-        showToolTip: true         // show tool tip for specific cell
-        sortable: false,          // in order to cancel sort option for specific column  
-        copyCellDataOnClick: true // activate 'copy cell data' on specific column 
+        header: 'User Id',          // header label [String]
+        colKey: 'id',               // key accessor [String]
+        size: 1,                    // column width [Number]
+        showToolTip: true           // show tool tip for specific cell
+        sortable: false,            // in order to cancel sort option for specific column  
+        copyCellDataOnClick: true,  // enable/disable 'copy cell's data' on specific column 
         CustomCell: function({ dataRow, currentKey,currentValue })
     }
 ]
@@ -114,11 +114,11 @@ const App = () => {
 ```js
 [{
     id:1,
-    name: 'moses',
+    name: 'Moses',
     state: true
 },{
     id:2,
-    name: 'hoyas',
+    name: 'Hoyas',
     state: false
 }]
 ```
@@ -135,7 +135,7 @@ const App = () => {
 |    copyCellDataOnClick  |      false     |
 |    showPagination       |      true      |
 |    showToolTip          |      false     |   show tool tip for each cell
-|    style                |       V        |
+|    style                |        V       |
 |    overflowX            |      auto      |
 
 ## Table style

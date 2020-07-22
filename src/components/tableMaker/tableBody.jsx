@@ -44,7 +44,8 @@ const TableBody = ({
             const key = col.colKey;
             const currentValue = dataRow[key];
             const CustomCell = col.CustomCell || null;
-            const copyDataActive = col.copyCellDataOnClick || copyCellDataOnClick;
+            const copyDataActive = col.copyCellDataOnClick ?? copyCellDataOnClick;
+
             return <TD
               key = {`td_${key}_${rowIdx}${idx}`}
               id = {`td_${key}_${rowIdx}${idx}`}
@@ -115,7 +116,7 @@ const TD = styled.td`
     text-align: center;
     padding: 2pt;
     min-width: ${props => props.cloumnMinWidth || '120px'};
-    cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'transparent'};
+    cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'auto'};
 
     .defaultCell{
       text-overflow: ellipsis;
