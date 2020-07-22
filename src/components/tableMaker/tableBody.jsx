@@ -10,7 +10,7 @@ const TableBody = ({
   const {
     table:{rowColor,textColor,cloumnMinWidth,showToolTip,fontFamily},
     body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor},
-    copyCellDataOnClick
+    copyDataCellOnClick
   } = useContext(ReactTblContext);
 
   const copyToClipboard = (info,tdId) =>{
@@ -53,8 +53,8 @@ const TableBody = ({
               width = {col.width || 100}
               textColor = {textColor}
               cloumnMinWidth = {cloumnMinWidth}
-              onClick={copyCellDataOnClick ? () => copyToClipboard(currentValue?.toString(),`td_${key}_${rowIdx}${idx}`) : null}
-              copyCellDataOnClick={copyCellDataOnClick}
+              onClick={copyDataCellOnClick ? () => copyToClipboard(currentValue?.toString(),`td_${key}_${rowIdx}${idx}`) : null}
+              copyDataCellOnClick={copyDataCellOnClick}
             >
               
                 <>{CustomCell ?  <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
@@ -114,7 +114,7 @@ const TD = styled.td`
     text-align: center;
     padding: 2pt;
     min-width: ${props => props.cloumnMinWidth || '120px'};
-    cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'transparent'};
+    cursor: ${props=> props.copyDataCellOnClick ? 'copy' : 'transparent'};
 
     .defaultCell{
       text-overflow: ellipsis;

@@ -61,7 +61,7 @@ const App = () => {
         columns = {columnsData}
         className = "custom_class_name"              // [optional]
         defaultPageSize = {10}                       // [optional] - default = 12
-        copyCellDataOnClick = {true}                 // [optional] 
+        copyDataCellOnClick = {true}                 // [optional] 
         showPagination = {true}                      // default = true
         showToolTip = {true}                         // default = false
         sortable = {true}                            // default = true
@@ -130,6 +130,7 @@ const App = () => {
 |    className            |                |
 |    defaultPageSize      |       12       |
 |    sortable             |      true      |
+|    copyDataCellOnClick  |      false     |
 |    showPagination       |      true      |
 |    showToolTip          |      false     |   show tool tip for each cell
 |    style                |       V        |
