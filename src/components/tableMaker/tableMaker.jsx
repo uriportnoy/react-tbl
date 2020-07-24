@@ -1,15 +1,16 @@
 import React, { useEffect, useState,useContext } from 'react';
-import PropTypes from 'prop-types';
+import {array,number} from 'prop-types';
 import TableHead from './tableHead';
 import TableBody from './tableBody';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
 import { Pagination } from './pagination';
+import {Loader} from './Loader';
 
 const TableMaker = ({
     columns,
     data,
-    defaultPageSize,
+    defaultPageSize
     //debounceInput = null
 }) => {
     const [currentDataPage, setCurrentDataPage] = useState([]);
@@ -21,11 +22,12 @@ const TableMaker = ({
         pagination:{isVisible},
         tableHeader:{backgroundColor},
         table,
-        body:{maxHeight,overflowY}
+        CustomLoader,
+        isLoading,
+        body:{maxHeight,overflowY,backgroundColor: bodyBGColor}
     } = useContext(ReactTblContext);
 
     useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
-    //useEffect(() => {setPage(0);}, [debounceInput]);
 
     const handlePages = () => {
         if (page === 0) {
@@ -55,7 +57,12 @@ const TableMaker = ({
         setCurrentDataPage(sortedData);
     }
 
-    const EmptyData = () => <EmptyTable><tr><td>No Data Rows...</td></tr></EmptyTable>;
+const Loading = () => <EmptyTable><tr><td>{
+    CustomLoader ? <CustomLoader /> : <Loader color={backgroundColor}/>
+}</td></tr></EmptyTable>;
+
+const EmptyData = () => <EmptyTable><tr><td>No Data...</td></tr></EmptyTable>;
+
     return <>
         <TblWrapper
             maxHeight = {table?.maxHeight}
@@ -67,12 +74,13 @@ const TableMaker = ({
             fontFamily = {table?.fontFamily}
             maxWidth = {table?.maxWidth}
             overflowX = {table?.overflowX}
+            bodyBGColor = {bodyBGColor}
         >
         <table>
             <TableHead columns={columns} sortArray={sortArray}/>
-            {
-                (currentDataPage?.length !== 0 && columns?.length !== 0) ? 
-                <TableBody data={currentDataPage} columns={columns} />:
+            {   
+                 isLoading ? <Loading /> : (currentDataPage?.length !== 0 && columns?.length !== 0) ?
+                <TableBody data={currentDataPage} columns={columns} defaultPageSize={defaultPageSize}/>:
                 <EmptyData /> 
             }
         </table></TblWrapper>
@@ -86,9 +94,9 @@ const TableMaker = ({
     </>
 }
 TableMaker.propTypes = {
-    columns: PropTypes.array.isRequired,
-    data: PropTypes.array.isRequired,
-    defaultPageSize: PropTypes.number.isRequired
+    columns: array.isRequired,
+    data: array.isRequired,
+    defaultPageSize: number.isRequired
 }
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
@@ -101,7 +109,7 @@ export const TblWrapper = styled.div`
             &::-webkit-scrollbar
             {
                 width: 10px;
-                background-color: ${props => props ?.backgroundColor || '#333'};
+                background-color: ${props => props ?.backgroundColor};
             }
             &::-webkit-scrollbar-thumb
             {
@@ -121,15 +129,18 @@ export const TblWrapper = styled.div`
         }
         tbody {
             display: block;
-            max-height: ${props => props.bodyMaxHeight || 'auto'}; 
-            height: ${props => props.fixedHeight || 'auto'}; 
-            min-height: ${props => props.minHeight || '80pt'};
-            overflow-y: ${props => props.overflowY || 'visible'};
+            background: ${props => props.bodyBGColor};
+            max-height: ${props => props.bodyMaxHeight}; 
+            height: ${props => props.fixedHeight}; 
+            min-height: ${props => props.minHeight};
+            overflow-y: ${props => props.overflowY};
+            overflow-x: auto;
+
             &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
             {
                 width: 10px;
-                background-color: ${props => props ?.backgroundColor || '#173c5a'};
+                background-color: ${props => props?.backgroundColor || '#173c5a'};
             }
             &::-webkit-scrollbar-thumb
             {
@@ -151,10 +162,15 @@ const EmptyTable = styled.tbody`
     background-color: rgba(111,111,111,0.5);
     color:#fff;
     font-weight: bold;
+    display: grid !important;
+    align-items: center;
+    
     tr{
         display: grid;
         align-items: center;
         height: 100%;
+        font-size: 15pt;
+        text-align: center;
     }
     svg{
         cursor:pointer;

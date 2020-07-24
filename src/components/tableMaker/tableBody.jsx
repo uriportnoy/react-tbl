@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
-import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
-import PropTypes from 'prop-types';
+import {array,number} from 'prop-types';
+import {TR,TD,ToolTip} from './tr_td';
 
 const TableBody = ({
   data,
@@ -9,7 +9,7 @@ const TableBody = ({
 }) => {
   const {
     table:{rowColor,textColor,cloumnMinWidth,showToolTip,fontFamily},
-    body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor},
+    body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor,backgroundColor,borderColor},
     copyCellDataOnClick
   } = useContext(ReactTblContext);
 
@@ -57,6 +57,8 @@ const TableBody = ({
               cloumnMinWidth = {cloumnMinWidth}
               onClick={copyDataActive ? () => copyToClipboard(currentValue?.toString(),`td_${key}_${rowIdx}${idx}`) : null}
               copyCellDataOnClick={copyDataActive}
+              backgroundColor = {backgroundColor}
+              borderColor = {borderColor}
             >
               
                 <>{CustomCell ?  <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
@@ -64,9 +66,9 @@ const TableBody = ({
                   {currentValue}
                 </div>}
                 {(showToolTip || col.showToolTip) && <ToolTip
-                  bgColor = {tooltipBgColor || '#000'}
-                  textColor = {tooltipTextColor || '#fff'}
-                  borderColor = {tooltipBorderColor || tooltipBgColor || '#000'}
+                  bgColor = {tooltipBgColor}
+                  textColor = {tooltipTextColor || textColor}
+                  borderColor = {tooltipBorderColor || tooltipBgColor}
                   className="tooltiptext"> {currentValue}</ToolTip>}              
                 </>
             </TD>
@@ -77,77 +79,9 @@ const TableBody = ({
     }
   </tbody>
 }
-
-const ToolTip = styled.span`
-    visibility: hidden;
-    opacity: 0;
-
-    background: ${props => props.bgColor};
-    border: 1px solid ${props => props.borderColor};
-    color: ${props => props.textColor};
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 999;
-    top: -110%;
-    transition: opacity 0.3s;
-    transform: translateX(-50%);
-
-    &:after{
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: ${props => props.borderColor} transparent transparent transparent;
-    }
-`;
-const TD = styled.td`
-    flex: ${props => props.size} 1 ${props => props.width}px; 
-    border: 1pt solid;
-    font-size: 12pt;
-    position: relative;
-    padding:0;
-    box-sizing: border-box;
-    transition: .7s all;
-    text-align: center;
-    padding: 2pt;
-    min-width: ${props => props.cloumnMinWidth || '120px'};
-    cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'auto'};
-
-    .defaultCell{
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    &:hover{
-        .tooltiptext {
-          visibility: visible;
-          opacity: 1;
-        }
-      }
-`;
-TD.propTypes = {
-  width: PropTypes.number.isRequired,
-  className: PropTypes.string,
-  textColor: PropTypes.string,
-  dataTip: PropTypes.string,
-}
-export const TR = styled.tr`
-    animation: fadeIn ${props => (props.idx < 10) ? ('0.' + props.idx) : '1'}s;
-    background-color: ${props => props?.rowColor || props.idx % 2 === 0 ? '#ccc' : '#eee'};
-    transition: .7s all;
-    width: 100%;
-    display: flex;  
-     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;
-    }
-`;
-TR.propTypes = {
-  rowColor: PropTypes.string
+TableBody.propTypes = {
+  data: array,
+  columns: array,
 }
 
 export default TableBody;

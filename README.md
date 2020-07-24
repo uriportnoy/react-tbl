@@ -55,7 +55,7 @@ const App = () => {
   return <ReactTBL data = {tblData} columns = {tblColumns}/>
 }
 ```
-## With Props Example
+## Props Example
 ```js
     <ReactTBL
         data = {currentData}
@@ -66,6 +66,8 @@ const App = () => {
         showPagination = {true}                      // default = true
         showToolTip = {true}                         // default = false
         sortable = {true}                            // default = true
+        isLoading = {true}                           
+        CustomLoader = {Loader}
         style = {{                                   // [optional] 
             overflowX: 'auto',
             minHeight: '120px',
@@ -84,7 +86,9 @@ const App = () => {
             },
             body:{
                 maxHeight: '100px',
-                overflowX: 'scroll'
+                overflowX: 'scroll',
+                backgroundColor: '#eee',
+                borderColor: '#333'
             },
             pagination: {
                 backgroundColor: '#333',
@@ -134,15 +138,18 @@ const App = () => {
 |    sortable             |      true      |
 |    copyCellDataOnClick  |      false     |
 |    showPagination       |      true      |
-|    showToolTip          |      false     |   show tool tip for each cell
+|    showToolTip          |      false     |   shows tool tip for each cell
 |    style                |        V       |
 |    overflowX            |      auto      |
+|    isLoading            |                |   shows loader when is loading = true
+|    CustomLoader         |                |
+
 
 ## Table style
 
 |      General      |    Default    | 
 | :---------------: |:-------------:| 
-|     minHeight     |     80pt      | 
+|     minHeight     |     auto      | 
 |     maxWidth      |     80vw      | 
 |     maxHeight     |     auto      |  
 |     minWidth      |     auto      |  
@@ -162,8 +169,8 @@ const App = () => {
 |    fontSize    |      12pt     |   tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
 |                |               |   tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  
 |                |               |    tooltipBgColor    |   #000    |  nextButtonText   |    Next       |             
- 
-
+|                |               |    backgroundColor   |  '#333'   |                   |               |
+|                |               |    borderColor       |  '#333'   |                   |               |
 ## User table custom STYLE 
 ```js
 {

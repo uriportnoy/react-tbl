@@ -47,9 +47,9 @@ const Thead = styled.thead`
     display: table;
     width: 100%;
     table-layout: fixed; 
-    background: ${props => props.backgroundColor || '#333'};
+    background: ${props => props.backgroundColor};
     tr{
-        color: ${props => props.color || '#fff'};
+        color: ${props => props.color};
         width: 100%;
         display: flex; 
     }
@@ -64,10 +64,10 @@ const TH = styled.th`
     text-shadow: 0px 2px 0px #000000;
     user-select: none;
     text-align: center;
-    font-size: ${props => props.fontSize || '12pt'};
+    font-size: ${props => props.fontSize};
     flex: ${props => props.size} 0 100px; 
     box-sizing: border-box;
-    min-width: ${props => props.cloumnMinWidth || '120px'};
+    min-width: ${props => props.cloumnMinWidth};
     position: relative;
     cursor: ${props => (props.sortDirection  === false) || (props.sortDirection) ? 'pointer' : 'auto'};
 

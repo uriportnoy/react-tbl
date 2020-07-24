@@ -14,37 +14,42 @@ const ReactTBL = props => {
 
   return <ReactTblContextProvider value = {{
     copyCellDataOnClick: props.copyCellDataOnClick || null,
+    isLoading: props.isLoading || false,
+    CustomLoader: props.CustomLoader || null,
     table:{
         maxWidth: styleProp?.maxWidth,
-        maxHeight: styleProp?.maxHeight,
-        minHeight: styleProp?.minHeight,
-        fixedHeight: styleProp?.fixedHeight,
-        rowColor:  styleProp?.rowColor,
-        textColor: styleProp?.textColor,
-        cloumnMinWidth: styleProp?.cloumnMinWidth,
+        maxHeight: styleProp?.maxHeight || 'auto',
+        minHeight: styleProp?.minHeight || 'auto',
+        fixedHeight: styleProp?.fixedHeight || 'auto',
+        rowColor:  styleProp?.rowColor || null,
+        textColor: styleProp?.textColor || '#000',
+        cloumnMinWidth: styleProp?.cloumnMinWidth || '120px',
         overflowX: styleProp?.overflowX || 'auto',
         showToolTip: props.showToolTip || false,
-        fontFamily: styleProp?.fontFamily || 'monospace'
+        fontFamily: styleProp?.fontFamily || 'monospace',
     },
     tableHeader:{
-        backgroundColor: headerStyle?.headerBGColor,
-        color: headerStyle?.headerColor,
-        fontSize: headerStyle?.fontSize,
+        backgroundColor: headerStyle?.headerBGColor  || '#333',
+        color: headerStyle?.headerColor || '#fff',
+        fontSize: headerStyle?.fontSize || '12pt',
         sortable: props?.sortable ?? true
     },
     body:{
       maxHeight: bodyStyle?.maxHeight,
-      overflowY: bodyStyle?.overflowY,
-      tooltipTextColor: bodyStyle?.tooltipTextColor,
-      tooltipBgColor: bodyStyle?.tooltipBgColor,
-      tooltipBorderColor: bodyStyle?.tooltipBorderColor
+      maxWidth: bodyStyle?.maxWidth,
+      overflowY: bodyStyle?.overflowY || 'visible',
+      tooltipTextColor: bodyStyle?.tooltipTextColor || '#fff',
+      tooltipBgColor: bodyStyle?.tooltipBgColor  || '#000',
+      tooltipBorderColor: bodyStyle?.tooltipBorderColor || bodyStyle?.tooltipBgColor || '#000',
+      backgroundColor: bodyStyle?.backgroundColor || headerStyle?.headerBGColor  || '#eee',
+      borderColor: bodyStyle?.borderColor || '#333'
     },
     pagination:{
         isVisible: props?.showPagination ?? true,
-        backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor,
-        btnColor: paginationStyle?.btnColor,
-        nextButtonText: paginationStyle?.nextButtonText,
-        prevButtonText: paginationStyle?.prevButtonText
+        backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor || '#333',
+        btnColor: paginationStyle?.btnColor  || '#333',
+        nextButtonText: paginationStyle?.nextButtonText || 'Next',
+        prevButtonText: paginationStyle?.prevButtonText  || 'Previous'
     }
   }}>
       <ReactTblStyled
