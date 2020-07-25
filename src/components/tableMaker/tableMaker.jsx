@@ -24,7 +24,7 @@ const TableMaker = ({
         table,
         CustomLoader,
         isLoading,
-        body:{maxHeight,overflowY,backgroundColor: bodyBGColor}
+        body:{bodyMaxHeight,overflowY,backgroundColor: bodyBGColor,minHeight,fixedHeight,overflowX: bodyOverFlowX}
     } = useContext(ReactTblContext);
 
     useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
@@ -66,15 +66,16 @@ const EmptyData = () => <EmptyTable><tr><td>No Data...</td></tr></EmptyTable>;
     return <>
         <TblWrapper
             maxHeight = {table?.maxHeight}
-            fixedHeight = {table?.fixedHeight}
+            fixedHeight = {fixedHeight}
             backgroundColor = {backgroundColor}
-            minHeight = {table?.minHeight}
-            bodyMaxHeight = {maxHeight}
+            minHeight = {minHeight}
+            bodyMaxHeight = {bodyMaxHeight}
             overflowY = {overflowY}
             fontFamily = {table?.fontFamily}
             maxWidth = {table?.maxWidth}
             overflowX = {table?.overflowX}
             bodyBGColor = {bodyBGColor}
+            bodyOverFlowX = {bodyOverFlowX}
         >
         <table>
             <TableHead columns={columns} sortArray={sortArray}/>
@@ -102,6 +103,8 @@ export const TblWrapper = styled.div`
     flex: 1 1 auto;
     overflow-x: ${props => props.overflowX};
     max-width: ${props => props.maxWidth};
+    max-height: ${props => props.maxHeight};
+
     *{
         font-family: ${props => props.fontFamily}; 
     }
@@ -134,7 +137,7 @@ export const TblWrapper = styled.div`
             height: ${props => props.fixedHeight}; 
             min-height: ${props => props.minHeight};
             overflow-y: ${props => props.overflowY};
-            overflow-x: auto;
+            overflow-x: ${props => props.bodyOverFlowX};
 
             &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar

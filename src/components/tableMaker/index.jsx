@@ -18,9 +18,8 @@ const ReactTBL = props => {
     CustomLoader: props.CustomLoader || null,
     table:{
         maxWidth: styleProp?.maxWidth,
-        maxHeight: styleProp?.maxHeight || 'auto',
         minHeight: styleProp?.minHeight || 'auto',
-        fixedHeight: styleProp?.fixedHeight || 'auto',
+        maxHeight: styleProp?.maxHeight || 'auto',
         rowColor:  styleProp?.rowColor || null,
         textColor: styleProp?.textColor || '#000',
         cloumnMinWidth: styleProp?.cloumnMinWidth || '120px',
@@ -35,9 +34,12 @@ const ReactTBL = props => {
         sortable: props?.sortable ?? true
     },
     body:{
-      maxHeight: bodyStyle?.maxHeight,
-      maxWidth: bodyStyle?.maxWidth,
+      bodyMaxHeight: bodyStyle?.fixedHeight || bodyStyle?.maxHeight || 'auto',
+      minHeight: bodyStyle?.minHeight || 'auto',
+      fixedHeight: bodyStyle?.fixedHeight || 'auto',
+      maxWidth: bodyStyle?.maxWidth || 'auto',
       overflowY: bodyStyle?.overflowY || 'visible',
+      overflowX: bodyStyle?.overflowX || 'visible',
       tooltipTextColor: bodyStyle?.tooltipTextColor || '#fff',
       tooltipBgColor: bodyStyle?.tooltipBgColor  || '#000',
       tooltipBorderColor: bodyStyle?.tooltipBorderColor || bodyStyle?.tooltipBgColor || '#000',

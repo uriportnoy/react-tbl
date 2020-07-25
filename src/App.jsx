@@ -27,15 +27,15 @@ const App = () => {
         isLoading = {isLoading}
         //CustomLoader = {() => <Loader color='green'/>}
         style = {{
-          //maxWidth: '250px',
-         // maxHeight: '120px',
-          //minHeight: '40pt',
-          //minWidth: 'auto',
-          fixedHeight: '100px',
-          //rowColor: '#000',
-          //textColor: '#000',
-          //cloumnMinWidth: '100px',
-          //fontFamily: 'arial',
+          // maxWidth: '150px',
+          // minHeight: '400pt',
+          // maxHeight: '50px',
+          // minWidth: 'auto',
+          // rowColor: 'yellow',
+          // textColor: 'red',
+          // cloumnMinWidth: '100px',
+          // fontFamily: 'arial',
+          // overflowX: 'hidden',
           header: {
             //headerColor: '#fff',
             //headerBGColor: '#333',
@@ -43,12 +43,15 @@ const App = () => {
           },
           body:{
             // maxHeight: '150px',
+            // minHeight: '200pt',
+            // fixedHeight: '90px',
             // overflowY: 'scroll',
             // tooltipTextColor: '#555',
             // tooltipBorderColor: 'yellow',
             // tooltipBgColor: 'green'
             // backgroundColor: 'yellow',
             // borderColor: 'yellow'
+            // overflowX: 'hidden'
           },
           pagination: {
             //backgroundColor: '#333',

@@ -66,35 +66,43 @@ const App = () => {
         showPagination = {true}                      // default = true
         showToolTip = {true}                         // default = false
         sortable = {true}                            // default = true
-        isLoading = {true}                           
-        CustomLoader = {Loader}
-        style = {{                                   // [optional] 
-            overflowX: 'auto',
-            minHeight: '120px',
-            maxHeight: '120px',
-            maxWidth: '450px',
-            minWidth: 'auto',
-            fixedHeight: '200px',
-            rowColor: '#000',
-            textColor: '#000',
-            cloumnMinWidth: '100px',
-            fontFamily: 'monospace',
-            header: {
-                headerColor: '#fff',
-                headerBGColor: '#333',
-                fontSize: '11pt'
-            },
-            body:{
-                maxHeight: '100px',
-                overflowX: 'scroll',
-                backgroundColor: '#eee',
-                borderColor: '#333'
-            },
-            pagination: {
-                backgroundColor: '#333',
-                btnColor: '#000',
-                nextButtonText: 'Next >'
-            },
+        isLoading = {true}                           // shows loader           
+        CustomLoader = {Loader}                      // custom loader component [optional]
+        style = {{                                   // custom style [optional]
+           maxWidth: '250px',
+           minHeight: '400pt',
+           maxHeight: '50px',
+           minWidth: 'auto',
+           rowColor: 'yellow',
+           textColor: 'red',
+           cloumnMinWidth: '100px',
+           fontFamily: 'arial',
+
+          header: {
+            headerColor: '#fff',
+            headerBGColor: '#333',
+            fontSize: '11pt'
+          },
+
+          body:{
+            maxHeight: '150px',
+            minHeight: '200pt',
+            fixedHeight: '90px',
+            overflowY: 'scroll',
+            overflowX: 'visible',
+            tooltipTextColor: '#555',
+            tooltipBorderColor: 'yellow',
+            tooltipBgColor: 'green'
+            backgroundColor: 'yellow',
+            borderColor: 'yellow',
+          },
+
+          pagination: {
+            backgroundColor: '#333',
+            btnColor: '#000',
+            prevButtonText: null,
+            nextButtonText: 'Next >'
+          },
         }}
     />
 }
@@ -140,7 +148,6 @@ const App = () => {
 |    showPagination       |      true      |
 |    showToolTip          |      false     |   shows tool tip for each cell
 |    style                |        V       |
-|    overflowX            |      auto      |
 |    isLoading            |                |   shows loader when is loading = true
 |    CustomLoader         |                |
 
@@ -153,24 +160,28 @@ const App = () => {
 |     maxWidth      |     80vw      | 
 |     maxHeight     |     auto      |  
 |     minWidth      |     auto      |  
-|    fixedHeight    |     auto      |  
 |     rowColor      |   #ccc/#eee   |  
 |    textColor      |     #000      |  
-|  cloumnMinWidth   |     100px     |   
+|  cloumnMinWidth   |     100px     |  
 |     overflowX     |     auto      |
 |    fontFamily     |   monospace   |
 
 ## Header, Body, Pagination
 
-|    Header      |    Default    |         Body         |  Default  |    Pagination     |   Default     |
-| :-----------:  | :-----------: |  :----------------:  | :-------: | :--------------:  | :-----------: |
-|  headerColor   |      #fff     |       maxHeight      |   650px   |                   |               | 
-|  headerBGColor |      #333     |       overflowY      |   scroll  |  backgroundColor  |    #333       |
-|    fontSize    |      12pt     |   tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
-|                |               |   tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  
-|                |               |    tooltipBgColor    |   #000    |  nextButtonText   |    Next       |             
-|                |               |    backgroundColor   |  '#333'   |                   |               |
-|                |               |    borderColor       |  '#333'   |                   |               |
+|    Header      |    Default    |         Body          |  Default  |    Pagination     |   Default     |
+| :-----------:  | :-----------: |  :----------------:   | :-------: | :--------------:  | :-----------: |
+|  headerColor   |      #fff     |    maxHeight          |   650px   |                   |               | 
+|  headerBGColor |      #333     |    overflowY          |   scroll  |  backgroundColor  |    #333       |
+|                |               |    overflowX          |  visible  |                   |               |
+|    fontSize    |      12pt     |    tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
+|                |               |    tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  
+|                |               |    tooltipBgColor     |   #000    |  nextButtonText   |    Next       |             
+|                |               |    backgroundColor    |  '#333'   |                   |               |
+|                |               |    borderColor        |  '#333'   |                   |               |
+|                |               |    fixedHeight        |   auto    |                   |               |  
+|                |               |    minHeight          |   auto    |                   |               |
+
+
 ## User table custom STYLE 
 ```js
 {
