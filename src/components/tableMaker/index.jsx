@@ -43,7 +43,7 @@ const ReactTBL = props => {
       tooltipTextColor: bodyStyle?.tooltipTextColor || '#fff',
       tooltipBgColor: bodyStyle?.tooltipBgColor  || '#000',
       tooltipBorderColor: bodyStyle?.tooltipBorderColor || bodyStyle?.tooltipBgColor || '#000',
-      backgroundColor: bodyStyle?.backgroundColor || headerStyle?.headerBGColor  || '#eee',
+      backgroundColor: bodyStyle?.backgroundColor || '#eee',
       borderColor: bodyStyle?.borderColor || '#333'
     },
     pagination:{
