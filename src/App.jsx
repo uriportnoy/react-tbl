@@ -44,8 +44,8 @@ const App = () => {
           body:{
             // maxHeight: '150px',
             // minHeight: '200pt',
-            // fixedHeight: '90px',
-            // overflowY: 'scroll',
+             fixedHeight: '50px',
+            // overflowY: 'overlay',
             // tooltipTextColor: '#555',
             // tooltipBorderColor: 'yellow',
             // tooltipBgColor: 'green'

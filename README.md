@@ -171,7 +171,7 @@ const App = () => {
 |    Header      |    Default    |         Body          |  Default  |    Pagination     |   Default     |
 | :-----------:  | :-----------: |  :----------------:   | :-------: | :--------------:  | :-----------: |
 |  headerColor   |      #fff     |    maxHeight          |   650px   |                   |               | 
-|  headerBGColor |      #333     |    overflowY          |   scroll  |  backgroundColor  |    #333       |
+|  headerBGColor |      #333     |    overflowY          |  overlay  |  backgroundColor  |    #333       |
 |                |               |    overflowX          |  visible  |                   |               |
 |    fontSize    |      12pt     |    tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
 |                |               |    tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  

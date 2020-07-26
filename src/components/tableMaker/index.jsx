@@ -38,7 +38,7 @@ const ReactTBL = props => {
       minHeight: bodyStyle?.minHeight || 'auto',
       fixedHeight: bodyStyle?.fixedHeight || 'auto',
       maxWidth: bodyStyle?.maxWidth || 'auto',
-      overflowY: bodyStyle?.overflowY || 'visible',
+      overflowY: bodyStyle?.overflowY || 'overlay',
       overflowX: bodyStyle?.overflowX || 'visible',
       tooltipTextColor: bodyStyle?.tooltipTextColor || '#fff',
       tooltipBgColor: bodyStyle?.tooltipBgColor  || '#000',
