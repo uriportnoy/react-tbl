@@ -32,7 +32,7 @@ export const TD = styled.td`
     min-width: ${props => props.cloumnMinWidth};
     cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'auto'};
 
-    .defaultCell{
+    .cellWrapper{
       text-overflow: ellipsis;
       overflow: hidden;
     }
@@ -72,7 +72,7 @@ export const ToolTip = styled.span`
       position: absolute;
       top: 100%;
       left: 50%;
-      margin-left: -5px;
+      margin-bottom: 1%;
       border-width: 5px;
       border-style: solid;
       border-color: ${props => props.borderColor} transparent transparent transparent;

@@ -30,21 +30,23 @@ const TableMaker = ({
     useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
 
     const handlePages = () => {
-        if (page === 0) {
-            const pageData = data.slice(0, defaultPageSize);  //_.slice(data, [0], [defaultPageSize]);
-            setCurrentDataPage(pageData);
-        } else {
-            const startChunk = page * defaultPageSize ;
-            const endChunk = startChunk + defaultPageSize;
-            const pageData = data.slice(startChunk,endChunk);  //_.slice(data, [startChunk], [endChunk]);
-            setCurrentDataPage(pageData);
-        }
-        // handle pages 
-        const maxPage = Math.ceil(data?.length / defaultPageSize);
-        if(Number.isInteger(maxPage)){
-            setTotalPages(maxPage);
-            setNextDisabled(page + 1 >= maxPage);
-            setPrevDisabled(page === 0);
+        if(data && Array.isArray(data) && data.length > 0){
+            if (page === 0) {
+                const pageData = data?.slice(0, defaultPageSize);  //_.slice(data, [0], [defaultPageSize]);
+                setCurrentDataPage(pageData);
+            } else {
+                const startChunk = page * defaultPageSize ;
+                const endChunk = startChunk + defaultPageSize;
+                const pageData = data?.slice(startChunk,endChunk);  //_.slice(data, [startChunk], [endChunk]);
+                setCurrentDataPage(pageData);
+            }
+            // handle pages 
+            const maxPage = Math.ceil(data?.length / defaultPageSize);
+            if(Number.isInteger(maxPage)){
+                setTotalPages(maxPage);
+                setNextDisabled(page + 1 >= maxPage);
+                setPrevDisabled(page === 0);
+            }
         }
     }
 

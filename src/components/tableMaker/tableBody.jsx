@@ -61,10 +61,10 @@ const TableBody = ({
               borderColor = {borderColor}
             >
               
-                <>{CustomCell ?  <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> :
-                <div className='defaultCell' id="defaultCell">
-                  {currentValue}
-                </div>}
+                <>
+                <div className='cellWrapper' id="cellWrapper">
+                  {CustomCell ? <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> : currentValue}
+                </div>
                 {(showToolTip || col.showToolTip) && <ToolTip
                   bgColor = {tooltipBgColor}
                   textColor = {tooltipTextColor || textColor}
