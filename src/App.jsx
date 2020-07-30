@@ -21,7 +21,7 @@ const App = () => {
       <ReactTBL
         data = {currentData}
         columns = {columns || []}
-        defaultPageSize = {3}
+        defaultPageSize = {7}
         sortable = {true}
         copyCellDataOnClick = {true}
         isLoading = {isLoading}
@@ -29,7 +29,7 @@ const App = () => {
         style = {{
           // maxWidth: '150px',
           // minHeight: '400pt',
-          // maxHeight: '50px',
+           maxHeight: '150px',
           // minWidth: 'auto',
           // rowColor: 'yellow',
           // textColor: 'red',
@@ -48,10 +48,11 @@ const App = () => {
             // overflowY: 'overlay',
             // tooltipTextColor: '#555',
             // tooltipBorderColor: 'yellow',
-            // tooltipBgColor: 'green'
+            // tooltipBgColor: 'green',
             // backgroundColor: 'yellow',
-            // borderColor: 'yellow'
-            // overflowX: 'hidden'
+            // borderColor: 'yellow',
+            // overflowX: 'hidden',
+            // cellPadding: '2pt'
           },
           pagination: {
             //backgroundColor: '#333',

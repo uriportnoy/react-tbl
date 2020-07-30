@@ -48,6 +48,9 @@ const Thead = styled.thead`
     width: 100%;
     table-layout: fixed; 
     background: ${props => props.backgroundColor};
+    position: sticky;
+    top: 0;
+    z-index: 99;
     tr{
         color: ${props => props.color};
         width: 100%;
@@ -61,7 +64,6 @@ Thead.propTypes = {
 }
 const TH = styled.th`
     border: 1pt #000 solid;
-    text-shadow: 0px 2px 0px #000000;
     user-select: none;
     text-align: center;
     font-size: ${props => props.fontSize};

@@ -105,7 +105,6 @@ export const TblWrapper = styled.div`
     flex: 1 1 auto;
     overflow-x: ${props => props.overflowX};
     max-width: ${props => props.maxWidth};
-    max-height: ${props => props.maxHeight};
 
     *{
         font-family: ${props => props.fontFamily}; 
@@ -122,9 +121,11 @@ export const TblWrapper = styled.div`
             }
     table{
         background-color: transparent;
-        border-radius: 4px;
         border-collapse: collapse;
         width: 100%;
+        max-height: ${props => props.maxHeight};
+        overflow-y: ${props => props.overflowY};
+        display: block;
 
         input{
             border: 0;
@@ -133,15 +134,16 @@ export const TblWrapper = styled.div`
             padding-left: 2%;
         }
         tbody {
-            display: block;
             background: ${props => props.bodyBGColor};
             max-height: ${props => props.bodyMaxHeight}; 
             height: ${props => props.fixedHeight}; 
             min-height: ${props => props.minHeight};
             overflow-y: ${props => props.overflowY};
             overflow-x: ${props => props.bodyOverFlowX};
-
-            &::-webkit-scrollbar-track{}
+            width: 100%;
+            display: block;
+        }
+        &::-webkit-scrollbar-track{}
             &::-webkit-scrollbar
             {
                 width: 10px;
@@ -151,12 +153,6 @@ export const TblWrapper = styled.div`
             {
                 background-color: #000;
             }
-        }
-        thead{
-            display: table;
-            width: 100%;
-            table-layout: fixed; 
-        }
         th{
             padding: 0.3em;
         }

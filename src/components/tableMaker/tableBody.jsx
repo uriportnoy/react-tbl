@@ -9,7 +9,7 @@ const TableBody = ({
 }) => {
   const {
     table:{rowColor,textColor,cloumnMinWidth,showToolTip,fontFamily},
-    body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor,backgroundColor,borderColor},
+    body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor,backgroundColor,borderColor,cellPadding},
     copyCellDataOnClick
   } = useContext(ReactTblContext);
 
@@ -59,8 +59,8 @@ const TableBody = ({
               copyCellDataOnClick={copyDataActive}
               backgroundColor = {backgroundColor}
               borderColor = {borderColor}
+              cellPadding = {cellPadding}
             >
-              
                 <>
                 <div className='cellWrapper' id="cellWrapper">
                   {CustomCell ? <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> : currentValue}

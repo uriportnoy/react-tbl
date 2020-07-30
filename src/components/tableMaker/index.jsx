@@ -24,6 +24,7 @@ const ReactTBL = props => {
         textColor: styleProp?.textColor || '#000',
         cloumnMinWidth: styleProp?.cloumnMinWidth || '120px',
         overflowX: styleProp?.overflowX || 'auto',
+        overflowY: styleProp?.overflowX || 'auto',
         showToolTip: props.showToolTip || false,
         fontFamily: styleProp?.fontFamily || 'monospace',
     },
@@ -38,13 +39,14 @@ const ReactTBL = props => {
       minHeight: bodyStyle?.minHeight || 'auto',
       fixedHeight: bodyStyle?.fixedHeight || 'auto',
       maxWidth: bodyStyle?.maxWidth || 'auto',
-      overflowY: bodyStyle?.overflowY || 'overlay',
+      overflowY: bodyStyle?.overflowY || 'auto',
       overflowX: bodyStyle?.overflowX || 'visible',
-      tooltipTextColor: bodyStyle?.tooltipTextColor || '#fff',
-      tooltipBgColor: bodyStyle?.tooltipBgColor  || '#000',
+      tooltipTextColor: bodyStyle?.tooltipTextColor || '#000',
+      tooltipBgColor: bodyStyle?.tooltipBgColor  || '#f7f7f7',
       tooltipBorderColor: bodyStyle?.tooltipBorderColor || bodyStyle?.tooltipBgColor || '#000',
       backgroundColor: bodyStyle?.backgroundColor || '#eee',
-      borderColor: bodyStyle?.borderColor || '#333'
+      borderColor: bodyStyle?.borderColor || '#ccc',
+      cellPadding: bodyStyle?.cellPadding || '4pt',
     },
     pagination:{
         isVisible: props?.showPagination ?? true,
@@ -82,9 +84,7 @@ const ReactTblStyled = styled.div`
     min-height: ${props => props.minHeight};
     display: flex;
     flex-direction: column;
-    border: 2px solid;
     box-sizing: border-box;
-
 `;
 export default ReactTBL;
  

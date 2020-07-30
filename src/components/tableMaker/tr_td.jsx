@@ -3,7 +3,7 @@ import {number,string} from 'prop-types';
 
 export const TR = styled.tr`
     animation: fadeIn ${props => (props.idx < 10) ? ('0.' + props.idx) : '1'}s;
-    background-color: ${props => props?.rowColor || (props.idx % 2 === 0 ? '#ccc' : '#eee')};
+    background-color: ${props => props?.rowColor || (props.idx % 2 === 0 ? '#f7f7f7' : '#eee')};
     transition: .7s all;
     width: 100%;
     display: flex;  
@@ -27,7 +27,7 @@ export const TD = styled.td`
     box-sizing: border-box;
     transition: .7s all;
     text-align: center;
-    padding: 2pt;
+    padding: ${props => props.cellPadding};
     color: ${props => props.textColor};
     min-width: ${props => props.cloumnMinWidth};
     cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'auto'};

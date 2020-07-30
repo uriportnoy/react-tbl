@@ -160,27 +160,28 @@ const App = () => {
 |     maxWidth      |     80vw      | 
 |     maxHeight     |     auto      |  
 |     minWidth      |     auto      |  
-|     rowColor      |   #ccc/#eee   |  
+|     rowColor      | #f7f7f7/#eee  |  
 |    textColor      |     #000      |  
 |  cloumnMinWidth   |     100px     |  
 |     overflowX     |     auto      |
+|    overflowY      |     auto      |
 |    fontFamily     |   monospace   |
 
 ## Header, Body, Pagination
 
-|    Header      |    Default    |         Body          |  Default  |    Pagination     |   Default     |
-| :-----------:  | :-----------: |  :----------------:   | :-------: | :--------------:  | :-----------: |
-|  headerColor   |      #fff     |    maxHeight          |   650px   |                   |               | 
-|  headerBGColor |      #333     |    overflowY          |  overlay  |  backgroundColor  |    #333       |
-|                |               |    overflowX          |  visible  |                   |               |
-|    fontSize    |      12pt     |    tooltipTextColor   |   #fff    |  btnColor         |    #000       |  
-|                |               |    tooltipBorderColor |   #000    |  prevButtonText   |   Previous    |  
-|                |               |    tooltipBgColor     |   #000    |  nextButtonText   |    Next       |             
-|                |               |    backgroundColor    |  '#333'   |                   |               |
-|                |               |    borderColor        |  '#333'   |                   |               |
-|                |               |    fixedHeight        |   auto    |                   |               |  
-|                |               |    minHeight          |   auto    |                   |               |
-
+|    Header      |    Default    |         Body          |  Default |     Pagination    |   Default     |
+| :-----------:  | :-----------: |  :----------------:   |:--------:| :--------------:  | :-----------: |
+|  headerColor   |      #fff     |    maxHeight          |  650px   |                   |               | 
+|  headerBGColor |      #333     |    overflowY          |  auto    |  backgroundColor  |   #333        |
+|                |               |    overflowX          |  visible |                   |               |
+|    fontSize    |      12pt     |    tooltipTextColor   |  #000    |  btnColor         |   #000        |  
+|                |               |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
+|                |               |    tooltipBgColor     |  #f7f7f7 |  nextButtonText   |   Next        |             
+|                |               |    backgroundColor    |  #333'   |                   |               |
+|                |               |    borderColor        |  #eaeaeb'|                   |               |
+|                |               |    fixedHeight        |  auto    |                   |               |  
+|                |               |    minHeight          |  auto    |                   |               |
+|                |               |    cellPadding        |  4pt     |                   |               |
 
 ## User table custom STYLE 
 ```js
