@@ -29,7 +29,7 @@ const App = () => {
         style = {{
           // maxWidth: '150px',
           // minHeight: '400pt',
-           maxHeight: '150px',
+          // maxHeight: '150px',
           // minWidth: 'auto',
           // rowColor: 'yellow',
           // textColor: 'red',
@@ -42,16 +42,14 @@ const App = () => {
             //fontSize: '11pt'
           },
           body:{
-            // maxHeight: '150px',
+            // maxHeight: '100px',
             // minHeight: '200pt',
             // fixedHeight: '50px',
-            // overflowY: 'overlay',
             // tooltipTextColor: '#555',
             // tooltipBorderColor: 'yellow',
             // tooltipBgColor: 'green',
             // backgroundColor: 'yellow',
             // borderColor: 'yellow',
-            // overflowX: 'hidden',
             // cellPadding: '2pt'
           },
           pagination: {

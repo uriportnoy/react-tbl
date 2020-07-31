@@ -88,8 +88,6 @@ const App = () => {
             maxHeight: '150px',
             minHeight: '200pt',
             fixedHeight: '90px',
-            overflowY: 'scroll',
-            overflowX: 'visible',
             tooltipTextColor: '#555',
             tooltipBorderColor: 'yellow',
             tooltipBgColor: 'green'
@@ -156,7 +154,7 @@ const App = () => {
 
 |      General      |    Default    | 
 | :---------------: |:-------------:| 
-|     minHeight     |     auto      | 
+|     minHeight     |     100px     | 
 |     maxWidth      |     80vw      | 
 |     maxHeight     |     auto      |  
 |     minWidth      |     auto      |  
@@ -171,17 +169,15 @@ const App = () => {
 
 |    Header      |    Default    |         Body          |  Default |     Pagination    |   Default     |
 | :-----------:  | :-----------: |  :----------------:   |:--------:| :--------------:  | :-----------: |
-|  headerColor   |      #fff     |    maxHeight          |  650px   |                   |               | 
-|  headerBGColor |      #333     |    overflowY          |  auto    |  backgroundColor  |   #333        |
-|                |               |    overflowX          |  visible |                   |               |
+|  headerColor   |      #fff     |    maxHeight          |  200px   |                   |               | 
+|  headerBGColor |      #333     |    minHeight          |  120px   |  backgroundColor  |   #333        |
+|                |               |    cellPadding        |  4pt     |                   |               |
 |    fontSize    |      12pt     |    tooltipTextColor   |  #000    |  btnColor         |   #000        |  
 |                |               |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
 |                |               |    tooltipBgColor     |  #f7f7f7 |  nextButtonText   |   Next        |             
 |                |               |    backgroundColor    |  #333'   |                   |               |
 |                |               |    borderColor        |  #eaeaeb'|                   |               |
 |                |               |    fixedHeight        |  auto    |                   |               |  
-|                |               |    minHeight          |  auto    |                   |               |
-|                |               |    cellPadding        |  4pt     |                   |               |
 
 ## User table custom STYLE 
 ```js
@@ -203,7 +199,6 @@ const App = () => {
     },
     body:{
         maxHeight: 'auto',
-        overflowY: 'scroll',
         tooltipTextColor: '#555',
         tooltipBorderColor: 'yellow',
         tooltipBgColor: 'green'

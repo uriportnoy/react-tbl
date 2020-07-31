@@ -59,15 +59,15 @@ const TableMaker = ({
         setCurrentDataPage(sortedData);
     }
 
-const Loading = () => <EmptyTable><tr><td>{
+const Loading = () => <EmptyTable minHeight={minHeight}><tr><td>{
     CustomLoader ? <CustomLoader /> : <Loader color={backgroundColor}/>
-}</td></tr></EmptyTable>;
+}</td></tr></EmptyTable >;
 
-const EmptyData = () => <EmptyTable><tr><td>No Data...</td></tr></EmptyTable>;
+const EmptyData = () => <EmptyTable minHeight={minHeight}><tr><td>No Data...</td></tr></EmptyTable>;
 
     return <>
         <TblWrapper
-            maxHeight = {table?.maxHeight}
+            tableMaxHeight = {table?.maxHeight}
             fixedHeight = {fixedHeight}
             backgroundColor = {backgroundColor}
             minHeight = {minHeight}
@@ -78,6 +78,7 @@ const EmptyData = () => <EmptyTable><tr><td>No Data...</td></tr></EmptyTable>;
             overflowX = {table?.overflowX}
             bodyBGColor = {bodyBGColor}
             bodyOverFlowX = {bodyOverFlowX}
+            tableMinHeight = {table.minHeight}
         >
         <table>
             <TableHead columns={columns} sortArray={sortArray}/>
@@ -123,7 +124,8 @@ export const TblWrapper = styled.div`
         background-color: transparent;
         border-collapse: collapse;
         width: 100%;
-        max-height: ${props => props.maxHeight};
+        max-height: ${props => props.tableMaxHeight};
+        min-height: ${props => props.tableMinHeight};
         overflow-y: ${props => props.overflowY};
         display: block;
 
@@ -138,8 +140,6 @@ export const TblWrapper = styled.div`
             max-height: ${props => props.bodyMaxHeight}; 
             height: ${props => props.fixedHeight}; 
             min-height: ${props => props.minHeight};
-            overflow-y: ${props => props.overflowY};
-            overflow-x: ${props => props.bodyOverFlowX};
             width: 100%;
             display: block;
         }
@@ -160,21 +160,17 @@ export const TblWrapper = styled.div`
 `;
 
 const EmptyTable = styled.tbody`
-    background-color: rgba(111,111,111,0.5);
-    color:#fff;
+    color: #000;
     font-weight: bold;
     display: grid !important;
     align-items: center;
-    
+    min-height: ${props => props.minHeight};
     tr{
         display: grid;
         align-items: center;
         height: 100%;
         font-size: 15pt;
         text-align: center;
-    }
-    svg{
-        cursor:pointer;
     }
 `;
 
