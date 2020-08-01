@@ -1,6 +1,6 @@
 {
   "name": "react-tbl",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "npm_publish": "del -f dist && mkdir dist && SET NODE_ENV=production&& babel ./src/components/tableMaker/* -d dist --copy-files&& npm publish"
+    "npm_publish": "RMDIR dist /S /Q  && mkdir dist && SET NODE_ENV=production&& babel ./src/components/tableMaker/* -d dist --copy-files&& npm publish"
   },
   "eslintConfig": {
     "extends": "react-app"

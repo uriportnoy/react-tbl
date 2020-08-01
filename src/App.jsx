@@ -25,6 +25,7 @@ const App = () => {
         sortable = {true}
         copyCellDataOnClick = {true}
         isLoading = {isLoading}
+        columnsResize = {true}
         //CustomLoader = {() => <Loader color='green'/>}
         style = {{
           // maxWidth: '150px',
@@ -38,7 +39,7 @@ const App = () => {
           // overflowX: 'hidden',
           header: {
             //headerColor: '#fff',
-            //headerBGColor: '#333',
+            headerBGColor: '#620e62',
             //fontSize: '11pt'
           },
           body:{
@@ -53,8 +54,10 @@ const App = () => {
             // cellPadding: '2pt'
           },
           pagination: {
-            //backgroundColor: '#333',
-            //btnColor: '#000',
+            backgroundColor: '#620e62',
+            btnsBGColor: '#ccc',
+            //color: 'yellow',
+            btnsColor: '#000',
             //prevButtonText: null,
             //nextButtonText: 'Next >'
           },

@@ -60,7 +60,7 @@ const TableBody = ({
               backgroundColor = {backgroundColor}
               borderColor = {borderColor}
               cellPadding = {cellPadding}
-            >
+            > 
                 <>
                 <div className='cellWrapper' id="cellWrapper">
                   {CustomCell ? <CustomCell dataRow={dataRow} currentKey={key} currentValue={currentValue}/> : currentValue}

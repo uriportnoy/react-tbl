@@ -12,7 +12,9 @@ return <PaginationStyle
         nextDisabled = {nextDisabled}
         prevDisabled = {prevDisabled}
         fontFamily = {fontFamily}
-        btnColor = {pagination?.btnColor}
+        color = {pagination?.color}
+        btnsColor = {pagination?.btnsColor}
+        btnsBGColor = {pagination?.btnsBGColor}
         backgroundColor = {pagination?.backgroundColor}
     >
         <span className='btn prev' onClick = {() => prevDisabled ? null : setPage(page - 1)}>{pagination?.prevButtonText}</span>
@@ -33,11 +35,11 @@ const PaginationStyle = styled.div`
     *{
         user-select:none;
         font-family: ${props => props.fontFamily};
+        color: ${props => props.color};
     }
     .label{
         width: 30%;
         text-align: center;
-        color: #fff;
     }
     .btn{
         width: 120px;
@@ -45,7 +47,7 @@ const PaginationStyle = styled.div`
         transition: .3s all;
         display: flex;
         position : relative;
-        color: #fff;  
+        color: ${props => props.btnsColor};;  
         align-items: center;
         justify-content: center;
         padding: 3pt;
@@ -55,12 +57,12 @@ const PaginationStyle = styled.div`
         border-radius: 3pt;
         flex-grow: 1;
         &.next{
-            background: ${props => props.nextDisabled ? '#ccc' : props.btnColor};
+            background: ${props => props.nextDisabled ? '#ccc' : props.btnsBGColor};
             opacity: ${props => props.nextDisabled ? '0.4' :'1'};
             cursor: ${props => props.nextDisabled ? 'not-allowed' :'pointer'};
         }
         &.prev{
-            background: ${props => props.prevDisabled ? '#ccc' : props.btnColor};
+            background: ${props => props.prevDisabled ? '#ccc' : props.btnsBGColor};
             opacity: ${props => props.prevDisabled ? '0.4' :'1'};
             cursor: ${props => props.prevDisabled ? 'not-allowed' :'pointer'};
         }

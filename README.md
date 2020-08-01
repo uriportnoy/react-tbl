@@ -96,8 +96,9 @@ const App = () => {
           },
 
           pagination: {
+            color: '#fff',
             backgroundColor: '#333',
-            btnColor: '#000',
+            btnsBGColor: '#000',
             prevButtonText: null,
             nextButtonText: 'Next >'
           },
@@ -154,14 +155,14 @@ const App = () => {
 
 |      General      |    Default    | 
 | :---------------: |:-------------:| 
-|     minHeight     |     100px     | 
-|     maxWidth      |     80vw      | 
-|     maxHeight     |     auto      |  
-|     minWidth      |     auto      |  
-|     rowColor      | #f7f7f7/#eee  |  
+|    minHeight      |     100px     | 
+|    maxWidth       |     80vw      | 
+|    maxHeight      |     auto      |  
+|    minWidth       |     auto      |  
+|    rowColor       | #f7f7f7/#eee  |  
 |    textColor      |     #000      |  
-|  cloumnMinWidth   |     100px     |  
-|     overflowX     |     auto      |
+|    cloumnMinWidth |     100px     |  
+|    overflowX      |     auto      |
 |    overflowY      |     auto      |
 |    fontFamily     |   monospace   |
 
@@ -169,10 +170,10 @@ const App = () => {
 
 |    Header      |    Default    |         Body          |  Default |     Pagination    |   Default     |
 | :-----------:  | :-----------: |  :----------------:   |:--------:| :--------------:  | :-----------: |
-|  headerColor   |      #fff     |    maxHeight          |  200px   |                   |               | 
+|  headerColor   |      #fff     |    maxHeight          |  200px   |  color            |   #fff        | 
 |  headerBGColor |      #333     |    minHeight          |  120px   |  backgroundColor  |   #333        |
-|                |               |    cellPadding        |  4pt     |                   |               |
-|    fontSize    |      12pt     |    tooltipTextColor   |  #000    |  btnColor         |   #000        |  
+|                |               |    cellPadding        |  4pt     |  btnsBGColor      |   #333        |
+|    fontSize    |      12pt     |    tooltipTextColor   |  #000    |  btnsColor        |   #fff        |  
 |                |               |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
 |                |               |    tooltipBgColor     |  #f7f7f7 |  nextButtonText   |   Next        |             
 |                |               |    backgroundColor    |  #333'   |                   |               |
@@ -182,20 +183,20 @@ const App = () => {
 ## User table custom STYLE 
 ```js
 {
-    minHeight:      '120px',           // (String) 
-    maxWidth:       '450px',           // (String) 
-    maxHeight:      '120px',           // (String) 
-    minWidth:       '800px',           // (String)
-    fixedHeight:    '200px',           // (String) 
-    rowColor:       '#000' ,           // (String) 
-    textColor:      '#000' ,           // (String) 
-    cloumnMinWidth: '100px',           // (string)
+    minHeight:      '120px',            
+    maxWidth:       '450px',            
+    maxHeight:      '120px',            
+    minWidth:       '800px',           
+    fixedHeight:    '200px',            
+    rowColor:       '#000' ,            
+    textColor:      '#000' ,            
+    cloumnMinWidth: '100px',           
     overflowX: 'auto',
     fontFamily: 'monospace',
     header: {
-        headerColor: '#fff',       // (String) 
-        headerBGColor: '#333',     // (String) 
-        fontSize: '11pt'           // (String) 
+        headerColor: '#fff',       
+        headerBGColor: '#333',     
+        fontSize: '11pt'           
     },
     body:{
         maxHeight: 'auto',
@@ -204,10 +205,12 @@ const App = () => {
         tooltipBgColor: 'green'
     },
     pagination: {
-        backgroundColor: '#333',       // (String) 
-        btnColor: '#000',              // (String) 
-        prevButtonText: null,          // (String) 
-        nextButtonText: 'Next >'       // (String) 
+        color: '#fff',                 
+        backgroundColor: '#333',      
+        btnsBGColor: '#000',          
+        btnsColor: '#fff',            
+        prevButtonText: null,         
+        nextButtonText: 'Next >'      
     },
 }
 ```

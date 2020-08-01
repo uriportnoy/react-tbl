@@ -16,6 +16,7 @@ const ReactTBL = props => {
     copyCellDataOnClick: props.copyCellDataOnClick || null,
     isLoading: props.isLoading || false,
     CustomLoader: props.CustomLoader || null,
+    columnsResize: props.columnsResize || false,
     table:{
         maxWidth: styleProp?.maxWidth,
         minHeight: styleProp?.minHeight || '100px',
@@ -51,7 +52,9 @@ const ReactTBL = props => {
     pagination:{
         isVisible: props?.showPagination ?? true,
         backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor || '#333',
-        btnColor: paginationStyle?.btnColor  || '#333',
+        color: paginationStyle?.color || '#fff',
+        btnsBGColor: paginationStyle?.btnsBGColor  || '#333',
+        btnsColor: paginationStyle?.btnsColor  || '#fff',
         nextButtonText: paginationStyle?.nextButtonText || 'Next',
         prevButtonText: paginationStyle?.prevButtonText  || 'Previous'
     }

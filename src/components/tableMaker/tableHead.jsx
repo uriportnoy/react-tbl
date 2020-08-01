@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
 
 const TableHead = ({columns,sortArray}) => {
-const {tableHeader,table} = useContext(ReactTblContext);
+const {tableHeader,table,columnsResize} = useContext(ReactTblContext);
 const [sortDirections,setSortDirections] = useState(null);
 
 useEffect(() => {
@@ -22,11 +22,10 @@ useEffect(() => {
         color = {tableHeader?.color}
     >
         {
-            columns?.length <= 0 ? <EmptyColumnsTR> Cannot Read Columns </EmptyColumnsTR> : <tr>{
+            columns?.length >= 0 ? <tr>{
                 columns.map((key, index) => (
-                    <TH
-                        key = {index}
-                        size = {key.size || 1}
+                    <THComponent key = {index}
+                        width = {key.size || 1}
                         fontSize = {tableHeader?.fontSize}
                         cloumnMinWidth = {table?.cloumnMinWidth}
                         sortDirection = {sortDirections?.[key.colKey]}
@@ -34,14 +33,27 @@ useEffect(() => {
                             sortArray(key.colKey,!sortDirections[key.colKey]);
                             setSortDirections({...sortDirections,[key.colKey]: !sortDirections[key.colKey]});
                         }}
-                    >
-                        {key.header || key.colKey}
-                    </TH>
+                        header = {key.header || key.colKey}
+                    />
                 ))}
-            </tr>
+            </tr> : <EmptyColumnsTR> Cannot Read Columns </EmptyColumnsTR> 
         }
     </Thead>
   )
+}
+
+const THComponent = ({header,width,fontSize,cloumnMinWidth,sortDirection,onClick}) => {
+    const [size,setSize] = useState(width);
+
+    return <TH
+        size = {size}
+        fontSize = {fontSize}
+        cloumnMinWidth = {cloumnMinWidth}
+        sortDirection = {sortDirection}
+        onClick = {onClick}
+    >
+        {header}
+    </TH>
 }
 const Thead = styled.thead`
     display: table;
