@@ -47,7 +47,7 @@ const PaginationStyle = styled.div`
         transition: .3s all;
         display: flex;
         position : relative;
-        color: ${props => props.btnsColor};;  
+        color: ${props => props.btnsColor};  
         align-items: center;
         justify-content: center;
         padding: 3pt;
@@ -67,7 +67,7 @@ const PaginationStyle = styled.div`
             cursor: ${props => props.prevDisabled ? 'not-allowed' :'pointer'};
         }
         &:hover{
-            background: rgba(000,000,000,0.7);
+            filter: brightness(85%);
         }
     }
 `;
