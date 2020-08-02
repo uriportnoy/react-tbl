@@ -40,7 +40,8 @@ const App = () => {
           header: {
             //headerColor: '#fff',
             headerBGColor: '#620e62',
-            //fontSize: '11pt'
+            //fontSize: '11pt',
+            borderColor: '#ccc',
           },
           body:{
             // maxHeight: '100px',
@@ -58,6 +59,7 @@ const App = () => {
             btnsBGColor: '#ccc',
             //color: 'yellow',
             btnsColor: '#000',
+            borderColor: '#000',
             //prevButtonText: null,
             //nextButtonText: 'Next >'
           },

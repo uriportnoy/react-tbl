@@ -15,6 +15,7 @@ return <PaginationStyle
         color = {pagination?.color}
         btnsColor = {pagination?.btnsColor}
         btnsBGColor = {pagination?.btnsBGColor}
+        borderColor = {pagination?.borderColor}
         backgroundColor = {pagination?.backgroundColor}
     >
         <span className='btn prev' onClick = {() => prevDisabled ? null : setPage(page - 1)}>{pagination?.prevButtonText}</span>
@@ -32,6 +33,7 @@ const PaginationStyle = styled.div`
     padding: 4pt;
     z-index: 10;
     box-sizing: border-box;
+    border: 1px solid ${props => props.borderColor};
     *{
         user-select:none;
         font-family: ${props => props.fontFamily};

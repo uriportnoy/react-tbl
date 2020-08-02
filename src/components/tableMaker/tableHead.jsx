@@ -29,6 +29,7 @@ useEffect(() => {
                         fontSize = {tableHeader?.fontSize}
                         cloumnMinWidth = {table?.cloumnMinWidth}
                         sortDirection = {sortDirections?.[key.colKey]}
+                        borderColor = {tableHeader?.borderColor}
                         onClick = {(!tableHeader.sortable || key.sortable === false) ? null : () => {  
                             sortArray(key.colKey,!sortDirections[key.colKey]);
                             setSortDirections({...sortDirections,[key.colKey]: !sortDirections[key.colKey]});
@@ -42,7 +43,7 @@ useEffect(() => {
   )
 }
 
-const THComponent = ({header,width,fontSize,cloumnMinWidth,sortDirection,onClick}) => {
+const THComponent = ({header,width,borderColor,fontSize,cloumnMinWidth,sortDirection,onClick}) => {
     const [size,setSize] = useState(width);
 
     return <TH
@@ -50,6 +51,7 @@ const THComponent = ({header,width,fontSize,cloumnMinWidth,sortDirection,onClick
         fontSize = {fontSize}
         cloumnMinWidth = {cloumnMinWidth}
         sortDirection = {sortDirection}
+        borderColor={borderColor}
         onClick = {onClick}
     >
         {header}
@@ -75,7 +77,7 @@ Thead.propTypes = {
     color: PropTypes.string
 }
 const TH = styled.th`
-    border: 1pt #000 solid;
+    border: 1pt ${props => props.borderColor} solid;
     user-select: none;
     text-align: center;
     font-size: ${props => props.fontSize};

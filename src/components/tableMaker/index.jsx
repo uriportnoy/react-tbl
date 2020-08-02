@@ -33,6 +33,7 @@ const ReactTBL = props => {
         backgroundColor: headerStyle?.headerBGColor  || '#333',
         color: headerStyle?.headerColor || '#fff',
         fontSize: headerStyle?.fontSize || '12pt',
+        borderColor: headerStyle?.borderColor || '#000',
         sortable: props?.sortable ?? true
     },
     body:{
@@ -52,6 +53,7 @@ const ReactTBL = props => {
     pagination:{
         isVisible: props?.showPagination ?? true,
         backgroundColor: paginationStyle?.backgroundColor || headerStyle?.headerColor || '#333',
+        borderColor: paginationStyle?.borderColor || '#000',
         color: paginationStyle?.color || '#fff',
         btnsBGColor: paginationStyle?.btnsBGColor  || '#333',
         btnsColor: paginationStyle?.btnsColor  || '#fff',

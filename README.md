@@ -81,7 +81,8 @@ const App = () => {
           header: {
             headerColor: '#fff',
             headerBGColor: '#333',
-            fontSize: '11pt'
+            fontSize: '11pt',
+            borderColor: '#000',
           },
 
           body:{
@@ -97,6 +98,7 @@ const App = () => {
 
           pagination: {
             color: '#fff',
+            borderColor: '#000',
             backgroundColor: '#333',
             btnsBGColor: '#000',
             prevButtonText: null,
@@ -172,11 +174,11 @@ const App = () => {
 | :-----------:  | :-----------: |  :----------------:   |:--------:| :--------------:  | :-----------: |
 |  headerColor   |      #fff     |    maxHeight          |  200px   |  color            |   #fff        | 
 |  headerBGColor |      #333     |    minHeight          |  120px   |  backgroundColor  |   #333        |
-|                |               |    cellPadding        |  4pt     |  btnsBGColor      |   #333        |
-|    fontSize    |      12pt     |    tooltipTextColor   |  #000    |  btnsColor        |   #fff        |  
+|  borderColor   |      #000     |    cellPadding        |  4pt     |  btnsBGColor      |   #333        |
+|  fontSize      |      12pt     |    tooltipTextColor   |  #000    |  btnsColor        |   #fff        |  
 |                |               |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
 |                |               |    tooltipBgColor     |  #f7f7f7 |  nextButtonText   |   Next        |             
-|                |               |    backgroundColor    |  #333'   |                   |               |
+|                |               |    backgroundColor    |  #333'   |  borderColor      |  #000         |
 |                |               |    borderColor        |  #eaeaeb'|                   |               |
 |                |               |    fixedHeight        |  auto    |                   |               |  
 
@@ -196,7 +198,8 @@ const App = () => {
     header: {
         headerColor: '#fff',       
         headerBGColor: '#333',     
-        fontSize: '11pt'           
+        fontSize: '11pt'        ,
+        borderColor: '#333   
     },
     body:{
         maxHeight: 'auto',
@@ -206,7 +209,8 @@ const App = () => {
     },
     pagination: {
         color: '#fff',                 
-        backgroundColor: '#333',      
+        backgroundColor: '#333',   
+        borderColor: '#000',   
         btnsBGColor: '#000',          
         btnsColor: '#fff',            
         prevButtonText: null,         
