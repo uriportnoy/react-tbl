@@ -83,6 +83,7 @@ const App = () => {
             headerBGColor: '#333',
             fontSize: '11pt',
             borderColor: '#000',
+            sortSign: '^',
           },
 
           body:{
@@ -176,10 +177,10 @@ const App = () => {
 |  headerBGColor |      #333     |    minHeight          |  120px   |  backgroundColor  |   #333        |
 |  borderColor   |      #000     |    cellPadding        |  4pt     |  btnsBGColor      |   #333        |
 |  fontSize      |      12pt     |    tooltipTextColor   |  #000    |  btnsColor        |   #fff        |  
-|                |               |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
+|  sortSign      |       ⬆       |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
 |                |               |    tooltipBgColor     |  #f7f7f7 |  nextButtonText   |   Next        |             
-|                |               |    backgroundColor    |  #333'   |  borderColor      |  #000         |
-|                |               |    borderColor        |  #eaeaeb'|                   |               |
+|                |               |    backgroundColor    |  #333    |  borderColor      |   #000        |
+|                |               |    borderColor        |  #eaeaeb |                   |               |
 |                |               |    fixedHeight        |  auto    |                   |               |  
 
 ## User table custom STYLE 
@@ -198,8 +199,9 @@ const App = () => {
     header: {
         headerColor: '#fff',       
         headerBGColor: '#333',     
-        fontSize: '11pt'        ,
-        borderColor: '#333   
+        fontSize: '11pt',
+        borderColor: '#333',
+        sortSign: '^'
     },
     body:{
         maxHeight: 'auto',

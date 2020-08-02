@@ -29,6 +29,7 @@ useEffect(() => {
                         fontSize = {tableHeader?.fontSize}
                         cloumnMinWidth = {table?.cloumnMinWidth}
                         sortDirection = {sortDirections?.[key.colKey]}
+                        sortSign = {tableHeader.sortSign}
                         borderColor = {tableHeader?.borderColor}
                         onClick = {(!tableHeader.sortable || key.sortable === false) ? null : () => {  
                             sortArray(key.colKey,!sortDirections[key.colKey]);
@@ -43,7 +44,16 @@ useEffect(() => {
   )
 }
 
-const THComponent = ({header,width,borderColor,fontSize,cloumnMinWidth,sortDirection,onClick}) => {
+const THComponent = ({
+    header,
+    width,
+    borderColor,
+    sortSign,
+    fontSize,
+    cloumnMinWidth,
+    sortDirection,
+    onClick
+}) => {
     const [size,setSize] = useState(width);
 
     return <TH
@@ -53,6 +63,7 @@ const THComponent = ({header,width,borderColor,fontSize,cloumnMinWidth,sortDirec
         sortDirection = {sortDirection}
         borderColor={borderColor}
         onClick = {onClick}
+        sortSign = {sortSign}
     >
         {header}
     </TH>
@@ -88,10 +99,12 @@ const TH = styled.th`
     cursor: ${props => (props.sortDirection  === false) || (props.sortDirection) ? 'pointer' : 'auto'};
 
     &::after{
-        content: '${props => props.sortDirection ? '⬆' : props.sortDirection  === false ? '⬇' : ''}';
+        content: '${props => props.sortDirection ? props.sortSign : props.sortDirection  === false ?  props.sortSign: ''}';
+        transform: rotate(${props => props.sortDirection ? 0 : '180deg'});
         position: absolute;
         right: 4%;
         color: #fff;
+        transition: .4s all;
     }
 `;
 TH.propTypes = {
