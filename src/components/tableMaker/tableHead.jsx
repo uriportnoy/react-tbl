@@ -16,8 +16,7 @@ const TableHead = ({columns,sortArray}) => {
             });
             setSortDirections(directions);
         }
-        return () => {
-        }
+        console.log(columns);
     },[]);
 
    return (
@@ -29,7 +28,7 @@ const TableHead = ({columns,sortArray}) => {
             columns?.length <= 0 ? <EmptyColumnsTR> Cannot Read Columns </EmptyColumnsTR> : <tr>{
                 columns.map((key, index) => (
                     <><TH
-                        key = {`th_${key.colKey}`}
+                        key = {`th_${key.colKey}_${index}`}
                         id = {`th_${index}`}
                         size = {key.size || 1}
                         fontSize = {tableHeader?.fontSize}
@@ -37,7 +36,7 @@ const TableHead = ({columns,sortArray}) => {
                         sortDirection = {sortDirections?.[key.colKey]}
                         sortSign = {tableHeader.sortSign}
                         borderColor = {tableHeader?.borderColor}
-                        onClick = {(!tableHeader.sortable || key.sortable === false) ? null : () => {  
+                        onClick = {(!tableHeader.sortable || key.sortable === false) ? null : () => {
                             sortArray(key.colKey,!sortDirections[key.colKey]);
                             setSortDirections({...sortDirections,[key.colKey]: !sortDirections[key.colKey]});
                         }}

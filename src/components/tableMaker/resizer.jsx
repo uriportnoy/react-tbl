@@ -5,8 +5,8 @@ import ReactTblContext from './ReactTblContext';
 
 
 const Resizer = ({id}) => {
-    //const {table:{columnMinWidth}} = useContext(ReactTblContext);
-    const columnMinWidth = 100;
+    const {table} = useContext(ReactTblContext);
+    const columnMinWidth = parseInt(table?.columnMinWidth, 10) || 100;
     let currTh;
     let nextTh;
     let currTds = [];
