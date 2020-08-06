@@ -40,7 +40,7 @@ const PaginationStyle = styled.div`
         color: ${props => props.color};
     }
     .label{
-        width: 30%;
+        flex: 3;
         text-align: center;
     }
     .btn{
@@ -58,6 +58,9 @@ const PaginationStyle = styled.div`
         font-family: ${props => props.fontFamily};
         border-radius: 3pt;
         flex-grow: 1;
+        overflow: hidden;
+        text-align: center;
+
         &.next{
             background: ${props => props.nextDisabled ? '#ccc' : props.btnsBGColor};
             opacity: ${props => props.nextDisabled ? '0.4' :'1'};

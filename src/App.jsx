@@ -3,7 +3,7 @@ import { getColumnsData } from './components/fakeData/getColumns';
 import { getData } from './components/fakeData/getData';
 import ReactTBL from './components/tableMaker/index';
 import './App.css';
-import {Loader} from './components/tableMaker/Loader';
+// import {Loader} from './components/tableMaker/Loader';
 
 const App = () => {
   const [currentData,setCurrentData] = React.useState([]);         // current data based currentShow string
@@ -28,13 +28,13 @@ const App = () => {
         columnsResize = {true}
         //CustomLoader = {() => <Loader color='green'/>}
         style = {{
-          // maxWidth: '150px',
+           maxWidth: '750px',
           // minHeight: '400pt',
           // maxHeight: '150px',
           // minWidth: 'auto',
-          // rowColor: 'yellow',
+          // rowBGColor: 'yellow',
           // textColor: 'red',
-          // cloumnMinWidth: '100px',
+          // columnMinWidth: '100px',
           // fontFamily: 'arial',
           // overflowX: 'hidden',
           header: {
@@ -45,7 +45,9 @@ const App = () => {
             // sortSign: '^',
           },
           body:{
-            // maxHeight: '100px',
+            //fontSize: '20pt',
+
+             maxHeight: '100px',
             // minHeight: '200pt',
             // fixedHeight: '50px',
             // tooltipTextColor: '#555',

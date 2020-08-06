@@ -3,7 +3,7 @@ import {number,string} from 'prop-types';
 
 export const TR = styled.tr`
     animation: fadeIn ${props => (props.idx < 10) ? ('0.' + props.idx) : '1'}s;
-    background-color: ${props => props?.rowColor || (props.idx % 2 === 0 ? '#f7f7f7' : '#eee')};
+    background-color: ${props => props?.rowBGColor || (props.idx % 2 === 0 ? '#f7f7f7' : '#eee')};
     transition: .7s all;
     width: 100%;
     display: flex;  
@@ -15,21 +15,22 @@ export const TR = styled.tr`
 
 TR.propTypes = {
   idx: number,
-  rowColor: string
+  rowBGColor: string
 }
 
 export const TD = styled.td`
-    flex: ${props => props.size} 1 ${props => props.width}px; 
+    flex: ${props => props.size} 1 ${props => props.columnMinWidth}; 
     border: 1pt solid ${props => props.borderColor};
     font-size: 12pt;
     position: relative;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
-    transition: .7s all;
+    //transition: .2s all;
     text-align: center;
     padding: ${props => props.cellPadding};
     color: ${props => props.textColor};
-    min-width: ${props => props.cloumnMinWidth};
+    min-width: ${props => props.columnMinWidth};
+    font-size: ${props => props.fontSize};
     cursor: ${props=> props.copyCellDataOnClick ? 'copy' : 'auto'};
 
     .cellWrapper{
@@ -44,7 +45,7 @@ export const TD = styled.td`
       }
 `;
 TD.propTypes = {
-  width: number.isRequired,
+  width: string.isRequired,
   className: string,
   textColor: string,
   dataTip: string,

@@ -105,7 +105,7 @@ TableMaker.propTypes = {
 export const TblWrapper = styled.div`
     flex: 1 1 auto;
     overflow-x: ${props => props.overflowX};
-    max-width: ${props => props.maxWidth};
+    max-width: auto;
 
     *{
         font-family: ${props => props.fontFamily}; 
@@ -127,7 +127,6 @@ export const TblWrapper = styled.div`
         max-height: ${props => props.tableMaxHeight};
         min-height: ${props => props.tableMinHeight};
         overflow-y: ${props => props.overflowY};
-        display: block;
 
         input{
             border: 0;

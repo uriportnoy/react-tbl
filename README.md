@@ -66,6 +66,7 @@ const App = () => {
         showPagination = {true}                      // default = true
         showToolTip = {true}                         // default = false
         sortable = {true}                            // default = true
+        columnsResize = {true}                       // default = false
         isLoading = {true}                           // shows loader           
         CustomLoader = {Loader}                      // custom loader component [optional]
         style = {{                                   // custom style [optional]
@@ -73,11 +74,11 @@ const App = () => {
            minHeight: '400pt',
            maxHeight: '50px',
            minWidth: 'auto',
-           rowColor: 'yellow',
+           rowBGColor: 'yellow',
            textColor: 'red',
-           cloumnMinWidth: '100px',
+           columnMinWidth: '100px',                     // = 100 px
            fontFamily: 'arial',
-
+           
           header: {
             headerColor: '#fff',
             headerBGColor: '#333',
@@ -95,6 +96,7 @@ const App = () => {
             tooltipBgColor: 'green'
             backgroundColor: 'yellow',
             borderColor: 'yellow',
+            fontSize: '12pt',
           },
 
           pagination: {
@@ -149,10 +151,10 @@ const App = () => {
 |    copyCellDataOnClick  |      false     |
 |    showPagination       |      true      |
 |    showToolTip          |      false     |   shows tool tip for each cell
-|    style                |        V       |
+|    style                |                |
 |    isLoading            |                |   shows loader when is loading = true
-|    CustomLoader         |                |
-
+|    CustomLoader         |                |   custom loader component
+|    columnsResize        |     false      |
 
 ## Table style
 
@@ -162,9 +164,9 @@ const App = () => {
 |    maxWidth       |     80vw      | 
 |    maxHeight      |     auto      |  
 |    minWidth       |     auto      |  
-|    rowColor       | #f7f7f7/#eee  |  
+|    rowBGColor     | #f7f7f7/#eee  |  
 |    textColor      |     #000      |  
-|    cloumnMinWidth |     100px     |  
+|    columnMinWidth |     100px     |  
 |    overflowX      |     auto      |
 |    overflowY      |     auto      |
 |    fontFamily     |   monospace   |
@@ -177,12 +179,12 @@ const App = () => {
 |  headerBGColor |      #333     |    minHeight          |  120px   |  backgroundColor  |   #333        |
 |  borderColor   |      #000     |    cellPadding        |  4pt     |  btnsBGColor      |   #333        |
 |  fontSize      |      12pt     |    tooltipTextColor   |  #000    |  btnsColor        |   #fff        |  
-|  sortSign      |       ⬆       |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
+|  sortSign      |       ↑       |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
 |                |               |    tooltipBgColor     |  #f7f7f7 |  nextButtonText   |   Next        |             
 |                |               |    backgroundColor    |  #333    |  borderColor      |   #000        |
 |                |               |    borderColor        |  #eaeaeb |                   |               |
 |                |               |    fixedHeight        |  auto    |                   |               |  
-
+|                |               |    fontSize           |   10pt   |                   |               |
 ## User table custom STYLE 
 ```js
 {
@@ -191,9 +193,9 @@ const App = () => {
     maxHeight:      '120px',            
     minWidth:       '800px',           
     fixedHeight:    '200px',            
-    rowColor:       '#000' ,            
+    rowBGColor:     '#000' ,            
     textColor:      '#000' ,            
-    cloumnMinWidth: '100px',           
+    columnMinWidth: '100px',           
     overflowX: 'auto',
     fontFamily: 'monospace',
     header: {

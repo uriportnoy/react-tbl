@@ -21,9 +21,9 @@ const ReactTBL = props => {
         maxWidth: styleProp?.maxWidth,
         minHeight: styleProp?.minHeight || '100px',
         maxHeight: styleProp?.maxHeight || '450px',
-        rowColor:  styleProp?.rowColor || null,
+        rowBGColor:  styleProp?.rowBGColor || null,
         textColor: styleProp?.textColor || '#000',
-        cloumnMinWidth: styleProp?.cloumnMinWidth || '120px',
+        columnMinWidth: styleProp?.columnMinWidth || '100px',
         overflowX: styleProp?.overflowX || 'auto',
         overflowY: styleProp?.overflowX || 'auto',
         showToolTip: props.showToolTip || false,
@@ -35,13 +35,12 @@ const ReactTBL = props => {
         fontSize: headerStyle?.fontSize || '12pt',
         borderColor: headerStyle?.borderColor || '#000',
         sortable: props?.sortable ?? true,
-        sortSign: headerStyle?.sortSign || '⬆'
+        sortSign: headerStyle?.sortSign || '↑'
     },
     body:{
       bodyMaxHeight: bodyStyle?.fixedHeight || bodyStyle?.maxHeight || '200px',
       minHeight: bodyStyle?.minHeight || '120px',
       fixedHeight: bodyStyle?.fixedHeight || 'auto',
-      maxWidth: bodyStyle?.maxWidth || 'auto',
       overflowY: bodyStyle?.overflowY || 'auto',
       overflowX: bodyStyle?.overflowX || 'visible',
       tooltipTextColor: bodyStyle?.tooltipTextColor || '#000',
@@ -50,6 +49,7 @@ const ReactTBL = props => {
       backgroundColor: bodyStyle?.backgroundColor || '#f7f7f7',
       borderColor: bodyStyle?.borderColor || '#ccc',
       cellPadding: bodyStyle?.cellPadding || '4pt',
+      fontSize: bodyStyle?.fontSize || '10pt'
     },
     pagination:{
         isVisible: props?.showPagination ?? true,

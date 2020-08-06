@@ -8,21 +8,24 @@ const TableBody = ({
   columns
 }) => {
   const {
-    table:{rowColor,textColor,cloumnMinWidth,showToolTip,fontFamily},
-    body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor,backgroundColor,borderColor,cellPadding},
+    table:{rowBGColor,textColor,columnMinWidth,showToolTip,fontFamily},
+    body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor,backgroundColor,borderColor,cellPadding,fontSize},
     copyCellDataOnClick
   } = useContext(ReactTblContext);
 
   const copyToClipboard = (info,tdId) =>{
-    document.getElementById(tdId).animate([
-      {background: 'unset'},
-      {background: '#7ecc24a3'},
-      {background: 'unset'}
-    ], { 
-      duration: 400,
-      iterations: 1
-    });
-
+    const currentTd = document.getElementById(tdId);
+    if(currentTd){
+      currentTd.animate([
+        {background: 'unset'},
+        {background: '#7ecc24a3'},
+        {background: 'unset'}
+      ], { 
+        duration: 400,
+        iterations: 1
+      });
+    }
+ 
     const el = document.createElement('textarea');
     el.value = info;
     document.body.appendChild(el);
@@ -37,7 +40,7 @@ const TableBody = ({
       (dataRow, rowIdx) => <TR
         key={`tr_${rowIdx}`}
         idx={rowIdx}
-        rowColor = {rowColor}
+        rowBGColor = {rowBGColor}
       >
         {
           columns.map((col, idx) => {
@@ -47,19 +50,20 @@ const TableBody = ({
             const copyDataActive = col.copyCellDataOnClick ?? copyCellDataOnClick;
 
             return <TD
-              key = {`td_${key}_${rowIdx}${idx}`}
-              id = {`td_${key}_${rowIdx}${idx}`}
+              key = {`td_${key}_${rowIdx}`}
+              id = {`td_${idx}_${rowIdx}`}
               dataTip = {currentValue?.toString()}
               size = {col.size || 1}
               className = {key}
-              width = {col.width || 100}
+              width = {columnMinWidth}
               textColor = {textColor}
-              cloumnMinWidth = {cloumnMinWidth}
-              onClick={copyDataActive ? () => copyToClipboard(currentValue?.toString(),`td_${key}_${rowIdx}${idx}`) : null}
+              columnMinWidth = {columnMinWidth}
+              onClick = {copyDataActive ? () => copyToClipboard(currentValue?.toString(),`td_${idx}_${rowIdx}`) : null}
               copyCellDataOnClick={copyDataActive}
               backgroundColor = {backgroundColor}
               borderColor = {borderColor}
               cellPadding = {cellPadding}
+              fontSize={fontSize}
             > 
                 <>
                 <div className='cellWrapper' id="cellWrapper">

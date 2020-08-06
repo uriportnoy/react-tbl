@@ -2,32 +2,38 @@ import React,{useState,useEffect,useContext} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
+import Resizer from './resizer';
 
 const TableHead = ({columns,sortArray}) => {
-const {tableHeader,table,columnsResize} = useContext(ReactTblContext);
-const [sortDirections,setSortDirections] = useState(null);
+    const {tableHeader,table,columnsResize} = useContext(ReactTblContext);
+    const [sortDirections,setSortDirections] = useState(null);
 
-useEffect(() => {
-    if(tableHeader.sortable){
-        const directions = {};
-        columns.forEach(element => {
-            if(element.sortable !== false) directions[element.colKey] = true;
-        });
-        setSortDirections(directions);
-    }
-},[]);
-  return (
+    useEffect(() => {
+         if(tableHeader.sortable){
+            const directions = {};
+            columns.forEach(element => {
+                if(element.sortable !== false) directions[element.colKey] = true;
+            });
+            setSortDirections(directions);
+        }
+        return () => {
+        }
+    },[]);
+
+   return (
     <Thead
         backgroundColor = {tableHeader?.backgroundColor}
         color = {tableHeader?.color}
     >
         {
-            columns?.length >= 0 ? <tr>{
+            columns?.length <= 0 ? <EmptyColumnsTR> Cannot Read Columns </EmptyColumnsTR> : <tr>{
                 columns.map((key, index) => (
-                    <THComponent key = {index}
-                        width = {key.size || 1}
+                    <><TH
+                        key = {`th_${key.colKey}`}
+                        id = {`th_${index}`}
+                        size = {key.size || 1}
                         fontSize = {tableHeader?.fontSize}
-                        cloumnMinWidth = {table?.cloumnMinWidth}
+                        columnMinWidth = {table?.columnMinWidth}
                         sortDirection = {sortDirections?.[key.colKey]}
                         sortSign = {tableHeader.sortSign}
                         borderColor = {tableHeader?.borderColor}
@@ -35,41 +41,20 @@ useEffect(() => {
                             sortArray(key.colKey,!sortDirections[key.colKey]);
                             setSortDirections({...sortDirections,[key.colKey]: !sortDirections[key.colKey]});
                         }}
-                        header = {key.header || key.colKey}
-                    />
+                    >
+                        {key.header || key.colKey}
+                    {columnsResize && (index + 1 !== columns.length) && <Resizer id={index}/>}
+                    </TH>
+                    </>
                 ))}
-            </tr> : <EmptyColumnsTR> Cannot Read Columns </EmptyColumnsTR> 
+            </tr>
         }
     </Thead>
   )
 }
 
-const THComponent = ({
-    header,
-    width,
-    borderColor,
-    sortSign,
-    fontSize,
-    cloumnMinWidth,
-    sortDirection,
-    onClick
-}) => {
-    const [size,setSize] = useState(width);
-
-    return <TH
-        size = {size}
-        fontSize = {fontSize}
-        cloumnMinWidth = {cloumnMinWidth}
-        sortDirection = {sortDirection}
-        borderColor={borderColor}
-        onClick = {onClick}
-        sortSign = {sortSign}
-    >
-        {header}
-    </TH>
-}
 const Thead = styled.thead`
-    display: table;
+    //display: table;
     width: 100%;
     table-layout: fixed; 
     background: ${props => props.backgroundColor};
@@ -91,10 +76,11 @@ const TH = styled.th`
     border: 1pt ${props => props.borderColor} solid;
     user-select: none;
     text-align: center;
+    white-space: nowrap;
     font-size: ${props => props.fontSize};
-    flex: ${props => props.size} 0 100px; 
+    flex: ${props => props.size} 1 ${props => props.columnMinWidth}; 
     box-sizing: border-box;
-    min-width: ${props => props.cloumnMinWidth};
+    min-width: ${props => props.columnMinWidth};
     position: relative;
     cursor: ${props => (props.sortDirection  === false) || (props.sortDirection) ? 'pointer' : 'auto'};
 
@@ -104,7 +90,7 @@ const TH = styled.th`
         position: absolute;
         right: 4%;
         color: #fff;
-        transition: .4s all;
+        //transition: .4s all;
     }
 `;
 TH.propTypes = {
