@@ -152,9 +152,6 @@ export const TblWrapper = styled.div`
             {
                 background-color: #000;
             }
-        th{
-            padding: 0.3em;
-        }
     }
 `;
 

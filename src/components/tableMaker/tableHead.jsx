@@ -16,7 +16,6 @@ const TableHead = ({columns,sortArray}) => {
             });
             setSortDirections(directions);
         }
-        console.log(columns);
     },[]);
 
    return (
@@ -78,6 +77,7 @@ const TH = styled.th`
     white-space: nowrap;
     font-size: ${props => props.fontSize};
     flex: ${props => props.size} 1 ${props => props.columnMinWidth}; 
+    padding: 0.3em ${props => (props.sortDirection  === false) || (props.sortDirection) ? '4%' : '0.3em'} 0.3em 0.3em;
     box-sizing: border-box;
     min-width: ${props => props.columnMinWidth};
     position: relative;
