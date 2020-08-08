@@ -41,7 +41,7 @@ const TableHead = ({columns,sortArray}) => {
                         }}
                     >
                         {key.header || key.colKey}
-                    {columnsResize && (index + 1 !== columns.length) && <Resizer id={index}/>}
+                    {columnsResize && (index + 1 !== columns.length) && <Resizer id={index} color={tableHeader?.borderColor}/>}
                     </TH>
                     </>
                 ))}
@@ -52,13 +52,14 @@ const TableHead = ({columns,sortArray}) => {
 }
 
 const Thead = styled.thead`
-    //display: table;
+    display: table;
     width: 100%;
     table-layout: fixed; 
     background: ${props => props.backgroundColor};
     position: sticky;
     top: 0;
     z-index: 99;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
     tr{
         color: ${props => props.color};
         width: 100%;

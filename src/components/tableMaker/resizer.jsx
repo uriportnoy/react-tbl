@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ReactTblContext from './ReactTblContext';
 
 
-const Resizer = ({id}) => {
+const Resizer = ({id,color}) => {
     const {table} = useContext(ReactTblContext);
     const columnMinWidth = parseInt(table?.columnMinWidth, 10) || 100;
     let currTh;
@@ -70,7 +70,7 @@ const Resizer = ({id}) => {
             }
           }
 
-        return <ResizerComponent ref = {thRef}  onClick={(e) => e.stopPropagation()}/>
+        return <ResizerComponent ref = {thRef}  onClick={(e) => e.stopPropagation()} color={color}/>
     }
 
 const ResizerComponent = styled.div`
@@ -80,7 +80,7 @@ const ResizerComponent = styled.div`
     width: 6px;
     position: absolute;
     cursor: col-resize;
-    background: #000;
+    background: ${props => props.color || '#000'};
     
     z-index: 999;
 `;

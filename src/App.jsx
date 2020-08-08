@@ -31,10 +31,10 @@ const App = () => {
            maxWidth: '750px',
           // minHeight: '400pt',
           // maxHeight: '150px',
-          // minWidth: 'auto',
+          // minWidth: '600px',
           // rowBGColor: 'yellow',
           // textColor: 'red',
-          // columnMinWidth: '100px',
+           columnMinWidth: '120px',
           // fontFamily: 'arial',
           // overflowX: 'hidden',
           header: {
@@ -46,7 +46,6 @@ const App = () => {
           },
           body:{
             //fontSize: '20pt',
-
              maxHeight: '100px',
             // minHeight: '200pt',
             // fixedHeight: '50px',

@@ -2,18 +2,22 @@
 export const getData = () => ([{
     id:1,
     name: 'moses',
+    family: 'twweeo',
     state: true
 },{
     id:2,
     name: 'hoyas',
+    family: 'twweeo',
     state: true
 },{
     id:3,
     name: 'mosttesdfsdfsdfsdfsdfdsfsdfs',
+    family: 'twweeo',
     state: false
 },{
     id:4,
     name: 'tree',
+    family: 'twweeo',
     state: true
 },{
     id:5,
@@ -30,6 +34,7 @@ export const getData = () => ([{
 },{
     id:8,
     name: 'tree',
+    family: 'twweeo',
     state: false
 },{
     id:9,

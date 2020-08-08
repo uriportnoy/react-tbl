@@ -14,6 +14,12 @@ export const getColumnsData = () => ([
         copyCellDataOnClick: true,
         showToolTip: true
     },{
+        header: 'User Family',
+        colKey: 'family',
+        size: 4,
+        copyCellDataOnClick: true,
+        showToolTip: true
+    },{
         header: 'User State',
         colKey: 'state',
         size: 2,
