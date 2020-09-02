@@ -47,6 +47,8 @@ const TableMaker = ({
                 setNextDisabled(page + 1 >= maxPage);
                 setPrevDisabled(page === 0);
             }
+        }else{
+            setCurrentDataPage([]);
         }
     }
 

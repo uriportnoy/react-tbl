@@ -18,6 +18,7 @@ const App = () => {
   },[]);
 
   return (
+    <>
       <ReactTBL
         data = {currentData}
         columns = {columns || []}
@@ -66,7 +67,7 @@ const App = () => {
             //nextButtonText: 'Next >'
           },
         }}
-      />
+      /></>
   );
 }
 
