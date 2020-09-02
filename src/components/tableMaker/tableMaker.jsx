@@ -24,7 +24,7 @@ const TableMaker = ({
         table,
         CustomLoader,
         isLoading,
-        body:{bodyMaxHeight,overflowY,backgroundColor: bodyBGColor,minHeight,fixedHeight,overflowX: bodyOverFlowX}
+        body:{bodyMaxHeight,overflowY,backgroundColor: bodyBGColor,minHeight,fixedHeight,overflowX: bodyOverFlowX,rowHeight}
     } = useContext(ReactTblContext);
 
     useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
@@ -69,6 +69,7 @@ const EmptyData = () => <EmptyTable minHeight={minHeight}><tr><td>No Data...</td
 
     return <>
         <TblWrapper
+            className='scroller'
             tableMaxHeight = {table?.maxHeight}
             fixedHeight = {fixedHeight}
             backgroundColor = {backgroundColor}
@@ -81,6 +82,7 @@ const EmptyData = () => <EmptyTable minHeight={minHeight}><tr><td>No Data...</td
             bodyBGColor = {bodyBGColor}
             bodyOverFlowX = {bodyOverFlowX}
             tableMinHeight = {table.minHeight}
+            rowHeight={rowHeight}
         >
         <table>
             <TableHead columns={columns} sortArray={sortArray}/>
@@ -108,20 +110,22 @@ export const TblWrapper = styled.div`
     flex: 1 1 auto;
     overflow-x: ${props => props.overflowX};
     max-width: auto;
-
     *{
         font-family: ${props => props.fontFamily}; 
     }
-    &::-webkit-scrollbar-track{}
-            &::-webkit-scrollbar
-            {
-                width: 10px;
-                background-color: ${props => props ?.backgroundColor};
-            }
-            &::-webkit-scrollbar-thumb
-            {
-                background-color: #000;
-            }
+    &.scroller{
+        &::-webkit-scrollbar-track{}
+        &::-webkit-scrollbar
+        {
+            width: 10px;
+            background-color: ${props => props ?.backgroundColor};
+        }
+        &::-webkit-scrollbar-thumb
+        {
+            background-color: #000;
+        }
+    }
+
     table{
         background-color: transparent;
         border-collapse: collapse;
@@ -143,17 +147,22 @@ export const TblWrapper = styled.div`
             min-height: ${props => props.minHeight};
             width: 100%;
             display: block;
+            .TR{
+                height:  ${props => props.rowHeight};
+                &:last-child{
+                    border-bottom: 1pt solid #ccc;
+                }
+            }
         }
-        &::-webkit-scrollbar-track{}
-            &::-webkit-scrollbar
-            {
-                width: 10px;
-                background-color: ${props => props?.backgroundColor || '#173c5a'};
-            }
-            &::-webkit-scrollbar-thumb
-            {
-                background-color: #000;
-            }
+        @keyframes markCell {
+            0% {background: unset;}
+            50% {background: #7ecc24a3;}
+            100% {background: unset;}
+        }
+        .copyCell{
+            animation-name: markCell;
+            animation-duration: 0.4s;
+        }
     }
 `;
 

@@ -1,7 +1,10 @@
-import React,{useContext} from 'react';
+import React,{useContext,useRef} from 'react';
+import ReactDOM from 'react-dom';
+
 import ReactTblContext from './ReactTblContext';
 import {array,number} from 'prop-types';
 import {TR,TD,ToolTip} from './tr_td';
+import { getColumnsData } from '../fakeData/getColumns';
 
 const TableBody = ({
   data,
@@ -12,20 +15,10 @@ const TableBody = ({
     body: {tooltipTextColor,tooltipBgColor,tooltipBorderColor,backgroundColor,borderColor,cellPadding,fontSize},
     copyCellDataOnClick
   } = useContext(ReactTblContext);
+  let refs = [];
 
   const copyToClipboard = (info,tdId) =>{
-    const currentTd = document.getElementById(tdId);
-    if(currentTd){
-      currentTd.animate([
-        {background: 'unset'},
-        {background: '#7ecc24a3'},
-        {background: 'unset'}
-      ], { 
-        duration: 400,
-        iterations: 1
-      });
-    }
- 
+    tdId.classList.add(`copyCell`);
     const el = document.createElement('textarea');
     el.value = info;
     document.body.appendChild(el);
@@ -38,6 +31,7 @@ const TableBody = ({
     {
       data.map(
       (dataRow, rowIdx) => <TR
+        className='TR'
         key={`tr_${rowIdx}`}
         idx={rowIdx}
         rowBGColor = {rowBGColor}
@@ -48,17 +42,19 @@ const TableBody = ({
             const currentValue = dataRow[key];
             const CustomCell = col.CustomCell || null;
             const copyDataActive = col.copyCellDataOnClick ?? copyCellDataOnClick;
+            refs[`td_${idx}_${rowIdx}_ref`] = React.createRef()
 
             return <TD
               key = {`td_${key}_${rowIdx}`}
               id = {`td_${idx}_${rowIdx}`}
+              ref={refs[`td_${idx}_${rowIdx}_ref`]}
               dataTip = {currentValue?.toString()}
               size = {col.size || 1}
               className = {key}
               width = {columnMinWidth}
               textColor = {textColor}
               columnMinWidth = {columnMinWidth}
-              onClick = {copyDataActive ? () => copyToClipboard(currentValue?.toString(),`td_${idx}_${rowIdx}`) : null}
+              onClick = {copyDataActive ? () => copyToClipboard(currentValue?.toString(),refs[`td_${idx}_${rowIdx}_ref`].current) : null}
               copyCellDataOnClick={copyDataActive}
               backgroundColor = {backgroundColor}
               borderColor = {borderColor}

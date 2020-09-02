@@ -49,7 +49,8 @@ const ReactTBL = props => {
       backgroundColor: bodyStyle?.backgroundColor || '#f7f7f7',
       borderColor: bodyStyle?.borderColor || '#ccc',
       cellPadding: bodyStyle?.cellPadding || '4pt',
-      fontSize: bodyStyle?.fontSize || '10pt'
+      fontSize: bodyStyle?.fontSize || '10pt',
+      rowHeight: bodyStyle?.rowHeight || '28px',
     },
     pagination:{
         isVisible: props?.showPagination ?? true,

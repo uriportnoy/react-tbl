@@ -185,6 +185,8 @@ const App = () => {
 |                |               |    borderColor        |  #eaeaeb |                   |               |
 |                |               |    fixedHeight        |  auto    |                   |               |  
 |                |               |    fontSize           |   10pt   |                   |               |
+|                |               |    rowHeight          |   28px   |                   |               |
+
 ## User table custom STYLE 
 ```js
 {

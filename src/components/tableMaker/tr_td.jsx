@@ -7,6 +7,7 @@ export const TR = styled.tr`
     transition: .7s all;
     width: 100%;
     display: flex;  
+    max-height: ${props => props?.rowHeight};
      @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;

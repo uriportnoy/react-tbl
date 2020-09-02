@@ -47,7 +47,7 @@ const App = () => {
           },
           body:{
             //fontSize: '20pt',
-             maxHeight: '100px',
+             maxHeight: 'auto',
             // minHeight: '200pt',
             // fixedHeight: '50px',
             // tooltipTextColor: '#555',
@@ -67,7 +67,21 @@ const App = () => {
             //nextButtonText: 'Next >'
           },
         }}
-      /></>
+      /><ReactTBL
+      data = {currentData}
+      columns = {columns || []}
+      defaultPageSize = {7}
+      sortable = {true}
+      copyCellDataOnClick = {true}
+      isLoading = {isLoading}
+      columnsResize = {true}
+      style = {{
+        body:{
+           maxHeight: '100px',
+           minHeight: '0'
+        },
+      }}
+    /></>
   );
 }
 
