@@ -1,10 +1,7 @@
-import React,{useContext,useRef} from 'react';
-import ReactDOM from 'react-dom';
-
+import React,{useContext} from 'react';
 import ReactTblContext from './ReactTblContext';
 import {array,number} from 'prop-types';
 import {TR,TD,ToolTip} from './tr_td';
-import { getColumnsData } from '../fakeData/getColumns';
 
 const TableBody = ({
   data,
