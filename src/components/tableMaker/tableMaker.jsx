@@ -134,12 +134,7 @@ export const TblWrapper = styled.div`
         min-height: ${props => props.tableMinHeight};
         overflow-y: ${props => props.overflowY};
 
-        input{
-            border: 0;
-            background: transparent;
-            text-align: center;
-            padding-left: 2%;
-        }
+
         tbody {
             background: ${props => props.bodyBGColor};
             max-height: ${props => props.bodyMaxHeight}; 
