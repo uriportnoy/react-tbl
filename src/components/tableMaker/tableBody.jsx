@@ -41,7 +41,7 @@ const TableBody = ({
             const copyDataActive = col.copyCellDataOnClick ?? copyCellDataOnClick;
             refs[`td_${idx}_${rowIdx}_ref`] = React.createRef()
 
-            return <TD
+            return <><TD
               key = {`td_${key}_${rowIdx}`}
               id = {`td_${idx}_${rowIdx}`}
               ref={refs[`td_${idx}_${rowIdx}_ref`]}
@@ -51,7 +51,7 @@ const TableBody = ({
               width = {columnMinWidth}
               textColor = {textColor}
               columnMinWidth = {columnMinWidth}
-              onClick = {copyDataActive ? () => copyToClipboard(currentValue?.toString(),refs[`td_${idx}_${rowIdx}_ref`].current) : null}
+              onClick = {CustomCell ? null : copyDataActive ? () => copyToClipboard(currentValue?.toString(),refs[`td_${idx}_${rowIdx}_ref`].current) : null}
               copyCellDataOnClick={copyDataActive}
               backgroundColor = {backgroundColor}
               borderColor = {borderColor}
@@ -68,12 +68,13 @@ const TableBody = ({
                   borderColor = {tooltipBorderColor || tooltipBgColor}
                   className="tooltiptext"> {currentValue}</ToolTip>}              
                 </>
-            </TD>
+            </TD></>
           })
-        }
+        } 
       </TR>
       )
     }
+   
   </tbody>
 }
 TableBody.propTypes = {

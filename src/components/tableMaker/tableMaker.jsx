@@ -144,9 +144,6 @@ export const TblWrapper = styled.div`
             display: block;
             .TR{
                 height:  ${props => props.rowHeight};
-                &:last-child{
-                    border-bottom: 1pt solid #ccc;
-                }
             }
         }
         @keyframes markCell {

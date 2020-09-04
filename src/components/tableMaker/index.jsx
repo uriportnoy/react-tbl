@@ -39,7 +39,7 @@ const ReactTBL = props => {
     },
     body:{
       bodyMaxHeight: bodyStyle?.fixedHeight || bodyStyle?.maxHeight || '200px',
-      minHeight: bodyStyle?.minHeight || '120px',
+      minHeight: bodyStyle?.minHeight || 'auto',
       fixedHeight: bodyStyle?.fixedHeight || 'auto',
       overflowY: bodyStyle?.overflowY || 'auto',
       overflowX: bodyStyle?.overflowX || 'visible',
@@ -50,7 +50,7 @@ const ReactTBL = props => {
       borderColor: bodyStyle?.borderColor || '#ccc',
       cellPadding: bodyStyle?.cellPadding || '4pt',
       fontSize: bodyStyle?.fontSize || '10pt',
-      rowHeight: bodyStyle?.rowHeight || '28px',
+      rowHeight: bodyStyle?.rowHeight || 'auto',
     },
     pagination:{
         isVisible: props?.showPagination ?? true,

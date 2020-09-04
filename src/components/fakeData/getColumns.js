@@ -1,6 +1,19 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 
+export const Input = ({currentValue}) => {
+    const [val,setVal] = useState(currentValue);
+    React.useEffect(() => {
+        console.log(val);
+        return () => {
+            console.log('d');
+        }
+    });
+    const setValue = (e) => {
+        setVal(e.target.value);
+    }
+    return <input value = {val} onChange={setValue}/>
+}
 export const getColumnsData = () => ([
     {
         header: 'User Id',
@@ -12,7 +25,9 @@ export const getColumnsData = () => ([
         colKey: 'name',
         size: 4,
         copyCellDataOnClick: true,
-        showToolTip: true
+        showToolTip: true,
+        CustomCell: Input
+
     },{
         header: 'User Family',
         colKey: 'family',

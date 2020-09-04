@@ -176,7 +176,7 @@ const App = () => {
 |    Header      |    Default    |         Body          |  Default |     Pagination    |   Default     |
 | :-----------:  | :-----------: |  :----------------:   |:--------:| :--------------:  | :-----------: |
 |  headerColor   |      #fff     |    maxHeight          |  200px   |  color            |   #fff        | 
-|  headerBGColor |      #333     |    minHeight          |  120px   |  backgroundColor  |   #333        |
+|  headerBGColor |      #333     |    minHeight          |  auto    |  backgroundColor  |   #333        |
 |  borderColor   |      #000     |    cellPadding        |  4pt     |  btnsBGColor      |   #333        |
 |  fontSize      |      12pt     |    tooltipTextColor   |  #000    |  btnsColor        |   #fff        |  
 |  sortSign      |       ↑       |    tooltipBorderColor |  #000    |  prevButtonText   |   Previous    |  
@@ -185,7 +185,7 @@ const App = () => {
 |                |               |    borderColor        |  #eaeaeb |                   |               |
 |                |               |    fixedHeight        |  auto    |                   |               |  
 |                |               |    fontSize           |   10pt   |                   |               |
-|                |               |    rowHeight          |   28px   |                   |               |
+|                |               |    rowHeight          |   auto   |                   |               |
 
 ## User table custom STYLE 
 ```js

@@ -67,21 +67,7 @@ const App = () => {
             //nextButtonText: 'Next >'
           },
         }}
-      /><ReactTBL
-      data = {currentData}
-      columns = {columns || []}
-      defaultPageSize = {7}
-      sortable = {true}
-      copyCellDataOnClick = {true}
-      isLoading = {isLoading}
-      columnsResize = {true}
-      style = {{
-        body:{
-           maxHeight: '100px',
-           minHeight: '0'
-        },
-      }}
-    /></>
+      /></>
   );
 }
 
