@@ -21,6 +21,7 @@ TR.propTypes = {
 
 export const TD = styled.td`
 	flex: ${(props) => props.size} 1 ${(props) => props.columnMinWidth};
+	min-width: ${(props) => props.columnMinWidth};
 	border: 1pt solid ${(props) => props.borderColor};
 	font-size: 12pt;
 	position: relative;
@@ -29,7 +30,6 @@ export const TD = styled.td`
 	text-align: center;
 	padding: ${(props) => props.cellPadding};
 	color: ${(props) => props.textColor};
-	min-width: ${(props) => props.columnMinWidth};
 	font-size: ${(props) => props.fontSize};
 	cursor: ${(props) => (props.copyCellDataOnClick ? 'copy' : 'auto')};
 
@@ -66,9 +66,10 @@ export const ToolTip = styled.span`
 	padding: 5px;
 	position: absolute;
 	z-index: 999;
-	top: 0;
+	top: -28px;
 	transition: opacity 0.3s;
-	//transform: translateX(-50%);
+	box-sizing: border-box;
+	height: 28px;
 
 	&:after {
 		content: '';

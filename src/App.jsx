@@ -22,20 +22,20 @@ const App = () => {
 			<ReactTBL
 				data={currentData}
 				columns={columns || []}
-				defaultPageSize={7}
+				defaultPageSize={6}
 				sortable={true}
 				copyCellDataOnClick={true}
 				isLoading={isLoading}
 				columnsResize={true}
 				//CustomLoader = {() => <Loader color='green'/>}
 				style={{
-					//maxWidth: '750px',
+					maxWidth: '600px',
 					// minHeight: '400pt',
 					// maxHeight: '150px',
 					// minWidth: '600px',
 					// rowBGColor: 'yellow',
 					// textColor: 'red',
-					// columnMinWidth: '120px',
+					columnMinWidth: '120px',
 					// fontFamily: 'arial',
 					// overflowX: 'hidden',
 					header: {

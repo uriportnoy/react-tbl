@@ -28,68 +28,77 @@ const TableBody = ({ currentDataPage, columns, setCurrentDataPage }) => {
 		document.execCommand('copy');
 		document.body.removeChild(el);
 	};
-
+	const ejectParams = function (dataRow, col, idx, rowIdx) {
+		const columnKey = col.colKey;
+		const copyDataActive = col.copyCellDataOnClick ?? copyCellDataOnClick;
+		const refKey = `td_${idx}_${rowIdx}_ref`;
+		refs[refKey] = React.createRef();
+		const res = {
+			columnKey,
+			_key: `td_${columnKey}_${rowIdx}`,
+			currentValue: dataRow[columnKey],
+			copyDataActive,
+			refKey,
+			relevantWidth: document.getElementById(`th_${idx}`)?.offsetWidth,
+			onClick: () => {
+				if (col.CustomCell || !copyDataActive) return;
+				copyToClipboard(dataRow[columnKey]?.toString(), refs[refKey].current);
+			},
+		};
+		return res;
+	};
 	return (
 		<tbody>
 			{currentDataPage.map((dataRow, rowIdx) => (
-				<TR key={`tr_${rowIdx}`} idx={rowIdx} rowBGColor={rowBGColor}>
+				<TR
+					key={`tr_${rowIdx}`}
+					id={`tr_${rowIdx}`}
+					idx={rowIdx}
+					rowBGColor={rowBGColor}
+				>
 					{columns.map((col, idx) => {
-						const columnKey = col.colKey;
-						const _key = `td_${columnKey}_${rowIdx}`;
-						const currentValue = dataRow[columnKey];
-						const CustomCell = col.CustomCell || null;
-						const copyDataActive =
-							col.copyCellDataOnClick ?? copyCellDataOnClick;
-						const refKey = `td_${idx}_${rowIdx}_ref`;
-						const onClick = () => {
-							if (CustomCell || !copyDataActive) return;
-							copyToClipboard(currentValue?.toString(), refs[refKey].current);
-						};
-
-						refs[refKey] = React.createRef();
+						const props = ejectParams(dataRow, col, idx, rowIdx);
 						return (
 							<TD
-								key={_key}
+								key={props._key}
 								id={`td_${idx}_${rowIdx}`}
-								ref={refs[refKey]}
-								dataTip={currentValue?.toString()}
+								ref={refs[props.refKey]}
+								dataTip={props.currentValue?.toString()}
 								size={col.size || 1}
-								className={columnKey}
+								className={props.columnKey}
 								textColor={textColor}
 								columnMinWidth={columnMinWidth}
-								onClick={onClick}
-								copyCellDataOnClick={copyDataActive}
+								onClick={props.onClick}
+								copyCellDataOnClick={props.copyDataActive}
 								backgroundColor={backgroundColor}
 								borderColor={borderColor}
 								cellPadding={cellPadding}
 								fontSize={fontSize}
 							>
-								<>
-									<div className='cellWrapper' id='cellWrapper'>
-										{CustomCell ? (
-											<CustomCell
-												dataRow={dataRow}
-												currentKey={col.colKey}
-												currentValue={currentValue}
-												pageData={currentDataPage}
-												setPageData={setCurrentDataPage}
-											/>
-										) : (
-											currentValue
-										)}
-									</div>
-									{(showToolTip || col.showToolTip) &&
-										currentValue?.length > 0 && (
-											<ToolTip
-												bgColor={tooltipBgColor}
-												textColor={tooltipTextColor || textColor}
-												borderColor={tooltipBorderColor || tooltipBgColor}
-												className='tooltiptext'
-											>
-												{currentValue}
-											</ToolTip>
-										)}
-								</>
+								<div className='cellWrapper' id='cellWrapper'>
+									{col.CustomCell ? (
+										<col.CustomCell
+											dataRow={dataRow}
+											currentKey={col.colKey}
+											currentValue={props.currentValue}
+											pageData={currentDataPage}
+											setPageData={setCurrentDataPage}
+										/>
+									) : (
+										props.currentValue
+									)}
+								</div>
+								{(showToolTip || col.showToolTip) &&
+									props.currentValue?.length > 0 && (
+										<ToolTip
+											bgColor={tooltipBgColor}
+											textColor={tooltipTextColor || textColor}
+											borderColor={tooltipBorderColor || tooltipBgColor}
+											className='tooltiptext'
+										>
+											{props.currentValue}
+										</ToolTip>
+									)}
 							</TD>
 						);
 					})}

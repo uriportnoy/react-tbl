@@ -75,7 +75,6 @@ export const ReactTblStyled = styled.div`
 	table {
 		background-color: transparent;
 		border-collapse: collapse;
-		width: 100%;
 		display: inline-block;
 		tr {
 			height: ${(props) => props.rowHeight};
@@ -135,12 +134,12 @@ export const TH = styled.th`
 	white-space: nowrap;
 	font-size: ${(props) => props.fontSize};
 	flex: ${(props) => props.size} 1 ${(props) => props.columnMinWidth};
+	min-width: ${(props) => props.columnMinWidth};
 	padding: 0.3em
 		${(props) =>
 			props.sortDirection === false || props.sortDirection ? '0.4em' : '0.3em'}
 		0.3em 0.3em;
 	box-sizing: border-box;
-	min-width: ${(props) => props.columnMinWidth};
 	position: relative;
 	display: flex;
 	justify-content: center;

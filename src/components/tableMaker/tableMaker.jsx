@@ -8,7 +8,6 @@ import { Pagination } from './pagination';
 const TableMaker = ({ columns, data }) => {
 	const [currentDataPage, setCurrentDataPage] = useState([]);
 	const [page, setPage] = useState(0);
-	const [width, setWidth] = useState(100);
 
 	const {
 		pagination: { isVisible },
@@ -66,12 +65,7 @@ const TableMaker = ({ columns, data }) => {
 				bodyOverFlowX={bodyOverFlowX}
 			>
 				<table>
-					<TableHead
-						columns={columns}
-						sortArray={sortDataArray}
-						width={width}
-						setWidth={setWidth}
-					/>
+					<TableHead columns={columns} sortArray={sortDataArray} />
 					{isLoading ? (
 						<Loading minHeight={minHeight} />
 					) : (currentDataPage?.length !== 0 && columns?.length) !== 0 ? (
