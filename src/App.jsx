@@ -27,6 +27,7 @@ const App = () => {
 				copyCellDataOnClick={true}
 				isLoading={isLoading}
 				columnsResize={true}
+				resize={false}
 				//CustomLoader = {() => <Loader color='green'/>}
 				style={{
 					maxWidth: '600px',

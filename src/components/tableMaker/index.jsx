@@ -76,6 +76,7 @@ const ReactTBL = (props) => {
 				rowHeight={bodyStyle?.rowHeight || 'auto'}
 				border={styleProp?.border || '1px solid'}
 				margin={styleProp?.margin || '0px auto'}
+				resize={props?.resize ?? true}
 			>
 				<TableMaker data={props?.data} columns={props?.columns || []} />
 			</ReactTblStyled>

@@ -80,6 +80,7 @@ const App = () => {
         columnsResize = {true}                       // default = false
         isLoading = {true}                           // shows loader
         CustomLoader = {Loader}                      // custom loader component [optional]
+        resize = {false}                             // default = true
         style = {{                                   // custom style [optional]
            maxWidth: '250px',
            minHeight: '400pt',
@@ -171,6 +172,7 @@ const App = () => {
 |      isLoading      |         | shows loader when is loading = true |
 |    CustomLoader     |         | custom loader component |
 |    columnsResize    |  false  |
+|       resize        |  true   |
 
 ## Table style
 

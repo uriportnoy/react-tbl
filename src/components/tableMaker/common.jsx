@@ -46,6 +46,7 @@ export const Thead = styled.thead`
 export const TblWrapper = styled.div`
 	flex: 1 1 auto;
 	overflow-x: ${(props) => props.overflowX};
+
 	* {
 		font-family: ${(props) => props.fontFamily};
 	}
@@ -72,6 +73,9 @@ export const ReactTblStyled = styled.div`
 	flex-direction: column;
 	box-sizing: border-box;
 	border: ${(props) => props.border};
+
+	resize: ${(props) => (props.resize ? 'both' : 'none')};
+	overflow: auto;
 	table {
 		background-color: transparent;
 		border-collapse: collapse;
