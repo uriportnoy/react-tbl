@@ -1,176 +1,103 @@
-import React, { useEffect, useState,useContext } from 'react';
-import {array,number} from 'prop-types';
+import React, { useEffect, useState, useContext } from 'react';
+import { array, number } from 'prop-types';
 import TableHead from './tableHead';
 import TableBody from './tableBody';
-import styled from 'styled-components';
-import ReactTblContext from './ReactTblContext';
+import { ReactTblContext, TblWrapper, Loading, EmptyData } from './common';
 import { Pagination } from './pagination';
-import {Loader} from './Loader';
 
-const TableMaker = ({
-    columns,
-    data,
-    defaultPageSize
-    //debounceInput = null
-}) => {
-    const [currentDataPage, setCurrentDataPage] = useState([]);
-    const [page, setPage] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
-    const [nextDisabled, setNextDisabled] = useState(false);
-    const [prevDisabled, setPrevDisabled] = useState(true);
-    const {
-        pagination:{isVisible},
-        tableHeader:{backgroundColor},
-        table,
-        CustomLoader,
-        isLoading,
-        body:{bodyMaxHeight,overflowY,backgroundColor: bodyBGColor,minHeight,fixedHeight,overflowX: bodyOverFlowX,rowHeight}
-    } = useContext(ReactTblContext);
+const TableMaker = ({ columns, data }) => {
+	const [currentDataPage, setCurrentDataPage] = useState([]);
+	const [page, setPage] = useState(0);
+	const [width, setWidth] = useState(100);
 
-    useEffect(() => {handlePages()}, [page, data, defaultPageSize]);
+	const {
+		pagination: { isVisible },
+		tableHeader: { backgroundColor },
+		table,
+		isLoading,
+		defaultPageSize,
+		body: { overflowY, minHeight, overflowX: bodyOverFlowX },
+	} = useContext(ReactTblContext);
 
-    const handlePages = () => {
-        if(data && Array.isArray(data) && data.length > 0){
-            if (page === 0) {
-                const pageData = data?.slice(0, defaultPageSize);  //_.slice(data, [0], [defaultPageSize]);
-                setCurrentDataPage(pageData);
-            } else {
-                const startChunk = page * defaultPageSize ;
-                const endChunk = startChunk + defaultPageSize;
-                const pageData = data?.slice(startChunk,endChunk);  //_.slice(data, [startChunk], [endChunk]);
-                setCurrentDataPage(pageData);
-            }
-            // handle pages 
-            const maxPage = Math.ceil(data?.length / defaultPageSize);
-            if(Number.isInteger(maxPage)){
-                setTotalPages(maxPage);
-                setNextDisabled(page + 1 >= maxPage);
-                setPrevDisabled(page === 0);
-            }
-        }else{
-            setCurrentDataPage([]);
-        }
-    }
+	useEffect(() => {
+		handlePages();
+	}, [page, data.length, defaultPageSize]);
 
-    const sortArray = (columnType,high = true) => {
-        const sortedData = [...currentDataPage].sort((a, b) => {
-         if(a[columnType] < b[columnType]) { return high ? -1 : 1; }
-            if(a[columnType] > b[columnType]) { return high ? 1 : -1; }
-            return 0;
-        });
-        setCurrentDataPage(sortedData);
-    }
+	const handlePages = () => {
+		if (data && Array.isArray(data) && data.length > 0) {
+			if (page === 0) {
+				const pageData = data?.slice(0, defaultPageSize);
+				setCurrentDataPage(pageData);
+			} else {
+				const startChunk = page * defaultPageSize;
+				const endChunk = startChunk + defaultPageSize;
+				const pageData = data?.slice(startChunk, endChunk);
+				setCurrentDataPage(pageData);
+			}
+		} else {
+			setCurrentDataPage([]);
+		}
+	};
 
-const Loading = () => <EmptyTable minHeight={minHeight}><tr><td>{
-    CustomLoader ? <CustomLoader /> : <Loader color={backgroundColor}/>
-}</td></tr></EmptyTable >;
+	const sortDataArray = (columnType, high = true) => {
+		const sortedData = [...currentDataPage].sort((a, b) => {
+			if (a[columnType] < b[columnType]) {
+				return high ? -1 : 1;
+			}
+			if (a[columnType] > b[columnType]) {
+				return high ? 1 : -1;
+			}
+			return 0;
+		});
+		setCurrentDataPage(sortedData);
+	};
 
-const EmptyData = () => <EmptyTable minHeight={minHeight}><tr><td>No Data...</td></tr></EmptyTable>;
-
-    return <>
-        <TblWrapper
-            className='scroller'
-            tableMaxHeight = {table?.maxHeight}
-            fixedHeight = {fixedHeight}
-            backgroundColor = {backgroundColor}
-            minHeight = {minHeight}
-            bodyMaxHeight = {bodyMaxHeight}
-            overflowY = {overflowY}
-            fontFamily = {table?.fontFamily}
-            maxWidth = {table?.maxWidth}
-            overflowX = {table?.overflowX}
-            bodyBGColor = {bodyBGColor}
-            bodyOverFlowX = {bodyOverFlowX}
-            tableMinHeight = {table.minHeight}
-            rowHeight={rowHeight}
-        >
-        <table>
-            <TableHead columns={columns} sortArray={sortArray}/>
-            {   
-                 isLoading ? <Loading /> : (currentDataPage?.length !== 0 && columns?.length !== 0) ?
-                <TableBody data={currentDataPage} columns={columns} defaultPageSize={defaultPageSize}/>:
-                <EmptyData /> 
-            }
-        </table></TblWrapper>
-        {isVisible && <Pagination
-            setPage={setPage}
-            page={page}
-            totalPages={totalPages}
-            nextDisabled={nextDisabled}
-            prevDisabled={prevDisabled}
-        />}
-    </>
-}
+	return (
+		<>
+			<TblWrapper
+				className='scroller'
+				tableMaxHeight={table?.maxHeight}
+				backgroundColor={backgroundColor}
+				minHeight={minHeight}
+				overflowY={overflowY}
+				fontFamily={table?.fontFamily}
+				maxWidth={table?.maxWidth}
+				overflowX={table?.overflowX}
+				bodyOverFlowX={bodyOverFlowX}
+			>
+				<table>
+					<TableHead
+						columns={columns}
+						sortArray={sortDataArray}
+						width={width}
+						setWidth={setWidth}
+					/>
+					{isLoading ? (
+						<Loading minHeight={minHeight} />
+					) : (currentDataPage?.length !== 0 && columns?.length) !== 0 ? (
+						<TableBody
+							currentDataPage={currentDataPage}
+							columns={columns}
+							setCurrentDataPage={setCurrentDataPage}
+						/>
+					) : (
+						<EmptyData minHeight={minHeight} />
+					)}
+				</table>
+			</TblWrapper>
+			{isVisible && (
+				<Pagination
+					setPage={setPage}
+					page={page}
+					totalDataLength={data.length}
+				/>
+			)}
+		</>
+	);
+};
 TableMaker.propTypes = {
-    columns: array.isRequired,
-    data: array.isRequired,
-    defaultPageSize: number.isRequired
-}
-export const TblWrapper = styled.div`
-    flex: 1 1 auto;
-    overflow-x: ${props => props.overflowX};
-    max-width: auto;
-    *{
-        font-family: ${props => props.fontFamily}; 
-    }
-    &.scroller{
-        &::-webkit-scrollbar-track{}
-        &::-webkit-scrollbar
-        {
-            width: 10px;
-            background-color: ${props => props ?.backgroundColor};
-        }
-        &::-webkit-scrollbar-thumb
-        {
-            background-color: #000;
-        }
-    }
-
-    table{
-        background-color: transparent;
-        border-collapse: collapse;
-        width: 100%;
-        max-height: ${props => props.tableMaxHeight};
-        min-height: ${props => props.tableMinHeight};
-        overflow-y: ${props => props.overflowY};
-
-
-        tbody {
-            background: ${props => props.bodyBGColor};
-            max-height: ${props => props.bodyMaxHeight}; 
-            height: ${props => props.fixedHeight}; 
-            min-height: ${props => props.minHeight};
-            width: 100%;
-            display: block;
-            .TR{
-                height:  ${props => props.rowHeight};
-            }
-        }
-        @keyframes markCell {
-            0% {background: unset;}
-            50% {background: #7ecc24a3;}
-            100% {background: unset;}
-        }
-        .copyCell{
-            animation-name: markCell;
-            animation-duration: 0.4s;
-        }
-    }
-`;
-
-const EmptyTable = styled.tbody`
-    color: #000;
-    font-weight: bold;
-    display: grid !important;
-    align-items: center;
-    min-height: ${props => props.minHeight};
-    tr{
-        display: grid;
-        align-items: center;
-        height: 100%;
-        font-size: 15pt;
-        text-align: center;
-    }
-`;
+	columns: array.isRequired,
+	data: array.isRequired,
+};
 
 export default TableMaker;

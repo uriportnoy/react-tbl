@@ -1,85 +1,61 @@
-import React,{useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import ReactTblContext from './ReactTblContext';
+import { ReactTblContext, PaginationStyle } from './common';
 
-export const Pagination = ({page,setPage,totalPages,nextDisabled,prevDisabled}) => {
-const {pagination,table:{fontFamily}} = useContext(ReactTblContext);
+export const Pagination = ({ page, setPage, totalDataLength }) => {
+	const [totalPages, setTotalPages] = useState(0);
+	const [nextDisabled, setNextDisabled] = useState(false);
+	const [prevDisabled, setPrevDisabled] = useState(true);
+	const {
+		pagination,
+		defaultPageSize,
+		table: { fontFamily },
+	} = useContext(ReactTblContext);
 
-return <PaginationStyle
-        page = {page}
-        totalPages = {totalPages}
-        nextDisabled = {nextDisabled}
-        prevDisabled = {prevDisabled}
-        fontFamily = {fontFamily}
-        color = {pagination?.color}
-        btnsColor = {pagination?.btnsColor}
-        btnsBGColor = {pagination?.btnsBGColor}
-        borderColor = {pagination?.borderColor}
-        backgroundColor = {pagination?.backgroundColor}
-    >
-        <span className='btn prev' onClick = {() => prevDisabled ? null : setPage(page - 1)}>{pagination?.prevButtonText}</span>
-        <span className='label'>{`${page + (totalPages !== 0 ? 1 : 0)}/${totalPages}`}</span>
-        <span className='btn next' onClick = {() => nextDisabled ? null : setPage(page + 1)}>{pagination?.nextButtonText}</span>
-</PaginationStyle>
-}
+	useEffect(() => {
+		// handle pages
+		const maxPage = Math.ceil(totalDataLength / defaultPageSize);
+		if (Number.isInteger(maxPage)) {
+			setTotalPages(maxPage);
+			setNextDisabled(page + 1 >= maxPage);
+			setPrevDisabled(page === 0);
+		}
+	}, [page, totalDataLength]);
 
-const PaginationStyle = styled.div`
-    background: ${props => props.backgroundColor};
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    padding: 2pt;
-    padding: 4pt;
-    z-index: 10;
-    box-sizing: border-box;
-    border: 1px solid ${props => props.borderColor};
-    *{
-        user-select:none;
-        font-family: ${props => props.fontFamily};
-        color: ${props => props.color};
-    }
-    .label{
-        flex: 3;
-        text-align: center;
-    }
-    .btn{
-        width: 120px;
-        height: 100%;
-        transition: .3s all;
-        display: flex;
-        position : relative;
-        color: ${props => props.btnsColor};  
-        align-items: center;
-        justify-content: center;
-        padding: 3pt;
-        font-weight: bold;
-        cursor: pointer;
-        font-family: ${props => props.fontFamily};
-        border-radius: 3pt;
-        flex-grow: 1;
-        overflow: hidden;
-        text-align: center;
+	return (
+		<PaginationStyle
+			page={page}
+			totalPages={totalPages}
+			nextDisabled={nextDisabled}
+			prevDisabled={prevDisabled}
+			fontFamily={fontFamily}
+			color={pagination?.color}
+			btnsColor={pagination?.btnsColor}
+			btnsBGColor={pagination?.btnsBGColor}
+			border={pagination?.border}
+			backgroundColor={pagination?.backgroundColor}
+		>
+			<span
+				className='btn prev'
+				onClick={() => (prevDisabled ? null : setPage(page - 1))}
+			>
+				{pagination?.prevButtonText}
+			</span>
+			<span className='label'>{`${
+				page + (totalPages !== 0 ? 1 : 0)
+			}/${totalPages}`}</span>
+			<span
+				className='btn next'
+				onClick={() => (nextDisabled ? null : setPage(page + 1))}
+			>
+				{pagination?.nextButtonText}
+			</span>
+		</PaginationStyle>
+	);
+};
 
-        &.next{
-            background: ${props => props.nextDisabled ? '#ccc' : props.btnsBGColor};
-            opacity: ${props => props.nextDisabled ? '0.4' :'1'};
-            cursor: ${props => props.nextDisabled ? 'not-allowed' :'pointer'};
-        }
-        &.prev{
-            background: ${props => props.prevDisabled ? '#ccc' : props.btnsBGColor};
-            opacity: ${props => props.prevDisabled ? '0.4' :'1'};
-            cursor: ${props => props.prevDisabled ? 'not-allowed' :'pointer'};
-        }
-        &:hover{
-            filter: brightness(85%);
-        }
-    }
-`;
 Pagination.propTypes = {
-    page: PropTypes.number.isRequired,
-    setPage: PropTypes.func.isRequired,
-    totalPages: PropTypes.number.isRequired,
-    nextDisabled: PropTypes.bool.isRequired,
-    prevDisabled: PropTypes.bool.isRequired
-}
+	page: PropTypes.number.isRequired,
+	setPage: PropTypes.func.isRequired,
+	totalDataLength: PropTypes.number.isRequired,
+};
