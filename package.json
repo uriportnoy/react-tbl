@@ -1,6 +1,6 @@
 {
   "name": "react-tbl",
-  "version": "0.7.6",
+  "version": "0.7.8",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",

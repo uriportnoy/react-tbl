@@ -43,6 +43,7 @@ const TableBody = ({ currentDataPage, columns, setCurrentDataPage }) => {
 				if (
 					col.CustomCell ||
 					!copyDataActive ||
+					!dataRow[columnKey] ||
 					dataRow[columnKey]?.length == 0
 				)
 					return;
