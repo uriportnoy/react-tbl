@@ -80,7 +80,7 @@ const App = () => {
         columnsResize = {true}                       // default = false
         isLoading = {true}                           // shows loader
         CustomLoader = {Loader}                      // custom loader component [optional]
-        resize = {false}                             // default = true
+        resize = {true}                              // default = false
         style = {{                                   // custom style [optional]
            maxWidth: '250px',
            minHeight: '400pt',
@@ -203,7 +203,7 @@ const App = () => {
 |               |         |  backgroundColor   |  #333   |     border      |   none   |
 |               |         |    borderColor     | #eaeaeb |                 |          |
 |               |         |      fontSize      |  10pt   |                 |          |
-|               |         |     rowHeight      |  auto   |                 |          |
+|               |         |     rowHeight      |  30px   |                 |          |
 
 ## User table custom STYLE
 

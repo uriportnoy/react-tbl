@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { array, number } from 'prop-types';
+import { array } from 'prop-types';
 import TableHead from './tableHead';
 import TableBody from './tableBody';
 import { ReactTblContext, TblWrapper, Loading, EmptyData } from './common';
@@ -31,6 +31,10 @@ const TableMaker = ({ columns, data }) => {
 				const startChunk = page * defaultPageSize;
 				const endChunk = startChunk + defaultPageSize;
 				const pageData = data?.slice(startChunk, endChunk);
+
+				for (let i = pageData.length; i < defaultPageSize; i++) {
+					pageData.push({ empty: true });
+				}
 				setCurrentDataPage(pageData);
 			}
 		} else {

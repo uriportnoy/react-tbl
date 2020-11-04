@@ -73,10 +73,10 @@ const ReactTBL = (props) => {
 				tableMinHeight={styleProp?.minHeight || '100px'}
 				pagination={paginationStyle?.isVisible}
 				maxHeight={bodyStyle?.maxHeight || '300px'}
-				rowHeight={bodyStyle?.rowHeight || 'auto'}
+				rowHeight={bodyStyle?.rowHeight || '30px'}
 				border={styleProp?.border || '1px solid'}
 				margin={styleProp?.margin || '0px auto'}
-				resize={props?.resize ?? true}
+				resize={props?.resize ?? false}
 			>
 				<TableMaker data={props?.data} columns={props?.columns || []} />
 			</ReactTblStyled>

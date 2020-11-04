@@ -63,10 +63,12 @@ const Resizer = ({ id, color }) => {
 				currTds?.length > 0
 			) {
 				[...currTds, currTh].forEach((elem) => {
-					elem.style.flexBasis = currWidth + diffX + 'px';
+					const width = currWidth + diffX + 'px';
+					elem.style.flexBasis = width;
 				});
 				[...nextTds, nextTh].forEach((elem) => {
-					elem.style.flexBasis = nextWidth - diffX + 'px';
+					const width = nextWidth - diffX + 'px';
+					elem.style.flexBasis = width;
 				});
 			}
 		}
