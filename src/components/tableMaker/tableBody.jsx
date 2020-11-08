@@ -27,6 +27,9 @@ const TableBody = ({ currentDataPage, columns, setCurrentDataPage }) => {
 		el.select();
 		document.execCommand('copy');
 		document.body.removeChild(el);
+		setTimeout(() => {
+			tdId.classList.remove(`copyCell`);
+		}, 1000);
 	};
 	const ejectParams = function (dataRow, col, idx, rowIdx) {
 		const columnKey = col.colKey;
